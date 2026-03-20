@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فساتين الأطفال - وايت روز</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Arya:wght@400;700&family=El+Messiri:wght@400..700&family=Playpen+Sans+Arabic:wght@100..800&display=swap" rel="stylesheet">
+  <style id="reset">
+    *,
+    ::before,
+    ::after {
+      box-sizing: border-box;
+      border-width: 0;
+    }
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: inherit;
+      font-weight: inherit;
+    }
+    a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+    b,
+    strong {
+      font-weight: bolder;
+    }
+    code,
+    kbd,
+    samp,
+    pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 1em;
+    }
+    small {
+      font-size: 80%;
+    }
+    table {
+      text-indent: 0;
+      border-color: inherit;
+      border-collapse: collapse;
+    }
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      font-family: inherit;
+      font-size: 100%;
+      line-height: inherit;
+      color: inherit;
+      margin: 0;
+      padding: 0;
+    }
+    button,
+    select {
+      text-transform: none;
+    }
+    button,
+    [type='button'],
+    [type='reset'],
+    [type='submit'] {
+      -webkit-appearance: button;
+      background-color: transparent;
+      background-image: none;
+    }
+    progress {
+      vertical-align: baseline;
+    }
+    ::-webkit-inner-spin-button,
+    ::-webkit-outer-spin-button {
+      height: auto;
+    }
+    blockquote,
+    dl,
+    dd,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    hr,
+    figure,
+    p,
+    pre {
+      margin: 0;
+    }
+    fieldset {
+      margin: 0;
+      padding: 0;
+    }
+    legend {
+      padding: 0;
+    }
+    ol,
+    ul,
+    menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    textarea {
+      resize: vertical;
+    }
+    input::placeholder,
+    textarea::placeholder {
+      opacity: 1;
+      color: #9ca3af;
+    }
+    img,
+    svg,
+    video,
+    canvas,
+    audio,
+    iframe,
+    embed,
+    object {
+      display: block;
+      vertical-align: middle;
+    }
+    img,
+    video {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+  <style>
+    html,
+    body {
+      position: relative;
+      margin: 0;
+      padding: 0;
+    }
+    .bg-clip-text {
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+    }
+    #container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 393px;
+      height: 852px;
+      transform-origin: 0 0;
+      transform: scale(1);
+      display: none;
+      overflow: hidden;
+    }
+    /* المنيو مخفي افتراضياً مع تأثير fade */
+    .menu-overlay {
+      position: absolute;
+      left: 0;
+      top: 86px; /* أسفل الهيدر مباشرة */
+      width: 393px;
+      height: 365px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 100;
+    }
+    .menu-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    /* تراكب التعتيم */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 393px;
+      height: 852px;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 90;
+    }
+    .overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+            /* الدوائر الجانبية */
+    .circle-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 75% 30%, 
+    #fff 2%, 
+    #999 3%,       /* لمعة بيضاء حادة */
+   #555 9%,       /* رمادي متوسط يبدأ بالانحدار */
+  #111 45%,       /* رمادي غامق جداً */
+    #000 100%       /* أسود خالص عند الأطراف */
+  );
+  border: 3px solid #777; /* يمكنك تعديل لون الحدود */
+  box-sizing: border-box;
+}
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div style="width: 393px; height: 852px; position: absolute; background: rgb(102, 2, 27); overflow: hidden;">
+      
+      <!-- رأس الصفحة (أيقونة القائمة) -->
+      <div style="width: 393px; height: 293.273346px; position: absolute; left: 0px; top: 0px;">
+        <div style="width: 393px; height: 86px; position: absolute; left: 0px; top: 0px;">
+          <!-- أيقونة القائمة (التي ستظهر/تخفي المنيو) -->
+          <div id="menuIcon" style="width: 77px; height: 86px; position: absolute; left: 316px; top: 0px; background: rgb(242, 253, 252); border-radius: 20px 0px 0px 20px; filter: drop-shadow(rgba(0, 0, 0, 0.25) 0px 4px 4px); cursor: pointer;">
+            <div style="width: 50px; height: 50px; position: absolute; left: 7px; top: 18px;">
+              <div style="width: 50px; height: 50px; position: absolute; left: 0px; top: 0px; overflow: hidden;">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzgiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAzOCAyNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggaWQ9Imljb24iIGQ9Ik0wIDI1VjIwLjgzMzNIMzcuNVYyNUgwWk0wIDE0LjU4MzNWMTAuNDE2N0gzNy41VjE0LjU4MzNIMFpNMCA0LjE2NjY3VjcuNjI5MzllLTA2SDM3LjVWNC4xNjY2N0gwWiIgZmlsbD0iIzFEMUIyMCIvPgo8L3N2Zz4K" width="37" height="25" style="width: 37.5px; left: 6.25px; top: 12.499992px; position: absolute;">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- عنوان الصفحة "فساتين الأطفال" -->
+        <div style="width: 212px; height: 24px; position: absolute; left: 90.5px; top: 150px;">
+          <div style="position: absolute; left: 0px; top: 0px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+            <p>
+              <span style="font-size: 30px; text-decoration: none; line-height: 100%; font-weight: 400; font-family:'Playpen Sans Arabic', cursive; color: rgb(255, 255, 255); text-transform: none;">فساتين الأطفال</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- المنطقة الرئيسية التي تحتوي على الصور والنص -->
+      <div style="width: 393px; height: 501.726654px; position: absolute; left: 0px; top: 350.273346px;">
+        <div style="width: 393px; height: 387.726654px; position: absolute; left: 0px; top: 57px;">
+          
+          <!-- مجموعة الصور الثلاث (مع الإطارات الرمادية والصور داخلها) -->
+          <div style="width: 544px; height: 271.726654px; position: absolute; left: -75.5px; top: 0px;">
+            <!-- الصورة الأولى -->
+            <div style="width: 168.565475px; height: 231.661102px; position: absolute; left: 40.227524px; top: 7.156975px; transform: rotate(12deg); transform-origin: left top; filter: drop-shadow(rgba(0, 0, 0, 0.25) -1px -5px 4px); background: rgb(217, 217, 217);">
+              <img src="/White-rose/images/little1.png" style="position: absolute; left: 8.58px; top: 13.87px; width: calc(100% - 17.16px); height: calc(100% - 86.84px); object-fit: cover; display: block;">
+            </div>
+            <!-- الصورة الثانية (مدورة) -->
+            <div style="width: 169.608856px; height: 231.570984px; position: absolute; left: 150.835922px; top: 40.239861px; transform: rotate(-12deg); transform-origin: left top; filter: drop-shadow(rgba(0, 0, 0, 0.25) -5px -1px 4px); background: rgb(217, 217, 217);">
+              <img src="/White-rose/images/little2.png" style="position: absolute; left: 8.58px; top: 13.87px; width: calc(100% - 17.16px); height: calc(100% - 86.84px); object-fit: cover; display: block;">
+            </div>
+            <!-- الصورة الثالثة (مدورة أكثر) -->
+            <div style="width: 166.351547px; height: 228.618454px; position: absolute; left: 309.488556px; top: 56.895576px; transform: rotate(-20deg); transform-origin: left top; filter: drop-shadow(rgba(0, 0, 0, 0.25) -2px -7px 4px); background: rgb(217, 217, 217);">
+              <img src="/White-rose/images/little3.png" style="position: absolute; left: 8.58px; top: 13.87px; width: calc(100% - 17.16px); height: calc(100% - 86.84px); object-fit: cover; display: block;">
+            </div>
+          </div>
+
+          <!-- القسم الزجاجي للنص (عربي) -->
+          <div style="width: 379px; height: 170px; position: absolute; left: 7px; top: 223px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px) brightness(0.9) contrast(1.05); -webkit-backdrop-filter: blur(15px) brightness(0.9) contrast(1.05); box-shadow: inset 0 0.6px 0.6px rgba(255,255,255,1), inset 0 -3px 5px rgba(0,0,0,0.3), 0 10px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) inset; border-radius: 10px;">
+            <div style="width: 359px; height: 130px; position: absolute; left: 10px; top: 25px;">
+              <div style="position: absolute; left: 5.552094px; top: 0px; width: 347.895813px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                <p style="margin: 0 0 2px 0; line-height: 1.4; text-shadow: 0 2px 5px rgba(0,0,0,0.2);"><span style="font-size: 17px; font-weight: 500; font-family: 'Playpen Sans Arabic', cursive; color: rgb(255, 255, 255);">طفلتك تستحق التألق في كل مناسبه</span></p>
+                <p style="margin: 0 0 2px 0; line-height: 1.4; text-shadow: 0 2px 5px rgba(0,0,0,0.2);"><span style="font-size: 15px; font-weight: 300; font-family: 'El Messiri', sans-serif; color: rgb(255, 255, 255);">في وايت روز، نصمم فساتين الأطفال التي تعكس براءتهم وجمالهم</span></p>
+                <p style="margin: 0; line-height: 1.4; text-shadow: 0 2px 5px rgba(0,0,0,0.2);"><span style="font-size: 15px; font-weight: 300; font-family: 'El Messiri', sans-serif; color: rgb(255, 255, 255);">بأقمشة ناعمة ومريحة تناسب حركتهم ومناسباتهم الخاصة</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- المنيو العربي (للصفحات غير الرئيسية) -->
+      <div id="menu" class="menu-overlay">
+        <div style="width: 386px; height: 365px; position: absolute; left: 50%; transform: translateX(-50%); top: 90px;">
+          <!-- الخلفية الرئيسية للقائمة (زجاجية بيضاء) -->
+          <div style="width: 309px; height: 365px; position: absolute; left: 0px; top: 0px;">
+            <div style="width: 309px; height: 365px; position: absolute; left: 0px; top: 0px; background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(15px) brightness(1) contrast(1.05); -webkit-backdrop-filter: blur(15px) brightness(1) contrast(1.05); box-shadow: inset 0 0.6px 0.6px rgba(255,255,255,1), inset 0.6px 0 0.6px rgba(255,255,255,0.5), inset -0.6px 0 0.6px rgba(255,255,255,0.5), inset 0 -0.6px 0.6px rgba(255,255,255,0.3), inset 0 2px 2px rgba(0,0,0,0.1), inset 0 -2px 2px rgba(0,0,0,0.1), inset 2px 0 2px rgba(0,0,0,0.1), inset -2px 0 2px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) inset; border-radius: 24px; overflow: hidden; box-sizing: border-box;">
+              
+              <!-- أيقونة "الرئيسية" في الأعلى -->
+              <div style="width: 309px; height: 20px; position: absolute; left: 0px; top: 26px;">
+                <div style="position: absolute; left: 125.5px; top: 0px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                  <a href="/White-rose/ar/index.html" style="text-decoration: none; color: inherit;">
+                    <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">الرئيسية</span>
+                  </a>
+                </div>
+              </div>
+              
+              <!-- روابط القائمة الرئيسية (عربية) -->
+              <div style="width: 309px; height: 218px; position: absolute; left: 0px; top: 136px;">
+                <div style="position: absolute; left: 0px; top: 0px; width: 309px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                  <a href="/White-rose/ar/wedding-dress.html" style="text-decoration: none; color: inherit;">
+                    <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">فستان الزفاف</span>
+                  </a>
+                </div>
+                <div style="position: absolute; left: 0px; top: 62px; width: 309px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                  <a href="/White-rose/ar/evening-dress.html" style="text-decoration: none; color: inherit;">
+                    <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">فستان السهرة</span>
+                  </a>
+                </div>
+                <div style="position: absolute; left: 0px; top: 124px; width: 309px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                  <a href="/White-rose/ar/kids-dress.html" style="text-decoration: none; color: inherit;">
+                    <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">فساتين الأطفال</span>
+                  </a>
+                </div>
+                <div style="position: absolute; left: 0px; top: 186px; width: 309px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                  <a href="/White-rose/ar/process.html" style="text-decoration: none; color: inherit;">
+                    <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">خطوات التفصيل</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- الأعمدة الجانبية مع الأيقونات الدائرية -->
+          <div style="width: 50px; height: 362px; position: absolute; left: 336px; top: 1.5px;">
+            <!-- الجزء العلوي (أيقونة إضافية) -->
+            <div style="width: 50px; height: 66px; position: absolute; left: 0px; top: 0px; background: rgba(255,255,255,0.3); backdrop-filter: blur(15px) brightness(1) contrast(1.05); -webkit-backdrop-filter: blur(15px) brightness(1) contrast(1.05); box-shadow: inset 0 0.6px 0.6px rgba(255,255,255,1), inset 0.6px 0 0.6px rgba(255,255,255,0.5), inset -0.6px 0 0.6px rgba(255,255,255,0.5), inset 0 -0.6px 0.6px rgba(255,255,255,0.3), inset 0 2px 2px rgba(0,0,0,0.1), inset 0 -2px 2px rgba(0,0,0,0.1), inset 2px 0 2px rgba(0,0,0,0.1), inset -2px 0 2px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) inset; border-radius: 24px; overflow: hidden; box-sizing: border-box;">
+              <div class="circle-icon" style="position: absolute; left: 10px; top: 18px;"></div>
+            </div>
+            <!-- الجزء السفلي (الأيقونات الأربعة) -->
+            <div style="width: 50px; height: 249px; position: absolute; left: 0px; top: 113px; background: rgba(255,255,255,0.3); backdrop-filter: blur(15px) brightness(1) contrast(1.05); -webkit-backdrop-filter: blur(15px) brightness(1) contrast(1.05); box-shadow: inset 0 0.6px 0.6px rgba(255,255,255,1), inset 0.6px 0 0.6px rgba(255,255,255,0.5), inset -0.6px 0 0.6px rgba(255,255,255,0.5), inset 0 -0.6px 0.6px rgba(255,255,255,0.3), inset 0 2px 2px rgba(0,0,0,0.1), inset 0 -2px 2px rgba(0,0,0,0.1), inset 2px 0 2px rgba(0,0,0,0.1), inset -2px 0 2px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) inset; border-radius: 24px; overflow: hidden; box-sizing: border-box;">
+              <div class="circle-icon" style="position: absolute; left: 10px; top: 18px;"></div>
+              <div class="circle-icon" style="position: absolute; left: 10px; top: 79px;"></div>
+              <div class="circle-icon" style="position: absolute; left: 10px; top: 140px;"></div>
+              <div class="circle-icon" style="position: absolute; left: 10px; top: 201px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- تراكب التعتيم -->
+      <div id="overlay" class="overlay"></div>
+
+    </div> <!-- نهاية الحاوية الرئيسية للصفحة -->
+  </div> <!-- نهاية #container -->
+
+  <!-- سكربت التحكم في المنيو -->
+  <script>
+    // زر القائمة وعنصر المنيو والتراكب
+    const menuIcon = document.getElementById('menuIcon');
+    const menu = document.getElementById('menu');
+    const overlay = document.getElementById('overlay');
+
+    // إضافة مستمع الحدث للنقر على الأيقونة
+    menuIcon.addEventListener('click', function(event) {
+      event.stopPropagation(); // منع انتشار الحدث
+      menu.classList.toggle('show');
+      overlay.classList.toggle('show');
+    });
+
+    // إغلاق المنيو عند النقر في أي مكان آخر
+    document.addEventListener('click', function(event) {
+      if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+        menu.classList.remove('show');
+        overlay.classList.remove('show');
+      }
+    });
+  </script>
+
+  <!-- سكربت resize -->
+  <script>
+    const page = {
+      width: 393,
+      height: 852
+    }
+    const resizePage = () => {
+      const viewWidth = window.innerWidth
+      const container = document.getElementById('container')
+      const scale = viewWidth / page.width
+      const displayHeight = page.height * scale || 0
+      document.body.style.paddingTop = displayHeight + 'px'
+      container.style.transform = 'scale(' + scale + ')'
+      container.style.display = 'block'
+    }
+    resizePage();
+    (function () {
+      var throttle = function (type, name, obj) {
+        obj = obj || window;
+        var running = false;
+        var func = function () {
+          if (running) { return; }
+          running = true;
+          requestAnimationFrame(function () {
+            obj.dispatchEvent(new CustomEvent(name));
+            running = false;
+          });
+        };
+        obj.addEventListener(type, func);
+      };
+      throttle("resize", "optimizedResize");
+    })();
+    window.addEventListener("optimizedResize", resizePage);
+  </script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+/* ===== RESET ===== */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-width: 0;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+b,
+strong {
+  font-weight: bolder;
+}
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1em;
+}
+small {
+  font-size: 80%;
+}
+table {
+  text-indent: 0;
+  border-color: inherit;
+  border-collapse: collapse;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+}
+progress {
+  vertical-align: baseline;
+}
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+legend {
+  padding: 0;
+}
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+textarea {
+  resize: vertical;
+}
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+  color: #9ca3af;
+}
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  vertical-align: middle;
+}
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===== الأنماط العامة ===== */
+html,
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+.bg-clip-text {
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}
+#container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 393px;
+  transform-origin: 0 0;
+  transform: scale(1);
+  display: none;
+  overflow: hidden;
+}
+/* ارتفاع الحاوية سيتم تحديده حسب الصفحة عبر كلاس body */
+
+/* الدوائر الجانبية */
+.circle-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 75% 30%, 
+    #fff 2%, 
+    #999 3%,       
+    #555 9%,       
+    #111 45%,       
+    #000 100%       
+  );
+  border: 3px solid #777;
+  box-sizing: border-box;
+}
+
+/* ===== المنيو ===== */
+.menu-overlay {
+  position: absolute;
+  left: 0;
+  width: 393px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 100;
+}
+.menu-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* تخصيص المنيو حسب نوع الصفحة */
+.home-page .menu-overlay {
+  top: 310px;
+  height: 249px;
+}
+.inner-page .menu-overlay {
+  top: 90px;
+  height: 365px;
+}
+
+/* تراكب التعتيم */
+.overlay {
+  position: absolute;
+  left: 0;
+  width: 393px;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 90;
+}
+.overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+.home-page .overlay {
+  height: 1185px;
+}
+.inner-page .overlay {
+  height: 853px;
+}
+
+/* ===== نافذة التسجيل (إنجليزية) ===== */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.popup-overlay.show {
+  visibility: visible;
+  opacity: 1;
+}
+.popup-container {
+  width: 333px;
+  background: #d2cec8;
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+  padding: 24px 24px 34px 24px;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  direction: ltr;
+}
+.popup-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.popup-field label {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: inter, sans-serif;
+  color: #1e1e1e;
+  display: block;
+  margin-bottom: 5px;
+}
+.popup-field input {
+  width: 100%;
+  height: 40px;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-size: 16px;
+  font-family: inter, sans-serif;
+  color: #1e1e1e;
+}
+.popup-field input::placeholder {
+  color: #b3b3b3;
+}
+.checkbox-group {
+  margin-bottom: 20px;
+}
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.checkbox-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  accent-color: #2c2c2c;
+}
+.checkbox-item label {
+  font-size: 16px;
+  font-family: inter, sans-serif;
+  color: #757575;
+}
+.popup-button {
+  width: 100%;
+  height: 40px;
+  background: #2c2c2c;
+  border: 1px solid #2c2c2c;
+  border-radius: 8px;
+  color: #f5f5f5;
+  font-size: 16px;
+  font-family: inter, sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.popup-button:hover {
+  background: #1a1a1a;
+}
+.popup-error {
+  color: #d32f2f;
+  font-size: 14px;
+  margin-top: 5px;
+  min-height: 20px;
+}
+.popup-success {
+  color: #2e7d32;
+  font-size: 14px;
+  margin-top: 5px;
+}

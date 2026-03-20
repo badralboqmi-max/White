@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الرئيسية - وردة بيضاء</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Arya:wght@400;700&family=El+Messiri:wght@400..700&family=Playpen+Sans+Arabic:wght@100..800&display=swap" rel="stylesheet">
+  <style id="reset">
+    /* ... (نفس الـ reset السابق) ... */
+    *,
+    ::before,
+    ::after {
+      box-sizing: border-box;
+      border-width: 0;
+    }
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: inherit;
+      font-weight: inherit;
+    }
+    a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+    b,
+    strong {
+      font-weight: bolder;
+    }
+    code,
+    kbd,
+    samp,
+    pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 1em;
+    }
+    small {
+      font-size: 80%;
+    }
+    table {
+      text-indent: 0;
+      border-color: inherit;
+      border-collapse: collapse;
+    }
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      font-family: inherit;
+      font-size: 100%;
+      line-height: inherit;
+      color: inherit;
+      margin: 0;
+      padding: 0;
+    }
+    button,
+    select {
+      text-transform: none;
+    }
+    button,
+    [type='button'],
+    [type='reset'],
+    [type='submit'] {
+      -webkit-appearance: button;
+      background-color: transparent;
+      background-image: none;
+    }
+    progress {
+      vertical-align: baseline;
+    }
+    ::-webkit-inner-spin-button,
+    ::-webkit-outer-spin-button {
+      height: auto;
+    }
+    blockquote,
+    dl,
+    dd,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    hr,
+    figure,
+    p,
+    pre {
+      margin: 0;
+    }
+    fieldset {
+      margin: 0;
+      padding: 0;
+    }
+    legend {
+      padding: 0;
+    }
+    ol,
+    ul,
+    menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    textarea {
+      resize: vertical;
+    }
+    input::placeholder,
+    textarea::placeholder {
+      opacity: 1;
+      color: #9ca3af;
+    }
+    img,
+    svg,
+    video,
+    canvas,
+    audio,
+    iframe,
+    embed,
+    object {
+      display: block;
+      vertical-align: middle;
+    }
+    img,
+    video {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+  <style>
+    html,
+    body {
+      position: relative;
+      margin: 0;
+      padding: 0;
+    }
+    .bg-clip-text {
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+    }
+    #container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 393px;
+      height: 1178px;
+      transform-origin: 0 0;
+      transform: scale(1);
+      display: none;
+      overflow: hidden;
+    }
+    /* تأثير hover لزر الواتساب */
+    .whatsapp-button:hover {
+      transform: translateY(2px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+      background: linear-gradient(145deg, #1eb464, #2ae688);
+    }
+
+    /* المنيو مخفي افتراضياً مع تأثير fade */
+    .menu-overlay {
+      position: absolute;
+      left: 0;
+      top: 310px; /* أسفل الهيدر مباشرة */
+      width: 393px;
+      height: 249px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 100;
+    }
+    .menu-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* تراكب التعتيم */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 393px;
+      height: 1178px;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 90;
+    }
+    .overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    /* الدوائر الجانبية */
+    .circle-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 75% 30%, 
+        #fff 2%, 
+        #999 3%,       
+        #555 9%,       
+        #111 45%,       
+        #000 100%       
+      );
+      border: 3px solid #777;
+      box-sizing: border-box;
+    }
+
+    /* ---------- أنماط النافذة المنبثقة الإلزامية (عربية) ---------- */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .popup-overlay.show {
+      visibility: visible;
+      opacity: 1;
+    }
+    .popup-container {
+      width: 333px;
+      background: #d2cec8;
+      border-radius: 8px;
+      border: 1px solid #d9d9d9;
+      padding: 24px 24px 34px 24px;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      direction: rtl; /* للنص العربي */
+      font-family: 'Arya', sans-serif;
+    }
+    /* تنسيق حقول الإدخال */
+    .popup-field {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .popup-field label {
+      font-size: 16px;
+      font-weight: 400;
+      color: #1e1e1e;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .popup-field input {
+      width: 100%;
+      height: 40px;
+      background: #fff;
+      border: 1px solid #d9d9d9;
+      border-radius: 8px;
+      padding: 0 16px;
+      font-size: 16px;
+      color: #1e1e1e;
+    }
+    .popup-field input::placeholder {
+      color: #b3b3b3;
+    }
+    .checkbox-group {
+      margin-bottom: 20px;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .checkbox-item input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      margin-left: 10px; /* RTL */
+      accent-color: #2c2c2c;
+    }
+    .checkbox-item label {
+      font-size: 16px;
+      color: #757575;
+    }
+    .popup-button {
+      width: 100%;
+      height: 40px;
+      background: #2c2c2c;
+      border: 1px solid #2c2c2c;
+      border-radius: 8px;
+      color: #f5f5f5;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .popup-button:hover {
+      background: #1a1a1a;
+    }
+    .popup-error {
+      color: #d32f2f;
+      font-size: 14px;
+      margin-top: 5px;
+      min-height: 20px;
+    }
+    .popup-success {
+      color: #2e7d32;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div style="width: 393px; height: 1178px; position: absolute; overflow: hidden;">
+      <!-- القسم الرئيسي (الخلفية + المحتوى) -->
+      <div style="width: 393px; height: 866px; position: absolute; left: 0px; top: 0px; overflow: hidden;">
+        <!-- خلفية الصورة (من المجلد المشترك) -->
+        <div style="width: 393px; height: 866px; position: absolute; left: 0px; top: 0px; background: white url(/White-rose/images/‏homepage-bg.png) no-repeat center center / cover; z-index: 0;"></div>
+
+        <!-- الهيدر -->
+        <div style="width: 393px; height: 86px; position: absolute; left: 0px; top: 0px; z-index: 2;">
+          <!-- أيقونة الترجمة (رابط للنسخة الإنجليزية) -->
+          <a href="/White-rose/indes.html" style="display: block; width: 70px; height: 80px; position: absolute; left: 0px; top: 0px; cursor: pointer;">
+            <div style="width: 70px; height: 70px; position: absolute; left: 0px; top: 10px;">
+              <div style="width: 50px; height: 50px; position: absolute; left: 10px; top: 10px; overflow: hidden;">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDIiIGhlaWdodD0iNDIiIHZpZXdCb3g9IjAgMCA0MiA0MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggaWQ9Imljb24iIGQ9Ik0yMC44MzMzIDQxLjY2NjdMMTguNzUgMzUuNDE2N0g0LjE2NjY3QzMuMDIwODMgMzUuNDE2NyAyLjAzOTkzIDM1LjAwODcgMS4yMjM5NiAzNC4xOTI3QzAuNDA3OTg2IDMzLjM3NjcgMCAzMi4zOTU4IDAgMzEuMjVWNC4xNjY2N0MwIDMuMDIwODMgMC40MDc5ODYgMi4wMzk5MyAxLjIyMzk2IDEuMjIzOTZDMi4wMzk5MyAwLjQwNzk4NiAzLjAyMDgzIDAgNC4xNjY2NyAwSDE2LjY2NjdMMTguNDg5NiA2LjI1SDM3LjVDMzguNzE1MyA2LjI1IDM5LjcxMzUgNi42NDA2MiA0MC40OTQ4IDcuNDIxODdDNDEuMjc2IDguMjAzMTIgNDEuNjY2NyA5LjIwMTM5IDQxLjY2NjcgMTAuNDE2N1YzNy41QzQxLjY2NjcgMzguNjQ1OCA0MS4yNzYgMzkuNjI2NyA0MC40OTQ4IDQwLjQ0MjdDMzkuNzEzNSA0MS4yNTg3IDM4LjcxNTMgNDEuNjY2NyAzNy41IDQxLjY2NjdIMjAuODMzM1pNMTAuNzI5MiAyNi4yNUMxMy4xMjUgMjYuMjUgMTUuMDk1NSAyNS40Nzc0IDE2LjY0MDYgMjMuOTMyM0MxOC4xODU4IDIyLjM4NzIgMTguOTU4MyAyMC4zODE5IDE4Ljk1ODMgMTcuOTE2N0MxOC45NTgzIDE3LjYzODkgMTguOTQ5NyAxNy4zODcyIDE4LjkzMjMgMTcuMTYxNUMxOC45MTQ5IDE2LjkzNTggMTguODcxNSAxNi43MDE0IDE4LjgwMjEgMTYuNDU4M0gxMC41NzI5VjE5LjY4NzVIMTUuMjA4M0MxNC45MzA2IDIwLjY1OTcgMTQuNDAxIDIxLjQxNDkgMTMuNjE5OCAyMS45NTMxQzEyLjgzODUgMjIuNDkxMyAxMS44OTI0IDIyLjc2MDQgMTAuNzgxMiAyMi43NjA0QzkuNDI3MDggMjIuNzYwNCA4LjI2Mzg5IDIyLjI3NDMgNy4yOTE2NyAyMS4zMDIxQzYuMzE5NDQgMjAuMzI5OSA1LjgzMzMzIDE5LjEzMTkgNS44MzMzMyAxNy43MDgzQzUuODMzMzMgMTYuMjg0NyA2LjMxOTQ0IDE1LjA4NjggNy4yOTE2NyAxNC4xMTQ2QzguMjYzODkgMTMuMTQyNCA5LjQyNzA4IDEyLjY1NjIgMTAuNzgxMiAxMi42NTYyQzExLjQwNjIgMTIuNjU2MiAxMS45OTY1IDEyLjc2OTEgMTIuNTUyMSAxMi45OTQ4QzEzLjEwNzYgMTMuMjIwNSAxMy42MTExIDEzLjU1OSAxNC4wNjI1IDE0LjAxMDRMMTYuNjE0NiAxMS41NjI1QzE1Ljg4NTQgMTAuNzk4NiAxNS4wMDg3IDEwLjIwODMgMTMuOTg0NCA5Ljc5MTY3QzEyLjk2MDEgOS4zNzUgMTEuODc1IDkuMTY2NjcgMTAuNzI5MiA5LjE2NjY3QzguNDAyNzggOS4xNjY2NyA2LjQxNDkzIDkuOTkxMzIgNC43NjU2MiAxMS42NDA2QzMuMTE2MzIgMTMuMjg5OSAyLjI5MTY3IDE1LjMxMjUgMi4yOTE2NyAxNy43MDgzQzIuMjkxNjcgMjAuMTA0MiAzLjExNjMyIDIyLjEyNjcgNC43NjU2MiAyMy43NzZDNi40MTQ5MyAyNS40MjUzIDguNDAyNzggMjYuMjUgMTAuNzI5MiAyNi4yNVpNMjQuNjg3NSAyNy4yOTE3TDI1LjgzMzMgMjYuMTk3OUMyNS4zNDcyIDI1LjYwNzYgMjQuOTA0NSAyNS4wMzQ3IDI0LjUwNTIgMjQuNDc5MkMyNC4xMDU5IDIzLjkyMzYgMjMuNzE1MyAyMy4zMzMzIDIzLjMzMzMgMjIuNzA4M0wyNC42ODc1IDI3LjI5MTdaTTI3LjI5MTcgMjQuNjM1NEMyOC4yNjM5IDIzLjQ4OTYgMjkuMDAxNyAyMi4zOTU4IDI5LjUwNTIgMjEuMzU0MkMzMC4wMDg3IDIwLjMxMjUgMzAuMzQ3MiAxOS40OTY1IDMwLjUyMDggMTguOTA2MkgyMi4yMzk2TDIyLjg2NDYgMjEuMDkzOEgyNC45NDc5QzI1LjIyNTcgMjEuNjE0NiAyNS41NTU2IDIyLjE3ODggMjUuOTM3NSAyMi43ODY1QzI2LjMxOTQgMjMuMzk0MSAyNi43NzA4IDI0LjAxMDQgMjcuMjkxNyAyNC42MzU0Wk0yMi45MTY3IDM5LjU4MzNIMzcuNUMzOC4xMjUgMzkuNTgzMyAzOC42Mjg1IDM5LjM4MzcgMzkuMDEwNCAzOC45ODQ0QzM5LjM5MjQgMzguNTg1MSAzOS41ODMzIDM4LjA5MDMgMzkuNTgzMyAzNy41VjEwLjQxNjdDMzkuNTgzMyA5Ljc5MTY3IDM5LjM5MjQgOS4yODgxOSAzOS4wMTA0IDguOTA2MjVDMzguNjI4NSA4LjUyNDMxIDM4LjEyNSA4LjMzMzMzIDM3LjUgOC4zMzMzM0gxOS4xMTQ2TDIxLjU2MjUgMTYuNzcwOEgyNS42NzcxVjE0LjU4MzNIMjcuODEyNVYxNi43NzA4SDM1LjQxNjdWMTguOTA2MkgzMi43NjA0QzMyLjQxMzIgMjAuMjI1NyAzMS44OTI0IDIxLjUxMDQgMzEuMTk3OSAyMi43NjA0QzMwLjUwMzUgMjQuMDEwNCAyOS42ODc1IDI1LjE3MzYgMjguNzUgMjYuMjVMMzQuNDI3MSAzMS44MjI5TDMyLjkxNjcgMzMuMzMzM0wyNy4yOTE3IDI3LjcwODNMMjUuNDE2NyAyOS42MzU0TDI3LjA4MzMgMzUuNDE2N0wyMi45MTY3IDM5LjU4MzNaIiBmaWxsPSIjMUQxQjIwIi8+Cjwvc3ZnPgo=" width="41" height="41" style="width: 41.666672px; left: 4.166667px; top: 4.166667px; position: absolute;">
+              </div>
+            </div>
+          </a>
+          <!-- أيقونة القائمة (التي ستظهر/تخفي المنيو) -->
+          <div id="menuIcon" style="width: 77px; height: 86px; position: absolute; left: 316px; top: 0px; background: rgb(242, 253, 252); border-radius: 20px 0px 0px 20px; filter: drop-shadow(rgba(0, 0, 0, 0.25) 0px 4px 4px); cursor: pointer;">
+            <div style="width: 50px; height: 50px; position: absolute; left: 7px; top: 18px;">
+              <div style="width: 50px; height: 50px; position: absolute; left: 0px; top: 0px; overflow: hidden;">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzgiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAzOCAyNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggaWQ9Imljb24iIGQ9Ik0wIDI1VjIwLjgzMzNIMzcuNVYyNUgwWk0wIDE0LjU4MzNWMTAuNDE2N0gzNy41VjE0LjU4MzNIMFpNMCA0LjE2NjY3VjBIMzcuNVY0LjE2NjY3SDBaIiBmaWxsPSIjMUQxQjIwIi8+Cjwvc3ZnPgo=" width="37" height="25" style="width: 37.5px; left: 6.25px; top: 12.5px; position: absolute;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- نص White Rose -->
+        <div style="width: 393px; height: 256px; position: absolute; left: 0px; top: 100.5px; z-index: 2;">
+          <div style="width: 214px; height: 256px; position: absolute; left: 89.5px; top: 0px;">
+            <div style="width: 214px; height: 106px; position: absolute; left: 0px; top: 75px;">
+              <div style="position: absolute; left: 56px; top: 0px; text-align: right; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                <p><span style="font-size: 36px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(37, 31, 28); text-transform: none;">White</span></p>
+              </div>
+              <div style="position: absolute; left: 0px; top: 10px; text-align: right; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                <p><span style="font-size: 96px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(37, 31, 28); text-transform: none;">Rose</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- القسم السفلي (قبل الفوتر) -->
+        <div style="width: 393px; height: 239px; position: absolute; left: 0px; top: 600px; z-index: 2;">
+          <!-- زر واتساب -->
+          <a href="https://wa.me/966500248878?text=مرحباً، أستفسر عن تفصيل فستان" target="_blank" class="whatsapp-button" style="display: block; width: 185px; height: 53px; position: absolute; left: 50%; transform: translateX(-50%); top: 0px; background: linear-gradient(145deg, #2ae688, #1eb464); border-radius: 23px; text-decoration: none; color: inherit; box-shadow: 0 4px 10px rgba(0,0,0,0.7); transition: all 0.2s ease;">
+            <div style="width: 30px; height: 30px; position: absolute; left: 38.5px; top: 11.5px;">
+              <div style="width: 33px; height: 29.333332px; position: absolute; left: -11px; top: 0.333334px;">
+                <div style="width: 9.041666px; height: 7.104162px; position: absolute; left: 6px; top: 16.22917px;">
+                  <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEwIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGlkPSJWZWN0b3ItMSIgZD0iTTMuODc1IDBDNS4xNjY2NyAxLjI5MTY3IDcuMTA0MTcgMi41ODMzMyA5LjA0MTY3IDMuMjI5MTZDNi40NTgzMyA1LjgxMjUgMi41ODMzMyA3LjEwNDE2IDAgNy4xMDQxNkMyLjU4MzMzIDQuNTIwODMgMy44NzUgMi41ODMzMyAzLjg3NSAwWiIgZmlsbD0iYmxhY2siLz4KPC9zdmc+Cg==" width="9" height="7" style="width: 9.041672px; left: 0px; top: 0px; position: absolute;">
+                </div>
+                <div style="width: 23.25px; height: 17.333332px; position: absolute; left: 9.041666px; top: 6px;">
+                  <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjMiIGhlaWdodD0iMTkiIHZpZXdCb3g9IjAgMCAyMyAxOSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggaWQ9IlZlY3Rvci0yIiBkPSJNNS42NjY2NyAxNS45NTY3QzIuODU1IDE0LjQ5ODMgMSAxMi4wMDE3IDEgOS4xNjY2N0MxIDQuNjUxNjcgNS43MDE2NyAxIDExLjUgMUMxNy4yOTgzIDEgMjIgNC42NTE2NyAyMiA5LjE2NjY3QzIyIDEzLjY4MTcgMTcuMjk4MyAxNy4zMzMzIDExLjUgMTcuMzMzM0M5LjM0MTY3IDE3LjMzMzMgNy4zMzUgMTYuODMxNyA1LjY2NjY3IDE1Ljk1NjdaIiBmaWxsPSJibGFjayIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==" width="23" height="18" style="width: 23px; left: -1px; top: -1px; position: absolute;">
+                </div>
+              </div>
+            </div>
+            <div style="width: 72px; height: 15px; position: absolute; left: 50%; transform: translateX(-30%); top: 16px;">
+              <div style="position: absolute; left: 0px; top: 0px; text-align: left; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                <p><span style="font-size: 15px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(30, 30, 30); text-transform: none;">WhatsApp</span></p>
+              </div>
+            </div>
+          </a>
+
+          <!-- القسم الزجاجي العربي (بالأبعاد الأصلية من Figma) -->
+          <div style="width: 393px; height: 180px; position: absolute; left: 50%; transform: translateX(-50%); top: 109px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px) brightness(0.9) contrast(1.05); -webkit-backdrop-filter: blur(15px) brightness(0.9) contrast(1.05); box-shadow: inset 0 0.6px 0.6px rgba(255,255,255,1), inset 0.6px 0 0.6px rgba(255,255,255,0.5), inset -0.6px 0 0.6px rgba(255,255,255,0.5), inset 0 -0.6px 0.6px rgba(255,255,255,0.3), inset 0 2px 2px rgba(0,0,0,0.1), inset 0 -2px 2px rgba(0,0,0,0.1),inset 2px 0 2px rgba(0,0,0,0.1), inset -2px 0 2px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) inset; border-radius: 24px; overflow: hidden; box-sizing: border-box;">
+            <!-- العنوان الرئيسي "وسع خيالك" -->
+           <div style="position: absolute; left: 0; width: 100% ;top: 15px; text-align: center; padding: 0 10px; box-sizing: border-box;">
+              <p><span style="font-size: 40px; text-decoration: none; line-height: 100%; font-weight: 400; font-family: 'Playpen Sans Arabic', cursive; white-space: break-spaces; color: rgb(30, 30, 30); text-transform: none;">وسع خيالك</span></p> 
+            </div>
+            <!-- النص الطويل (فقرة واحدة) -->
+            <div style="position: absolute; left: 0; width: 100%; top: 75px; text-align: center; padding: 0 10px; box-sizing: border-box;">
+              <p><span style="font-size: 13px; text-decoration: none; line-height: 118%; font-weight: 400; font-family: 'El Messiri', sans-serif; white-space: break-spaces; color: rgb(30, 30, 30); text-transform: none;">متخصصون في تصميم و تفصيل فساتين حسب الطلب لحفلات الزفاف، والمناسبات المسائية، والاحتفالات الصغيرة.</span></p>
+            </div>
+            <!-- التذييل باللون الأحمر -->
+            <div style="position: absolute; left: 0; width: 100%; top: 131px; text-align: center; padding: 0 10px; box-sizing: border-box;">
+              <p><span style="font-size: 10px; text-decoration: none; line-height: 100%; font-weight: 400; font-family: 'arya'; white-space: break-spaces; color: rgb(244, 5, 72); text-transform: none;">استوديو خياطة - تأسس عام 2017</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- الفوتر -->
+      <div style="width: 393px; height: 319px; position: absolute; left: 0px; top: 866px; background: rgb(188, 177, 180); overflow: hidden;">
+        <div style="width: 373px; height: 80px; position: absolute; left: 10px; top: 19px;">
+          <div style="width: 64px; height: 24px; position: absolute; left: 297px; top: 28px;">
+            <!-- أيقونة إنستغرام -->
+            <a href="https://www.instagram.com/wrose.shop?igsh=MW0xaHUwM3JuNTl6Zw%3D%3D&utm_source=qr" target="_blank" rel="noopener" style="display: block; width: 24px; height: 24px; position: absolute; left: 0px; top: 0px;">
+              <div style="width: 24px; height: 24px; overflow: hidden;">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggaWQ9Ikljb24iIGQ9Ik0xMiAyLjE2M0MxNS4yMDQgMi4xNjMgMTUuNTg0IDIuMTc1IDE2Ljg1IDIuMjMzQzIwLjEwMiAyLjM4MSAyMS42MjEgMy45MjQgMjEuNzY5IDcuMTUyQzIxLjgyNyA4LjQxNyAyMS44MzggOC43OTcgMjEuODM4IDEyLjAwMUMyMS44MzggMTUuMjA2IDIxLjgyNiAxNS41ODUgMjEuNzY5IDE2Ljg1QzIxLjYyIDIwLjA3NSAyMC4xMDUgMjEuNjIxIDE2Ljg1IDIxLjc2OUMxNS41ODQgMjEuODI3IDE1LjIwNiAyMS44MzkgMTIgMjEuODM5QzguNzk2IDIxLjgzOSA4LjQxNiAyMS44MjcgNy4xNTEgMjEuNzY5QzMuODkxIDIxLjYyIDIuMzggMjAuMDcgMi4yMzIgMTYuODQ5QzIuMTc0IDE1LjU4NCAyLjE2MiAxNS4yMDUgMi4xNjIgMTJDMi4xNjIgOC43OTYgMi4xNzUgOC40MTcgMi4yMzIgNy4xNTFDMi4zODEgMy45MjQgMy44OTYgMi4zOCA3LjE1MSAyLjIzMkM4LjQxNyAyLjE3NSA4Ljc5NiAyLjE2MyAxMiAyLjE2M1pNMTIgMEM4Ljc0MSAwIDguMzMzIDAuMDE0IDcuMDUzIDAuMDcyQzIuNjk1IDAuMjcyIDAuMjczIDIuNjkgMC4wNzMgNy4wNTJDMC4wMTQgOC4zMzMgMCA4Ljc0MSAwIDEyQzAgMTUuMjU5IDAuMDE0IDE1LjY2OCAwLjA3MiAxNi45NDhDMC4yNzIgMjEuMzA2IDIuNjkgMjMuNzI4IDcuMDUyIDIzLjkyOEM4LjMzMyAyMy45ODYgOC43NDEgMjQgMTIgMjRDMTUuMjU5IDI0IDE1LjY2OCAyMy45ODYgMTYuOTQ4IDIzLjkyOEMyMS4zMDIgMjMuNzI4IDIzLjczIDIxLjMxIDIzLjkyNyAxNi45NDhDMjMuOTg2IDE1LjY2OCAyNCAxNS4yNTkgMjQgMTJDMjQgOC43NDEgMjMuOTg2IDguMzMzIDIzLjkyOCA3LjA1M0MyMy43MzIgMi42OTkgMjEuMzExIDAuMjczIDE2Ljk0OSAwLjA3M0MxNS42NjggMC4wMTQgMTUuMjU5IDAgMTIgMFpNMTIgNS44MzhDOC41OTcgNS44MzggNS44MzggOC41OTcgNS44MzggMTJDNS44MzggMTUuNDAzIDguNTk3IDE4LjE2MyAxMiAxOC4xNjNDMTUuNDAzIDE4LjE2MyAxOC4xNjIgMTUuNDA0IDE4LjE2MiAxMkMxOC4xNjIgOC41OTcgMTUuNDAzIDUuODM4IDEyIDUuODM4Wk0xMiAxNkM5Ljc5MSAxNiA4IDE0LjIxIDggMTJDOCA5Ljc5MSA5Ljc5MSA4IDEyIDhDMTQuMjA5IDggMTYgOS43OTEgMTYgMTJDMTYgMTQuMjEgMTQuMjA5IDE2IDEyIDE2Wk0xOC40MDYgNC4xNTVDMTcuNjEgNC4xNTUgMTYuOTY1IDQuOCAxNi45NjUgNS41OTVDMTYuOTY1IDYuMzkgMTcuNjEgNy4wMzUgMTguNDA2IDcuMDM1QzE5LjIwMSA3LjAzNSAxOS44NDUgNi4zOSAxOS44NDUgNS41OTVDMTkuODQ1IDQuOCAxOS4yMDEgNC4xNTUgMTguNDA2IDQuMTU1WiIgZmlsbD0iIzFFMUUxRSIvPgo8L3N2Zz4K" width="24" height="24" style="width: 24px; left: 0px; top: 0px; position: absolute;">
+              </div>
+            </a>
+            <!-- أيقونة تيك توك -->
+            <a href="https://www.tiktok.com/@whiterose_2017" target="_blank" rel="noopener" style="display: block; width: 24px; height: 24px; position: absolute; left: 40px; top: 0px;">
+              <div style="width: 24px; height: 24px; overflow: hidden;">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggaWQ9IlZlY3RvciIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNi45MjMxIDI0QzE4LjggMjQgMjAuNiAyMy4yNTQ0IDIxLjkyNzIgMjEuOTI3MkMyMy4yNTQ0IDIwLjYgMjQgMTguOCAyNCAxNi45MjMxVjcuMDc2OTJDMjQgNS4yMDAwMSAyMy4yNTQ0IDMuMzk5OTYgMjEuOTI3MiAyLjA3Mjc4QzIwLjYgMC43NDU2MDIgMTguOCAwIDE2LjkyMzEgMEg3LjA3NjkyQzUuMjAwMDEgMCAzLjM5OTk2IDAuNzQ1NjAyIDIuMDcyNzggMi4wNzI3OEMwLjc0NTYwMiAzLjM5OTk2IDAgNS4yMDAwMSAwIDcuMDc2OTJWMTYuOTIzMUMwIDE4LjggMC43NDU2MDIgMjAuNiAyLjA3Mjc4IDIxLjkyNzJDMy4zOTk5NiAyMy4yNTQ0IDUuMjAwMDEgMjQgNy4wNzY5MiAyNEgxNi45MjMxWk0xNC4xMDU4IDQuMzIzNjlDMTQuMDM2MiA0LjExNjI0IDEzLjg5NTEgMy45NDAyNyAxMy43MDc4IDMuODI3MTlDMTMuNTIwNCAzLjcxNDExIDEzLjI5OSAzLjY3MTI3IDEzLjA4MyAzLjcwNjMxQzEyLjg2NjkgMy43NDEzNSAxMi42NzA0IDMuODUxOTkgMTIuNTI4NCA0LjAxODVDMTIuMzg2NCA0LjE4NTAxIDEyLjMwODIgNC4zOTY1NSAxMi4zMDc3IDQuNjE1MzhWMTUuNjkyM0MxMi4zMDc3IDE2LjI0IDEyLjE0NTMgMTYuNzc1NCAxMS44NDEgMTcuMjMwOEMxMS41MzY3IDE3LjY4NjIgMTEuMTA0MiAxOC4wNDExIDEwLjU5ODIgMTguMjUwN0MxMC4wOTIyIDE4LjQ2MDMgOS41MzUzOSAxOC41MTUyIDguOTk4MjEgMTguNDA4M0M4LjQ2MTAzIDE4LjMwMTUgNy45Njc2IDE4LjAzNzcgNy41ODAzMiAxNy42NTA0QzcuMTkzMDQgMTcuMjYzMiA2LjkyOTI5IDE2Ljc2OTcgNi44MjI0NCAxNi4yMzI2QzYuNzE1NTkgMTUuNjk1NCA2Ljc3MDQzIDE1LjEzODYgNi45ODAwMyAxNC42MzI2QzcuMTg5NjIgMTQuMTI2NiA3LjU0NDU2IDEzLjY5NDEgNy45OTk5NiAxMy4zODk4QzguNDU1MzYgMTMuMDg1NSA4Ljk5MDc2IDEyLjkyMzEgOS41Mzg0NiAxMi45MjMxQzkuNzgzMjggMTIuOTIzMSAxMC4wMTgxIDEyLjgyNTggMTAuMTkxMiAxMi42NTI3QzEwLjM2NDMgMTIuNDc5NiAxMC40NjE1IDEyLjI0NDggMTAuNDYxNSAxMkMxMC40NjE1IDExLjc1NTIgMTAuMzY0MyAxMS41MjA0IDEwLjE5MTIgMTEuMzQ3M0MxMC4wMTgxIDExLjE3NDIgOS43ODMyOCAxMS4wNzY5IDkuNTM4NDYgMTEuMDc2OUM4LjYyNTYyIDExLjA3NjkgNy43MzMyOSAxMS4zNDc2IDYuOTc0MjkgMTEuODU0OEM2LjIxNTMgMTIuMzYxOSA1LjYyMzczIDEzLjA4MjcgNS4yNzQ0IDEzLjkyNjFDNC45MjUwOCAxNC43Njk0IDQuODMzNjcgMTUuNjk3NCA1LjAxMTc2IDE2LjU5MjdDNS4xODk4NSAxNy40ODggNS42Mjk0MiAxOC4zMTA0IDYuMjc0ODkgMTguOTU1OUM2LjkyMDM3IDE5LjYwMTQgNy43NDI3NSAyMC4wNDA5IDguNjM4MDUgMjAuMjE5QzkuNTMzMzQgMjAuMzk3MSAxMC40NjEzIDIwLjMwNTcgMTEuMzA0NyAxOS45NTY0QzEyLjE0OCAxOS42MDcgMTIuODY4OSAxOS4wMTU1IDEzLjM3NiAxOC4yNTY1QzEzLjg4MzIgMTcuNDk3NSAxNC4xNTM4IDE2LjYwNTEgMTQuMTUzOCAxNS42OTIzVjcuNjQwNjJDMTUuMDk3OCA4LjUxNjkyIDE2LjQyNzEgOS4yMzA3NyAxOC4xNTM4IDkuMjMwNzdDMTguMzk4NyA5LjIzMDc3IDE4LjYzMzUgOS4xMzM1MiAxOC44MDY2IDguOTYwNDFDMTguOTc5NyA4Ljc4NzMgMTkuMDc2OSA4LjU1MjUxIDE5LjA3NjkgOC4zMDc2OUMxOS4wNzY5IDguMDYyODggMTguOTc5NyA3LjgyODA5IDE4LjgwNjYgNy42NTQ5OEMxOC42MzM1IDcuNDgxODcgMTguMzk4NyA3LjM4NDYyIDE4LjE1MzggNy4zODQ2MkMxNi45NTc1IDcuMzg0NjIgMTYuMDQ4IDYuODkyMzEgMTUuMzczNSA2LjI1MzU0QzE0LjY4NDMgNS41OTg3NyAxNC4yNjgzIDQuODA5ODUgMTQuMTA1OCA0LjMyMzY5WiIgZmlsbD0iYmxhY2siLz4KPC9zdmc+Cg==" width="24" height="24" style="width: 24px; left: 0px; top: 0px; position: absolute;">
+              </div>
+            </a>
+          </div>
+        </div>
+        
+        <!-- قسم السياسة والخصوصية وتواصل -->
+        <div style="width: 363px; height: 175px; position: absolute; left: 15px; top: 118px;">
+          <div style="width: 363px; height: 175px; position: absolute; left: 0px; top: 0px;">
+            <div style="width: 363px; height: 77px; position: absolute; left: 0px; top: 0px;">
+              <div style="width: 363px; height: 26px; position: absolute; left: 0px; top: 0px;">
+                <div style="width: 148px; height: 22px; position: absolute; left: 215px; top: 0px;">
+                  <div style="position: absolute; left: 0px; top: 0px; text-align: right; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                    <p><span style="font-size: 16px; text-decoration: none; line-height: 139.999998%; font-weight: 700; font-family: 'arya'; white-space: break-spaces; color: rgb(30, 30, 30); text-transform: none;">السياسة والخصوصية</span></p>
+                  </div>
+                </div>
+              </div>
+              <div style="width: 70px; height: 43px; position: absolute; left: 293px; top: 34px;">
+                <div style="width: 53px; height: 22px; position: absolute; left: 17px; top: 0px;">
+                  <div style="position: absolute; left: 0px; top: 0px; text-align: right; display: flex; flex-direction: column; justify-content: center;">
+                    <p><span style="font-size: 16px; text-decoration: none; line-height: 139.999998%; font-weight: 400; font-family: 'arya'; white-space: break-spaces; color: rgb(30, 30, 30); text-transform: none;">السياسة</span></p>
+                  </div>
+                </div>
+                <div style="width: 70px; height: 22px; position: absolute; left: 0px; top: 21px;">
+                  <div style="position: absolute; left: 0px; top: 0px; text-align: right; display: flex; flex-direction: column; justify-content: center;">
+                    <p><span style="font-size: 16px; text-decoration: none; line-height: 139.999998%; font-weight: 400; font-family: 'arya'; white-space: break-spaces; color: rgb(30, 30, 30); text-transform: none;">الخصوصية</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="width: 363px; height: 74px; position: absolute; left: 0px; top: 101px;">
+              <div style="width: 363px; height: 26px; position: absolute; left: 0px; top: 0px;">
+                <div style="width: 47px; height: 22px; position: absolute; left: 316px; top: 0px;">
+                  <div style="position: absolute; left: 0px; top: 0px; text-align: right; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                    <p><span style="font-size: 16px; text-decoration: none; line-height: 139.999998%; font-weight: 700; font-family: 'arya'; white-space: break-spaces; color: rgb(30, 30, 30); text-transform: none;">تواصل</span></p>
+                  </div>
+                </div>
+              </div>
+              <div style="width: 239px; height: 40px; position: absolute; left: 124px; top: 34px;">
+                <div style="width: 132px; height: 16px; position: absolute; left: 107px; top: 0px;">
+                  <div style="position: absolute; left: 0px; top: 0px; text-align: right; display: flex; flex-direction: column; justify-content: center;">
+                    <p><span style="font-size: 16px; text-decoration: none; letter-spacing: -1%; line-height: 100%; font-weight: 400; font-family: 'arya'; white-space: break-spaces; color: rgb(30, 30, 30); text-transform: none;">جوال :  </span><span style="font-size: 16px; text-decoration: none; letter-spacing: -2%; line-height: 100%; font-weight: 400; font-family: 'arya'; white-space: break-spaces; color: rgb(30, 30, 30); text-transform: none;">0503962097</span></p>
+                  </div>
+                </div>
+                <div style="width: 239px; height: 16px; position: absolute; left: 0px; top: 24px;">
+                  <div style="position: absolute; left: 0px; top: 0px; text-align: right; display: flex; flex-direction: column; justify-content: center;">
+                    <p><span style="font-size: 16px; text-decoration: none; line-height: 100%; font-weight: 400; font-family: 'arya'; white-space: break-spaces; color: rgb(30, 30, 30); text-transform: none;">ايميل : whiterose2000e@gmail.com</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- المنيو العربي (يظهر عند النقر) -->
+      <div id="menu" class="menu-overlay">
+        <div style="width: 386px; height: 249px; position: absolute; left: 50%; transform: translateX(-50%); top: 0px;">
+          <!-- الخلفية الرئيسية للقائمة (زجاجية) -->
+          <div style="width: 309px; height: 242px; position: absolute; left: 0px; top: 3.5px;">
+            <div style="width: 309px; height: 249px; position: absolute; left: 0px; top: 0px; background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(15px) brightness(1) contrast(1.05); -webkit-backdrop-filter: blur(15px) brightness(1) contrast(1.05); box-shadow: inset 0 0.6px 0.6px rgba(255,255,255,1), inset 0.6px 0 0.6px rgba(255,255,255,0.5), inset -0.6px 0 0.6px rgba(255,255,255,0.5), inset 0 -0.6px 0.6px rgba(255,255,255,0.3), inset 0 2px 2px rgba(0,0,0,0.1), inset 0 -2px 2px rgba(0,0,0,0.1),inset 2px 0 2px rgba(0,0,0,0.1), inset -2px 0 2px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) inset; border-radius: 24px; overflow: hidden; box-sizing: border-box;">
+              <!-- روابط القائمة (مع نصوص عربية) -->
+              <a href="/White-rose/ar/wedding-dress.html" style="display: block; position: absolute; left: 50%; transform: translateX(-50%); top: 10px; text-align: left; text-decoration: none; color: inherit;">
+                <span style="font-size: 20px; font-weight: 400; font-family: 'arya'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: uppercase;">فستان الزفاف</span>
+              </a>
+              <a href="/White-rose/ar/evening-dress.html" style="display: block; position: absolute; left: 50%; transform: translateX(-50%); top: 70px; text-align: left; text-decoration: none; color: inherit;">
+                <span style="font-size: 20px; font-weight: 400; font-family: 'arya'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: uppercase;">فستان السهرة</span>
+              </a>
+              <a href="/White-rose/ar/kids-dress.html" style="display: block; position: absolute; left: 50%; transform: translateX(-50%); top: 132px; text-align: left; text-decoration: none; color: inherit;">
+                <span style="font-size: 20px; font-weight: 400; font-family: 'arya'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: uppercase;">فساتين الاطفال</span>
+              </a>
+              <a href="/White-rose/ar/process.html" style="display: block; position: absolute; left: 50%; transform: translateX(-50%); top: 194px; text-align: left; text-decoration: none; color: inherit;">
+                <span style="font-size: 20px; font-weight: 400; font-family: 'arya'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: uppercase;">خطوات التفصيل</span>
+                  </a>
+            </div>
+          </div>
+          <!-- الأعمدة الجانبية مع الأيقونات الدائرية -->
+          <div style="width: 50px; height: 249px; position: absolute; left: 336px; top: 3px; background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(15px) brightness(0.9) contrast(1.05); -webkit-backdrop-filter: blur(15px) brightness(0.9) contrast(1.05); box-shadow: inset 0 0.6px 0.6px rgba(255,255,255,1), inset 0.6px 0 0.6px rgba(255,255,255,0.5), inset -0.6px 0 0.6px rgba(255,255,255,0.5), inset 0 -0.6px 0.6px rgba(255,255,255,0.3), inset 0 2px 2px rgba(0,0,0,0.1), inset 0 -2px 2px rgba(0,0,0,0.1),inset 2px 0 2px rgba(0,0,0,0.1), inset -2px 0 2px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) inset; border-radius: 24px; overflow: hidden; box-sizing: border-box;">
+            <div class="circle-icon" style="position: absolute; left: 10px; top: 18px;"></div>
+            <div class="circle-icon" style="position: absolute; left: 10px; top: 79px;"></div>
+            <div class="circle-icon" style="position: absolute; left: 10px; top: 140px;"></div>
+            <div class="circle-icon" style="position: absolute; left: 10px; top: 201px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- تراكب التعتيم -->
+      <div id="overlay" class="overlay"></div>
+
+    </div> <!-- نهاية الحاوية الرئيسية للصفحة -->
+  </div> <!-- نهاية #container -->
+
+  <!-- ========== نافذة التسجيل الإلزامية (عربية) ========== -->
+  <div id="popupOverlay" class="popup-overlay">
+    <div class="popup-container">
+      <!-- حقل الاسم -->
+      <div class="popup-field">
+        <label>الاسم</label>
+        <input type="text" id="popupName" placeholder="أدخل اسمك">
+      </div>
+
+      <!-- حقل رقم الهاتف -->
+      <div class="popup-field">
+        <label>رقم الجوال</label>
+        <input type="tel" id="popupPhone" placeholder="05xxxxxxxx">
+      </div>
+
+      <!-- مربعات الاختيار -->
+      <div class="checkbox-group">
+        <div class="checkbox-item">
+          <input type="checkbox" id="popupCheck1" checked disabled>
+          <label for="popupCheck1">(اختياري) أريد استلام عروض</label>
+        </div>
+        <div class="checkbox-item">
+          <input type="checkbox" id="popupCheck2" required>
+          <label for="popupCheck2">أوافق على السياسة والخصوصية</label>
+        </div>
+      </div>
+
+      <!-- رسالة خطأ/نجاح -->
+      <div id="popupMessage" class="popup-error"></div>
+
+      <!-- زر التسجيل -->
+      <button class="popup-button" onclick="submitPopup()">تسجيل</button>
+    </div>
+  </div>
+
+  <script>
+    // ========== كود التحكم بالمنيو (الموجود سابقاً) ==========
+    const menuIcon = document.getElementById('menuIcon');
+    const menu = document.getElementById('menu');
+    const overlay = document.getElementById('overlay');
+
+    menuIcon.addEventListener('click', function(event) {
+      event.stopPropagation();
+      menu.classList.toggle('show');
+      overlay.classList.toggle('show');
+    });
+
+    document.addEventListener('click', function(event) {
+      if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+        menu.classList.remove('show');
+        overlay.classList.remove('show');
+      }
+    });
+
+    // ========== كود تحجيم الصفحة (resize) ==========
+    const page = { width: 393, height: 1178 };
+    const resizePage = () => {
+      const viewWidth = window.innerWidth;
+      const container = document.getElementById('container');
+      const scale = viewWidth / page.width;
+      const displayHeight = page.height * scale || 0;
+      document.body.style.paddingTop = displayHeight + 'px';
+      container.style.transform = 'scale(' + scale + ')';
+      container.style.display = 'block';
+    };
+    resizePage();
+    (function () {
+      var throttle = function (type, name, obj) {
+        obj = obj || window;
+        var running = false;
+        var func = function () {
+          if (running) return;
+          running = true;
+          requestAnimationFrame(function () {
+            obj.dispatchEvent(new CustomEvent(name));
+            running = false;
+          });
+        };
+        obj.addEventListener(type, func);
+      };
+      throttle("resize", "optimizedResize");
+    })();
+    window.addEventListener("optimizedResize", resizePage);
+
+    // ========== كود النافذة الإلزامية ==========
+    const popupOverlay = document.getElementById('popupOverlay');
+
+    // إظهار النافذة بعد ثانيتين فقط إذا لم يكن المستخدم مسجلاً مسبقاً
+    window.addEventListener('load', function() {
+      if (localStorage.getItem('userRegistered')) {
+        console.log('المستخدم مسجل مسبقاً، لن تظهر النافذة');
+        return;
+      }
+      setTimeout(function() {
+        popupOverlay.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      }, 2000);
+    });
+
+    // إغلاق النافذة (تُستدعى فقط بعد النجاح)
+    window.closePopup = function() {
+      popupOverlay.classList.remove('show');
+      document.body.style.overflow = 'auto';
+    };
+
+    // دالة إرسال النموذج
+    window.submitPopup = async function() {
+      const name = document.getElementById('popupName').value.trim();
+      const phone = document.getElementById('popupPhone').value.trim();
+      const agree = document.getElementById('popupCheck2').checked;
+      const messageDiv = document.getElementById('popupMessage');
+
+      // تحقق من ملء الحقول
+      if (!name || !phone) {
+        messageDiv.textContent = 'الرجاء ملء جميع الحقول';
+        messageDiv.className = 'popup-error';
+        return;
+      }
+
+      // تحقق من صيغة رقم الهاتف: 10 أرقام ويبدأ بـ 05
+      const phoneRegex = /^05\d{8}$/;
+      if (!phoneRegex.test(phone)) {
+        messageDiv.textContent = 'رقم الجوال يجب أن يكون 10 أرقام ويبدأ بـ 05';
+        messageDiv.className = 'popup-error';
+        return;
+      }
+
+      // تحقق من الموافقة على السياسة
+      if (!agree) {
+        messageDiv.textContent = 'يجب الموافقة على السياسة والخصوصية';
+        messageDiv.className = 'popup-error';
+        return;
+      }
+
+      // تعطيل الزر مؤقتاً
+      const btn = document.querySelector('.popup-button');
+      btn.disabled = true;
+      btn.textContent = 'جاري التسجيل...';
+
+      // محاكاة تسجيل ناجح (بدون backend)
+      setTimeout(() => {
+        localStorage.setItem('userRegistered', 'true');
+        
+        messageDiv.textContent = 'تم التسجيل بنجاح! شكراً لك.';
+        messageDiv.className = 'popup-success';
+        
+        // إعادة تعيين الحقول
+        document.getElementById('popupName').value = '';
+        document.getElementById('popupPhone').value = '';
+        document.getElementById('popupCheck2').checked = false;
+        
+        // إغلاق النافذة بعد ثانيتين
+        setTimeout(closePopup, 2000);
+        
+        btn.disabled = false;
+        btn.textContent = 'تسجيل';
+      }, 1000);
+    };
+  </script>
+</body>
+</html>

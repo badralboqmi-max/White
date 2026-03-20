@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سياسة الاستخدام - وايت روز</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    html,
+    body {
+      position: relative;
+      margin: 0;
+      padding: 0;
+    }
+    .bg-clip-text {
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+    }
+    #container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 393px;
+      height: 2477px;
+      transform-origin: 0 0;
+      transform: scale(1);
+      display: none;
+      overflow: hidden;
+    }
+
+    /* المنيو مخفي افتراضياً مع تأثير fade */
+    .menu-overlay {
+      position: absolute;
+      left: 0;
+      top: 86px; /* أسفل الهيدر مباشرة */
+      width: 393px;
+      height: 365px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 100;
+    }
+    .menu-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* تراكب التعتيم */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 393px;
+      height: 2477px;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 90;
+    }
+    .overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* الدوائر الجانبية */
+    .circle-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 75% 30%, 
+        #fff 2%, 
+        #999 3%,       
+        #555 9%,       
+        #111 45%,       
+        #000 100%       
+      );
+      border: 3px solid #777;
+      box-sizing: border-box;
+    }
+
+    /* منع التمرير عند فتح المنيو */
+    body.menu-open {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <!-- المحتوى العربي للصفحة -->
+    <div style="width: 393px; height: 2477px; position: absolute; background: rgb(210, 206, 200); z-index: 2;">
+      <div style="width: 393px; height: 86px; position: absolute; left: 0px; top: 0px;">
+        <!-- أيقونة القائمة -->
+        <div id="menuIcon" style="width: 77px; height: 86px; position: absolute; left: 316px; top: 0px; background: rgb(242, 253, 252); border-radius: 20px 0px 0px 20px; filter: drop-shadow(rgba(0, 0, 0, 0.25) 0px 4px 4px); cursor: pointer;">
+          <div style="width: 50px; height: 50px; position: absolute; left: 7px; top: 18px;">
+            <div style="width: 50px; height: 50px; position: absolute; left: 0px; top: 0px; overflow: hidden;">
+              <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzgiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAzOCAyNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggaWQ9Imljb24iIGQ9Ik0wIDI1VjIwLjgzMzNIMzcuNVYyNUgwWk0wIDE0LjU4MzNWMTAuNDE2N0gzNy41VjE0LjU4MzNIMFpNMCA0LjE2NjY3VjBIMzcuNVY0LjE2NjY3SDBaIiBmaWxsPSIjMUQxQjIwIi8+Cjwvc3ZnPgo=" width="37" height="25" style="width: 37.5px; left: 6.25px; top: 12.5px; position: absolute;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="width: 300px; height: 36px; position: absolute; left: 145.5px; top: 143px;">
+        <div style="position: absolute; left: -30px; top: 0px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+          <p><span style="font-size: 25px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">سياسة الاستخدام</span></p>
+        </div>
+      </div>
+      <div style="width: 393px; height: 160px; position: absolute; left: 0px; top: 236px;">
+        <div style="position: absolute; left: 10px; top: 10px; width: 373px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+          <p><span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">نشكرك على ثقتك في مشغلنا. يرجى قراءة الشروط والأحكام التالية بعناية، حيث إن موافقتك على المتابعة تشكل إقراراً منك وقبولاً لهذه الشروط:</span></p>
+        </div>
+      </div>
+      <div style="width: 393px; height: 1994px; position: absolute; left: 0px; top: 453px;">
+        <div style="position: absolute; left: 10px; top: 0px; width: 373px; text-align: right; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+          
+          <!-- العنوان الرئيسي -->
+          <p style="margin-bottom: 20px;"><span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">الشروط والأحكام العامة - [وايت روز]</span></p>
+          
+          <!-- أولاً: استلام الطلب والتفاصيل -->
+          <p style="margin-bottom: 20px;"><span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">أولاً: استلام الطلب والتفاصيل</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">1. يبدأ العمل على التصميم فقط بعد الاتفاق النهائي على نوع القماش، النمط، التطريز أو الإكسسوارات، وبعد تسليم الأقمشة (إذا قدمتها العميلة) إلى المشغل.</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">2. أي تغييرات في التصميم بعد بدء العمل (خاصة بعد مرحلة القص) قد تستوجب رسوماً إضافية أو تتسبب في تأخير موعد التسليم، وفق ما تراه الإدارة.</span></p>
+          
+          <!-- ثانياً: سياسة الدفع -->
+          <p style="margin-bottom: 20px;"><span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">ثانياً: سياسة الدفع</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">1. الدفعة المقدمة: مبلغ يعادل تكلفة الأقمشة مطلوب كدفعة أولى غير قابلة للاسترداد من إجمالي الفاتورة لتأكيد الطلب وشراء المواد. يُدفع المبلغ المتبقي قبل استلام القطعة النهائية.</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">2. التسعير: الأسعار المذكورة في الفاتورة قابلة للتغيير إذا طلبت العميلة إضافات أو تعديلات جوهرية غير مدرجة في الفاتورة الأصلية.</span></p>
+          
+          <!-- ثالثاً: سياسة المقاسات والتعديلات -->
+          <p style="margin-bottom: 20px;"><span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">ثالثاً: سياسة المقاسات والتعديلات</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">1. المقاسات: تتحمل العميلة المسؤولية الكاملة عن دقة المقاسات التي تقدمها. إذا تم أخذ المقاسات في وايت روز، نبذل قصارى جهدنا لضمان الدقة.</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">2. التعديلات: يحق للعميلة طلب تعديلات طفيفة (مثل تعديل بسيط في الكم أو الطول) خلال مدة لا تتجاوز 3 أيام من تاريخ البروفة (الأولى) أو من تاريخ استلام القطعة.</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">3. القطعة النهائية: بمجرد اكتمال القطعة وتسليمها للعميلة، يعتبر المنتج مقبولاً نهائياً. المشغل غير مسؤول عن أي تغيير في مقاسات العميلة (زيادة أو نقصان في الوزن) بعد التسليم.</span></p>
+          
+          <!-- رابعاً: موعد التسليم -->
+          <p style="margin-bottom: 20px;"><span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">رابعاً: موعد التسليم</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">1. يسعى المشغل جاهداً للالتزام بموعد التسليم المتفق عليه، مع العلم أن هذا التاريخ هو "تاريخ تقديري" وقد يتأثر بظروف خارجة عن الإرادة (مثل انقطاع الكهرباء، تأخر وصول المواد، أو كثرة الطلبات). في حال التأخير، سيتم إبلاغ العميلة فوراً.</span></p>
+          
+          <!-- خامساً: سياسة الإلغاء والاستبدال والاسترجاع -->
+          <p style="margin-bottom: 20px;"><span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">خامساً: سياسة الإلغاء والاستبدال والاسترجاع</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">1. الإلغاء: يحق للعميلة إلغاء الطلب خلال 24 ساعة من دفع الدفعة الأولى، مع استرداد كامل المبلغ. بعد هذه الفترة، تعتبر الدفعة الأولى غير قابلة للاسترداد لأنها استُخدمت لشراء المواد وحجز وقت الخياطة.</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">2. الاستبدال والاسترجاع: نظراً للطبيعة المفصلة حسب الطلب للمنتجات، لا يمكن استبدالها أو إرجاعها إلا في حالة وجود خطأ تصنيعي واضح من جانب المشغل (مثل خطأ في القص أو الخياطة، وليس خطأ في اختيار النمط). في هذه الحالة، يلتزم المشغل بتصحيح الخطأ دون أي تكلفة إضافية.</span></p>
+          
+          <!-- سادساً: العناية بالقطعة -->
+          <p style="margin-bottom: 20px;"><span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">سادساً: العناية بالقطعة</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">1. ننصح بالتعامل مع القطع اليدوية بعناية. يوصى بالتنظيف الجاف (الكي بالبخار الخفيف) أو الغسيل اليدوي بالماء البارد، حسب نوع القماش.</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">2. المشغل غير مسؤول عن تلف القطعة نتيجة سوء الاستخدام أو الغسيل الخاطئ.</span></p>
+          
+          <!-- سابعاً: التواصل وحل النزاعات -->
+          <p style="margin-bottom: 20px;"><span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">سابعاً: التواصل وحل النزاعات</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">1. في حالة وجود أي استفسار أو مشكلة، نرجو التواصل معنا فوراً على الرقم التالي: 0503962097 للوصول إلى حل يرضي الطرفين.</span></p>
+          
+          <!-- الختام -->
+          <p style="margin-bottom: 20px;"><span style="font-size: 20px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">نرحب بك دائماً ويسعدنا خدمتك.</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- المنيو العربي (للصفحات غير الرئيسية) -->
+    <div id="menu" class="menu-overlay">
+      <div style="width: 386px; height: 365px; position: absolute; left: 50%; transform: translateX(-50%); top: 90px;">
+        <!-- الخلفية الرئيسية للقائمة (زجاجية بيضاء) -->
+        <div style="width: 309px; height: 365px; position: absolute; left: 0px; top: 0px;">
+          <div style="width: 309px; height: 365px; position: absolute; left: 0px; top: 0px; background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(15px) brightness(1) contrast(1.05); -webkit-backdrop-filter: blur(15px) brightness(1) contrast(1.05); box-shadow: inset 0 0.6px 0.6px rgba(255,255,255,1), inset 0.6px 0 0.6px rgba(255,255,255,0.5), inset -0.6px 0 0.6px rgba(255,255,255,0.5), inset 0 -0.6px 0.6px rgba(255,255,255,0.3), inset 0 2px 2px rgba(0,0,0,0.1), inset 0 -2px 2px rgba(0,0,0,0.1), inset 2px 0 2px rgba(0,0,0,0.1), inset -2px 0 2px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) inset; border-radius: 24px; overflow: hidden; box-sizing: border-box;">
+            
+            <!-- أيقونة "الرئيسية" في الأعلى -->
+            <div style="width: 309px; height: 20px; position: absolute; left: 0px; top: 26px;">
+              <div style="position: absolute; left: 125.5px; top: 0px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                <a href="/White-rose/ar/index.html" style="text-decoration: none; color: inherit;">
+                  <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">الرئيسية</span>
+                </a>
+              </div>
+            </div>
+            
+            <!-- روابط القائمة الرئيسية (عربية) -->
+            <div style="width: 309px; height: 218px; position: absolute; left: 0px; top: 136px;">
+              <div style="position: absolute; left: 0px; top: 0px; width: 309px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                <a href="/White-rose/ar/wedding-dress.html" style="text-decoration: none; color: inherit;">
+                  <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">فستان الزفاف</span>
+                </a>
+              </div>
+              <div style="position: absolute; left: 0px; top: 62px; width: 309px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                <a href="/White-rose/ar/evening-dress.html" style="text-decoration: none; color: inherit;">
+                  <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">فستان السهرة</span>
+                </a>
+              </div>
+              <div style="position: absolute; left: 0px; top: 124px; width: 309px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                <a href="/White-rose/ar/kids-dress.html" style="text-decoration: none; color: inherit;">
+                  <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">فساتين الأطفال</span>
+                </a>
+              </div>
+              <div style="position: absolute; left: 0px; top: 186px; width: 309px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                <a href="/White-rose/ar/process.html" style="text-decoration: none; color: inherit;">
+                  <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">خطوات العمل</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- الأعمدة الجانبية مع الأيقونات الدائرية -->
+        <div style="width: 50px; height: 362px; position: absolute; left: 336px; top: 1.5px;">
+          <!-- الجزء العلوي (أيقونة إضافية) -->
+          <div style="width: 50px; height: 66px; position: absolute; left: 0px; top: 0px; background: rgba(255,255,255,0.3); backdrop-filter: blur(15px) brightness(1) contrast(1.05); -webkit-backdrop-filter: blur(15px) brightness(1) contrast(1.05); box-shadow: inset 0 0.6px 0.6px rgba(255,255,255,1), inset 0.6px 0 0.6px rgba(255,255,255,0.5), inset -0.6px 0 0.6px rgba(255,255,255,0.5), inset 0 -0.6px 0.6px rgba(255,255,255,0.3), inset 0 2px 2px rgba(0,0,0,0.1), inset 0 -2px 2px rgba(0,0,0,0.1), inset 2px 0 2px rgba(0,0,0,0.1), inset -2px 0 2px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) inset; border-radius: 24px; overflow: hidden; box-sizing: border-box;">
+            <div class="circle-icon" style="position: absolute; left: 10px; top: 18px;"></div>
+          </div>
+          <!-- الجزء السفلي (الأيقونات الأربعة) -->
+          <div style="width: 50px; height: 249px; position: absolute; left: 0px; top: 113px; background: rgba(255,255,255,0.3); backdrop-filter: blur(15px) brightness(1) contrast(1.05); -webkit-backdrop-filter: blur(15px) brightness(1) contrast(1.05); box-shadow: inset 0 0.6px 0.6px rgba(255,255,255,1), inset 0.6px 0 0.6px rgba(255,255,255,0.5), inset -0.6px 0 0.6px rgba(255,255,255,0.5), inset 0 -0.6px 0.6px rgba(255,255,255,0.3), inset 0 2px 2px rgba(0,0,0,0.1), inset 0 -2px 2px rgba(0,0,0,0.1), inset 2px 0 2px rgba(0,0,0,0.1), inset -2px 0 2px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) inset; border-radius: 24px; overflow: hidden; box-sizing: border-box;">
+            <div class="circle-icon" style="position: absolute; left: 10px; top: 18px;"></div>
+            <div class="circle-icon" style="position: absolute; left: 10px; top: 79px;"></div>
+            <div class="circle-icon" style="position: absolute; left: 10px; top: 140px;"></div>
+            <div class="circle-icon" style="position: absolute; left: 10px; top: 201px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- تراكب التعتيم -->
+    <div id="overlay" class="overlay"></div>
+  </div>
+
+  <!-- سكربت التحكم في المنيو -->
+  <script>
+    const menuIcon = document.getElementById('menuIcon');
+    const menu = document.getElementById('menu');
+    const overlay = document.getElementById('overlay');
+
+    function toggleMenu(show) {
+      if (show) {
+        menu.classList.add('show');
+        overlay.classList.add('show');
+        document.body.classList.add('menu-open');
+      } else {
+        menu.classList.remove('show');
+        overlay.classList.remove('show');
+        document.body.classList.remove('menu-open');
+      }
+    }
+
+    menuIcon.addEventListener('click', function(event) {
+      event.stopPropagation();
+      const isOpen = menu.classList.contains('show');
+      toggleMenu(!isOpen);
+    });
+
+    document.addEventListener('click', function(event) {
+      if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+        toggleMenu(false);
+      }
+    });
+  </script>
+
+  <script>
+    const page = {
+      width: 393,
+      height: 2477
+    }
+    const resizePage = () => {
+      const viewWidth = window.innerWidth;
+      const container = document.getElementById('container');
+      const scale = viewWidth / page.width;
+      const displayHeight = page.height * scale || 0;
+      document.body.style.paddingTop = displayHeight + 'px';
+      container.style.transform = 'scale(' + scale + ')';
+      container.style.display = 'block';
+    };
+    resizePage();
+    (function () {
+      var throttle = function (type, name, obj) {
+        obj = obj || window;
+        var running = false;
+        var func = function () {
+          if (running) return;
+          running = true;
+          requestAnimationFrame(function () {
+            obj.dispatchEvent(new CustomEvent(name));
+            running = false;
+          });
+        };
+        obj.addEventListener(type, func);
+      };
+      throttle("resize", "optimizedResize");
+    })();
+    window.addEventListener("optimizedResize", resizePage);
+  </script>
+</body>
+</html>

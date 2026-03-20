@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سياسة الخصوصية - وايت روز</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    html,
+    body {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      background: rgb(210, 206, 200);
+    }
+    .bg-clip-text {
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+    }
+    #container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 393px;
+      height: 4667px;
+      transform-origin: 0 0;
+      transform: scale(1);
+      display: none;
+      overflow: hidden;
+    }
+
+    /* المنيو مخفي افتراضياً مع تأثير fade */
+    .menu-overlay {
+      position: absolute;
+      left: 0;
+      top: 86px; /* أسفل الهيدر مباشرة */
+      width: 393px;
+      height: 365px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 100;
+    }
+    .menu-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* تراكب التعتيم */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 393px;
+      height: 4667px;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 90;
+    }
+    .overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* الدوائر الجانبية */
+    .circle-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 75% 30%, 
+        #fff 2%, 
+        #999 3%,       
+        #555 9%,       
+        #111 45%,       
+        #000 100%       
+      );
+      border: 3px solid #777;
+      box-sizing: border-box;
+    }
+
+    /* منع التمرير عند فتح المنيو */
+    body.menu-open {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <!-- المحتوى العربي للصفحة -->
+    <div style="width: 393px; height: 4667px; position: absolute; background: rgb(210, 206, 200); z-index: 2;">
+      <div style="width: 393px; height: 86px; position: absolute; left: 0px; top: 0px;">
+        <!-- أيقونة القائمة -->
+        <div id="menuIcon" style="width: 77px; height: 86px; position: absolute; left: 316px; top: 0px; background: rgb(242, 253, 252); border-radius: 20px 0px 0px 20px; filter: drop-shadow(rgba(0, 0, 0, 0.25) 0px 4px 4px); cursor: pointer;">
+          <div style="width: 50px; height: 50px; position: absolute; left: 7px; top: 18px;">
+            <div style="width: 50px; height: 50px; position: absolute; left: 0px; top: 0px; overflow: hidden;">
+              <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzgiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAzOCAyNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggaWQ9Imljb24iIGQ9Ik0wIDI1VjIwLjgzMzNIMzcuNVYyNUgwWk0wIDE0LjU4MzNWMTAuNDE2N0gzNy41VjE0LjU4MzNIMFpNMCA0LjE2NjY3VjBIMzcuNVY0LjE2NjY3SDBaIiBmaWxsPSIjMUQxQjIwIi8+Cjwvc3ZnPgo=" width="37" height="25" style="width: 37.5px; left: 6.25px; top: 12.5px; position: absolute;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="width: 300px; height: 36px; position: absolute; left: 134px; top: 143px;">
+        <div style="position: absolute; left: -50px; top: 0px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+          <p><span style="font-size: 30px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">سياسة الخصوصية</span></p>
+        </div>
+      </div>
+      <div style="width: 393px; height: 116px; position: absolute; left: 0px; top: 236px;">
+        <div style="position: absolute; left: 10px; top: 10px; width: 373px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+          <p style="margin-bottom: 15px;"><span style="font-size: 24px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">سياسة الخصوصية لموقع [وايت روز]</span></p>
+          <p style="margin-bottom: 0;"><span style="font-size: 24px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">آخر تحديث: [2026/03/13]</span></p>
+        </div>
+      </div>
+      <div style="width: 393px; height: 4228px; position: absolute; left: 0px; top: 409px;">
+        <div style="position: absolute; left: 10px; top: 0px; width: 373px; text-align: right; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+          <!-- مقدمة -->
+          <p style="margin-bottom: 20px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">في وايت روز، نحن ملتزمون بحماية خصوصية زوارنا وعملائنا. توضح سياسة الخصوصية هذه كيفية جمع واستخدام والكشف عن معلوماتك الشخصية عند زيارة موقعنا أو استخدام خدماتنا.</span></p>
+          <p style="margin-bottom: 30px;"><span style="font-size: 20px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">باستخدام الموقع، فإنك توافق على جمع واستخدام المعلومات وفقاً لهذه السياسة.</span></p>
+          
+          <!-- أولاً: المعلومات التي نجمعها -->
+          <p style="margin-bottom: 25px;"><span style="font-size: 24px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">أولاً: المعلومات التي نجمعها</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">قد نجمع أنواعاً مختلفة من المعلومات للأغراض الموضحة أدناه، بما في ذلك:</span></p>
+          
+          <p style="margin-bottom: 10px;"><span style="font-size: 20px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">1. المعلومات الشخصية التي تقدمها لنا طواعية:</span></p>
+          <p style="margin-bottom: 12px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">   · عند التسجيل في الموقع، أو ملء نموذج، أو الاشتراك في نشرتنا البريدية، أو إجراء عملية شراء، أو الاتصال بنا، قد نطلب منك تقديم معلومات معينة للتعرف عليك، بما في ذلك: الاسم، عنوان البريد الإلكتروني، رقم الهاتف، العنوان، ومعلومات الدفع (مثل تفاصيل بطاقة الائتمان، مع ملاحظة أننا لا نخزنها بالكامل ونستخدم بوابات دفع آمنة).</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">   · أي محتوى آخر تختار مشاركته معنا طواعية.</span></p>
+          
+          <p style="margin-bottom: 10px;"><span style="font-size: 20px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">2. معلومات الاستخدام والبيانات التقنية (يتم جمعها تلقائياً):</span></p>
+          <p style="margin-bottom: 12px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">   · بيانات السجل: عند زيارتك لموقعنا، قد يسجل خادمنا تلقائياً المعلومات التي يرسلها متصفحك. قد تتضمن هذه البيانات: عنوان بروتوكول الإنترنت (IP) الخاص بك، نوع المتصفح وإصداره، الصفحات التي تزورها على موقعنا، وقت وتاريخ زيارتك، الوقت الذي تقضيه في تلك الصفحات، ومعرفات جهازك.</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">   · ملفات تعريف الارتباط (Cookies): نستخدم ملفات تعريف الارتباط وتقنيات التتبع المماثلة لتتبع النشاط على موقعنا وتخزين معلومات معينة. يمكنك ضبط متصفحك لرفض جميع ملفات تعريف الارتباط أو للإشارة إلى وقت إرسال ملف تعريف الارتباط.</span></p>
+          
+          <!-- ثانياً: كيف نستخدم معلوماتك -->
+          <p style="margin-bottom: 25px;"><span style="font-size: 24px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">ثانياً: كيف نستخدم معلوماتك</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 20px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">نستخدم المعلومات التي نجمعها للأغراض التالية:</span></p>
+          <p style="margin-bottom: 8px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">· لتشغيل وصيانة موقعنا.</span></p>
+          <p style="margin-bottom: 8px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">· لتحسين وتطوير موقعنا وخدماتنا بناءً على كيفية استخدامك لها.</span></p>
+          <p style="margin-bottom: 8px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">· للتواصل معك، سواء للرد على استفساراتك، أو إرسال تحديثات إدارية، أو إشعارات تتعلق بخدماتنا.</span></p>
+          <p style="margin-bottom: 8px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">· لإرسال رسائل تسويقية وترويجية (إذا وافقت على ذلك، ويمكنك إلغاء الاشتراك في أي وقت).</span></p>
+          <p style="margin-bottom: 8px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">· لمعالجة معاملاتك وإدارة طلباتك.</span></p>
+          <p style="margin-bottom: 8px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">· لكشف ومنع الاحتيال والمعاملات غير المصرح بها، وحماية أمان موقعنا.</span></p>
+          <p style="margin-bottom: 20px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">· للامتثال للالتزامات القانونية.</span></p>
+          
+          <!-- ثالثاً: حماية المعلومات وأمنها -->
+          <p style="margin-bottom: 25px;"><span style="font-size: 24px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">ثالثاً: حماية المعلومات وأمنها</span></p>
+          <p style="margin-bottom: 30px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">نحن نقدر أمن معلوماتك الشخصية ونعمل على حمايتها باستخدام تدابير أمنية تقنية وتنظيمية مناسبة لمنع الفقدان أو سوء الاستخدام أو الوصول غير المصرح به أو الكشف أو التغيير. ومع ذلك، يرجى العلم أنه لا توجد طريقة نقل عبر الإنترنت أو طريقة تخزين إلكترونية آمنة بنسبة 100٪. بينما نسعى لاستخدام وسائل مقبولة تجارياً لحماية معلوماتك الشخصية، لا يمكننا ضمان أمنها المطلق.</span></p>
+          
+          <!-- رابعاً: الإفصاح عن المعلومات لأطراف ثالثة -->
+          <p style="margin-bottom: 25px;"><span style="font-size: 24px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">رابعاً: الإفصاح عن المعلومات لأطراف ثالثة</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">لن نقوم ببيع أو تبادل أو تأجير معلوماتك الشخصية لأطراف أخرى، إلا في الحالات التالية:</span></p>
+          
+          <p style="margin-bottom: 5px;"><span style="font-size: 20px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">· مقدمو الخدمة:</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">قد نشارك معلوماتك مع شركات خارجية موثوقة تساعدنا في تشغيل موقعنا، أو إدارة أعمالنا، أو تقديم الخدمات لك (مثل معالجة الدفع، تحليل البيانات)، طالما أن هذه الأطراف توافق على عدم الإفصاح عن هذه المعلومات واستخدامها فقط لأداء المهام الموكلة إليهم.</span></p>
+          
+          <p style="margin-bottom: 5px;"><span style="font-size: 20px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">· الامتثال القانوني:</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">قد نفصح عن معلوماتك إذا كان القانون يطلب ذلك أو استجابة لطلبات صحيحة من السلطات العامة (مثل محكمة أو وكالة حكومية).</span></p>
+          
+          <p style="margin-bottom: 5px;"><span style="font-size: 20px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">· حماية الحقوق:</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">قد نفصح عن معلوماتك للدفاع عن حقوقنا أو ممتلكاتنا، أو لإنفاذ سياساتنا، أو لحماية سلامة موظفينا أو عملائنا أو الآخرين.</span></p>
+          
+          <p style="margin-bottom: 5px;"><span style="font-size: 20px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">· نقل الأعمال:</span></p>
+          <p style="margin-bottom: 30px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">في حالة الاندماج أو الاستحواذ أو بيع أصول الشركة، قد يتم نقل معلوماتك كجزء من الصفقة. سنقوم بإخطارك قبل نقل معلوماتك الشخصية وإخضاعها لسياسة خصوصية مختلفة.</span></p>
+          
+          <!-- خامساً: حقوقك بخصوص بياناتك -->
+          <p style="margin-bottom: 25px;"><span style="font-size: 24px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">خامساً: حقوقك بخصوص بياناتك</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 20px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">بناءً على القوانين المعمول بها، قد يكون لديك حقوق معينة فيما يتعلق ببياناتك الشخصية، بما في ذلك:</span></p>
+          
+          <p style="margin-bottom: 5px;"><span style="font-size: 20px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">· حق الوصول:</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">طلب نسخ من معلوماتك الشخصية التي نحتفظ بها.</span></p>
+          
+          <p style="margin-bottom: 5px;"><span style="font-size: 20px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">· حق التصحيح:</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">طلب تصحيح أي معلومات تعتقد أنها غير دقيقة أو غير كاملة.</span></p>
+          
+          <p style="margin-bottom: 5px;"><span style="font-size: 20px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">· حق المحو:</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">طلب حذف معلوماتك الشخصية في ظل ظروف معينة.</span></p>
+          
+          <p style="margin-bottom: 5px;"><span style="font-size: 20px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">· حق الاعتراض:</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">الاعتراض على معالجتنا لمعلوماتك الشخصية.</span></p>
+          
+          <p style="margin-bottom: 5px;"><span style="font-size: 20px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">· حق تقييد المعالجة:</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">طلب تقييد معالجة معلوماتك الشخصية.</span></p>
+          
+          <p style="margin-bottom: 5px;"><span style="font-size: 20px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">· حق نقل البيانات:</span></p>
+          <p style="margin-bottom: 25px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">طلب نقل معلوماتك الشخصية إليك أو إلى طرف ثالث.</span></p>
+          
+          <p style="margin-bottom: 30px;"><span style="font-size: 20px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">لممارسة هذه الحقوق، يرجى الاتصال بنا باستخدام معلومات الاتصال أدناه. قد نحتاج إلى التحقق من هويتك قبل معالجة طلبك.</span></p>
+          
+          <!-- سادساً: الاحتفاظ بالبيانات -->
+          <p style="margin-bottom: 25px;"><span style="font-size: 24px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">سادساً: الاحتفاظ بالبيانات</span></p>
+          <p style="margin-bottom: 30px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">سنحتفظ بمعلوماتك الشخصية فقط للمدة اللازمة لتحقيق الأغراض الموضحة في هذه السياسة، ما لم يكن مطلوباً أو مسموحاً بفترة احتفاظ أطول بموجب القانون.</span></p>
+          
+          <!-- سابعاً: الروابط الخارجية -->
+          <p style="margin-bottom: 25px;"><span style="font-size: 24px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">سابعاً: الروابط الخارجية</span></p>
+          <p style="margin-bottom: 30px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">قد يحتوي موقعنا على روابط لمواقع أخرى لا تديرها وايت روز. إذا نقرت على رابط لطرف ثالث، فسيتم توجيهك إلى موقع ذلك الطرف. ليس لدينا أي سيطرة على محتوى أو ممارسات الخصوصية للمواقع الأخرى، ولا نتحمل أي مسؤولية عنها. ننصحك بشدة بمراجعة سياسة الخصوصية لكل موقع تزوره.</span></p>
+          
+          <!-- ثامناً: خصوصية الأطفال -->
+          <p style="margin-bottom: 25px;"><span style="font-size: 24px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">ثامناً: خصوصية الأطفال</span></p>
+          <p style="margin-bottom: 30px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">موقعنا لا يستهدف الأطفال دون سن [13/16]. لا نجمع عن قصد معلومات شخصية من الأطفال. إذا كنت أحد الوالدين أو الوصي وكنت تعلم أن طفلك قد قدم لنا معلومات شخصية، فيرجى الاتصال بنا. إذا أصبحنا على علم بأننا جمعنا معلومات شخصية من أطفال دون سن [13/16] دون التحقق من موافقة الوالدين، فسنتخذ خطوات لإزالة تلك المعلومات من خوادمنا.</span></p>
+          
+          <!-- تاسعاً: التغييرات على سياسة الخصوصية هذه -->
+          <p style="margin-bottom: 25px;"><span style="font-size: 24px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">تاسعاً: التغييرات على سياسة الخصوصية هذه</span></p>
+          <p style="margin-bottom: 30px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">قد نقوم بتحديث سياسة الخصوصية الخاصة بنا من وقت لآخر. سنقوم بإخطارك بأي تغييرات عن طريق نشر السياسة الجديدة على هذه الصفحة وتحديث تاريخ "آخر تحديث" في أعلى هذه الصفحة. ننصحك بمراجعة هذه الصفحة بشكل دوري لمعرفة أي تغييرات. تصبح التغييرات سارية المفعول فور نشرها على هذه الصفحة.</span></p>
+          
+          <!-- عاشراً: اتصل بنا -->
+          <p style="margin-bottom: 25px;"><span style="font-size: 24px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">عاشراً: اتصل بنا</span></p>
+          <p style="margin-bottom: 15px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">إذا كان لديك أي أسئلة أو استفسارات حول سياسة الخصوصية هذه أو ممارساتنا المتعلقة ببياناتك، أو إذا كنت ترغب في ممارسة حقوقك، فيرجى الاتصال بنا عبر:</span></p>
+          <p style="margin-bottom: 10px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">· البريد الإلكتروني: [Whiterose2000e@gmail.com]</span></p>
+          <p style="margin-bottom: 10px;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">· رقم الهاتف: [0503962097]</span></p>
+          <p style="margin-bottom: 0;"><span style="font-size: 16px; text-decoration: none; line-height: 110.000002%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">· العنوان البريدي: [29751]</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- المنيو العربي (للصفحات غير الرئيسية) -->
+    <div id="menu" class="menu-overlay">
+      <div style="width: 386px; height: 365px; position: absolute; left: 50%; transform: translateX(-50%); top: 90px;">
+        <!-- الخلفية الرئيسية للقائمة (زجاجية بيضاء) -->
+        <div style="width: 309px; height: 365px; position: absolute; left: 0px; top: 0px;">
+          <div style="width: 309px; height: 365px; position: absolute; left: 0px; top: 0px; background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(15px) brightness(1) contrast(1.05); -webkit-backdrop-filter: blur(15px) brightness(1) contrast(1.05); box-shadow: inset 0 0.6px 0.6px rgba(255,255,255,1), inset 0.6px 0 0.6px rgba(255,255,255,0.5), inset -0.6px 0 0.6px rgba(255,255,255,0.5), inset 0 -0.6px 0.6px rgba(255,255,255,0.3), inset 0 2px 2px rgba(0,0,0,0.1), inset 0 -2px 2px rgba(0,0,0,0.1), inset 2px 0 2px rgba(0,0,0,0.1), inset -2px 0 2px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) inset; border-radius: 24px; overflow: hidden; box-sizing: border-box;">
+            
+            <!-- أيقونة "الرئيسية" في الأعلى -->
+            <div style="width: 309px; height: 20px; position: absolute; left: 0px; top: 26px;">
+              <div style="position: absolute; left: 125.5px; top: 0px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                <a href="/White-rose/ar/index.html" style="text-decoration: none; color: inherit;">
+                  <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">الرئيسية</span>
+                </a>
+              </div>
+            </div>
+            
+            <!-- روابط القائمة الرئيسية (عربية) -->
+            <div style="width: 309px; height: 218px; position: absolute; left: 0px; top: 136px;">
+              <div style="position: absolute; left: 0px; top: 0px; width: 309px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                <a href="/White-rose/ar/wedding-dress.html" style="text-decoration: none; color: inherit;">
+                  <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">فستان الزفاف</span>
+                </a>
+              </div>
+              <div style="position: absolute; left: 0px; top: 62px; width: 309px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                <a href="/White-rose/ar/evening-dress.html" style="text-decoration: none; color: inherit;">
+                  <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">فستان السهرة</span>
+                </a>
+              </div>
+              <div style="position: absolute; left: 0px; top: 124px; width: 309px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                <a href="/White-rose/ar/kids-dress.html" style="text-decoration: none; color: inherit;">
+                  <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">فساتين الأطفال</span>
+                </a>
+              </div>
+              <div style="position: absolute; left: 0px; top: 186px; width: 309px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+                <a href="/White-rose/ar/process.html" style="text-decoration: none; color: inherit;">
+                  <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">خطوات العمل</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- الأعمدة الجانبية مع الأيقونات الدائرية -->
+        <div style="width: 50px; height: 362px; position: absolute; left: 336px; top: 1.5px;">
+          <!-- الجزء العلوي (أيقونة إضافية) -->
+          <div style="width: 50px; height: 66px; position: absolute; left: 0px; top: 0px; background: rgba(255,255,255,0.3); backdrop-filter: blur(15px) brightness(1) contrast(1.05); -webkit-backdrop-filter: blur(15px) brightness(1) contrast(1.05); box-shadow: inset 0 0.6px 0.6px rgba(255,255,255,1), inset 0.6px 0 0.6px rgba(255,255,255,0.5), inset -0.6px 0 0.6px rgba(255,255,255,0.5), inset 0 -0.6px 0.6px rgba(255,255,255,0.3), inset 0 2px 2px rgba(0,0,0,0.1), inset 0 -2px 2px rgba(0,0,0,0.1), inset 2px 0 2px rgba(0,0,0,0.1), inset -2px 0 2px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) inset; border-radius: 24px; overflow: hidden; box-sizing: border-box;">
+            <div class="circle-icon" style="position: absolute; left: 10px; top: 18px;"></div>
+          </div>
+          <!-- الجزء السفلي (الأيقونات الأربعة) -->
+          <div style="width: 50px; height: 249px; position: absolute; left: 0px; top: 113px; background: rgba(255,255,255,0.3); backdrop-filter: blur(15px) brightness(1) contrast(1.05); -webkit-backdrop-filter: blur(15px) brightness(1) contrast(1.05); box-shadow: inset 0 0.6px 0.6px rgba(255,255,255,1), inset 0.6px 0 0.6px rgba(255,255,255,0.5), inset -0.6px 0 0.6px rgba(255,255,255,0.5), inset 0 -0.6px 0.6px rgba(255,255,255,0.3), inset 0 2px 2px rgba(0,0,0,0.1), inset 0 -2px 2px rgba(0,0,0,0.1), inset 2px 0 2px rgba(0,0,0,0.1), inset -2px 0 2px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) inset; border-radius: 24px; overflow: hidden; box-sizing: border-box;">
+            <div class="circle-icon" style="position: absolute; left: 10px; top: 18px;"></div>
+            <div class="circle-icon" style="position: absolute; left: 10px; top: 79px;"></div>
+            <div class="circle-icon" style="position: absolute; left: 10px; top: 140px;"></div>
+            <div class="circle-icon" style="position: absolute; left: 10px; top: 201px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- تراكب التعتيم -->
+    <div id="overlay" class="overlay"></div>
+  </div>
+
+  <!-- سكربت التحكم في المنيو -->
+  <script>
+    const menuIcon = document.getElementById('menuIcon');
+    const menu = document.getElementById('menu');
+    const overlay = document.getElementById('overlay');
+
+    function toggleMenu(show) {
+      if (show) {
+        menu.classList.add('show');
+        overlay.classList.add('show');
+        document.body.classList.add('menu-open');
+      } else {
+        menu.classList.remove('show');
+        overlay.classList.remove('show');
+        document.body.classList.remove('menu-open');
+      }
+    }
+
+    menuIcon.addEventListener('click', function(event) {
+      event.stopPropagation();
+      const isOpen = menu.classList.contains('show');
+      toggleMenu(!isOpen);
+    });
+
+    document.addEventListener('click', function(event) {
+      if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+        toggleMenu(false);
+      }
+    });
+  </script>
+
+  <script>
+    const page = {
+      width: 393,
+      height: 4667
+    }
+    const resizePage = () => {
+      const viewWidth = window.innerWidth;
+      const container = document.getElementById('container');
+      const scale = viewWidth / page.width;
+      const displayHeight = page.height * scale || 0;
+      document.body.style.paddingTop = displayHeight + 'px';
+      container.style.transform = 'scale(' + scale + ')';
+      container.style.display = 'block';
+    };
+    resizePage();
+    (function () {
+      var throttle = function (type, name, obj) {
+        obj = obj || window;
+        var running = false;
+        var func = function () {
+          if (running) return;
+          running = true;
+          requestAnimationFrame(function () {
+            obj.dispatchEvent(new CustomEvent(name));
+            running = false;
+          });
+        };
+        obj.addEventListener(type, func);
+      };
+      throttle("resize", "optimizedResize");
+    })();
+    window.addEventListener("optimizedResize", resizePage);
+  </script>
+</body>
+</html>
