@@ -1,4 +1,7 @@
+document.body.style.backgroundColor = 'lightblue'; // هذا السطر موجود أصلاً
+console.log('1. سأحاول إظهار الحاوية');
 document.getElementById('container').style.display = 'block';
+console.log('2. تم تنفيذ الأمر');
 // ========== التحكم في المنيو ==========
 const menuIcon = document.getElementById('menuIcon');
 const menu = document.getElementById('menu');
