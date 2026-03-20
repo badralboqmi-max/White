@@ -32,8 +32,12 @@ const resizePage = () => {
   const scale = viewWidth / page.width;
   const displayHeight = getPageHeight() * scale || 0;
   document.body.style.paddingTop = displayHeight + 'px';
-  container.style.transform = 'scale(' + scale + ')';
+  
+  // التأكد من أن الحاوية تظهر ولا يتم قص محتواها
   container.style.display = 'block';
+  container.style.overflow = 'visible';   // <-- السطر الجديد (يحل مشكلة اختفاء المحتوى)
+  
+  container.style.transform = 'scale(' + scale + ')';
 };
 resizePage();
 (function () {
