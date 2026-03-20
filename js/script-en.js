@@ -1,7 +1,13 @@
-document.body.style.backgroundColor = 'lightblue'; // هذا السطر موجود أصلاً
-console.log('1. سأحاول إظهار الحاوية');
-document.getElementById('container').style.display = 'block';
-console.log('2. تم تنفيذ الأمر');
+window.addEventListener('load', function() {
+    var container = document.getElementById('container');
+    if (container) {
+        alert('✓ العنصر container موجود');
+        // نحاول إظهاره
+        container.style.display = 'block';
+    } else {
+        alert('✗ العنصر container غير موجود!');
+    }
+});
 // ========== التحكم في المنيو ==========
 const menuIcon = document.getElementById('menuIcon');
 const menu = document.getElementById('menu');
