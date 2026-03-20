@@ -1,11 +1,11 @@
 window.addEventListener('load', function() {
     var container = document.getElementById('container');
     if (container) {
-        alert('✓ العنصر container موجود');
-        // نحاول إظهاره
         container.style.display = 'block';
-    } else {
-        alert('✗ العنصر container غير موجود!');
+        container.style.backgroundColor = 'yellow'; // لون مؤقت
+        container.style.height = '500px'; // ارتفاع مؤقت
+        container.style.overflow = 'visible'; // للتأكد من ظهور المحتوى
+        alert('تم إظهار الحاوية بلون أصفر');
     }
 });
 // ========== التحكم في المنيو ==========
