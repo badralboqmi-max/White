@@ -1,4 +1,4 @@
-document.body.style.backgroundColor = 'lightblue';
+document.getElementById('container').style.display = 'block';
 // ========== التحكم في المنيو ==========
 const menuIcon = document.getElementById('menuIcon');
 const menu = document.getElementById('menu');
