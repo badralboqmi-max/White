@@ -1,13 +1,3 @@
-window.addEventListener('load', function() {
-    var container = document.getElementById('container');
-    if (container) {
-        container.style.display = 'block';
-        container.style.backgroundColor = 'yellow'; // لون مؤقت
-        container.style.height = '500px'; // ارتفاع مؤقت
-        container.style.overflow = 'visible'; // للتأكد من ظهور المحتوى
-        alert('تم إظهار الحاوية بلون أصفر');
-    }
-});
 // ========== التحكم في المنيو ==========
 const menuIcon = document.getElementById('menuIcon');
 const menu = document.getElementById('menu');
