@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,208 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Arya:wght@400;700&family=El+Messiri:wght@400..700&family=Playpen+Sans+Arabic:wght@100..800&display=swap" rel="stylesheet">
-  <style id="reset">
-    *,
-    ::before,
-    ::after {
-      box-sizing: border-box;
-      border-width: 0;
-    }
-    html,
-    body {
-      padding: 0;
-      margin: 0;
-    }
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-size: inherit;
-      font-weight: inherit;
-    }
-    a {
-      color: inherit;
-      text-decoration: inherit;
-    }
-    b,
-    strong {
-      font-weight: bolder;
-    }
-    code,
-    kbd,
-    samp,
-    pre {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 1em;
-    }
-    small {
-      font-size: 80%;
-    }
-    table {
-      text-indent: 0;
-      border-color: inherit;
-      border-collapse: collapse;
-    }
-    button,
-    input,
-    optgroup,
-    select,
-    textarea {
-      font-family: inherit;
-      font-size: 100%;
-      line-height: inherit;
-      color: inherit;
-      margin: 0;
-      padding: 0;
-    }
-    button,
-    select {
-      text-transform: none;
-    }
-    button,
-    [type='button'],
-    [type='reset'],
-    [type='submit'] {
-      -webkit-appearance: button;
-      background-color: transparent;
-      background-image: none;
-    }
-    progress {
-      vertical-align: baseline;
-    }
-    ::-webkit-inner-spin-button,
-    ::-webkit-outer-spin-button {
-      height: auto;
-    }
-    blockquote,
-    dl,
-    dd,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    hr,
-    figure,
-    p,
-    pre {
-      margin: 0;
-    }
-    fieldset {
-      margin: 0;
-      padding: 0;
-    }
-    legend {
-      padding: 0;
-    }
-    ol,
-    ul,
-    menu {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    textarea {
-      resize: vertical;
-    }
-    input::placeholder,
-    textarea::placeholder {
-      opacity: 1;
-      color: #9ca3af;
-    }
-    img,
-    svg,
-    video,
-    canvas,
-    audio,
-    iframe,
-    embed,
-    object {
-      display: block;
-      vertical-align: middle;
-    }
-    img,
-    video {
-      max-width: 100%;
-      height: auto;
-    }
-  </style>
-  <style>
-    html,
-    body {
-      position: relative;
-      margin: 0;
-      padding: 0;
-    }
-    .bg-clip-text {
-      -webkit-background-clip: text !important;
-      background-clip: text !important;
-    }
-    #container {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 393px;
-      height: 852px;
-      transform-origin: 0 0;
-      transform: scale(1);
-      display: none;
-      overflow: hidden;
-    }
-    /* المنيو مخفي افتراضياً مع تأثير fade */
-    .menu-overlay {
-      position: absolute;
-      left: 0;
-      top: 86px; /* أسفل الهيدر مباشرة */
-      width: 393px;
-      height: 365px;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      z-index: 100;
-    }
-    .menu-overlay.show {
-      opacity: 1;
-      visibility: visible;
-    }
-    /* تراكب التعتيم */
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 393px;
-      height: 852px;
-      background: rgba(0, 0, 0, 0.5);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      z-index: 90;
-    }
-    .overlay.show {
-      opacity: 1;
-      visibility: visible;
-    }
-    /* الدوائر الجانبية */
-    .circle-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 75% 30%, 
-        #fff 2%, 
-        #999 3%,       
-        #555 9%,       
-        #111 45%,       
-        #000 100%       
-      );
-      border: 3px solid #777;
-      box-sizing: border-box;
-    }
-  </style>
+  <link rel="stylesheet" href="../css/style-ar.css">
 </head>
-<body>
+<body class="inner-page">
   <div id="container">
     <div style="width: 393px; height: 852px; position: absolute; background: linear-gradient(245deg, rgb(69, 237, 224) 0%, rgb(25, 167, 155) 90%); overflow: hidden;">
 
@@ -224,7 +25,7 @@
         <!-- عنوان الصفحة "خطوات العمل" -->
         <div style="width: 393px; height: 36px; position: absolute; left: 0px; top: 105px;">
           <div style="position: absolute; left: 50%; transform: translateX(-50%); top: 0px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
-            <p><span style="font-size: 30px; text-decoration: none; line-height: 100%; font-weight: 500; font-family: 'Playpen Sans Arabic', cursive; white-space: break-spaces; color: rgb(3, 69, 63); text-transform: none;">خطوات العمل</span></p>
+            <p><span style="font-size: 30px; text-decoration: none; line-height: 100%; font-weight: 500; font-family: 'Playpen Sans Arabic', cursive; white-space: break-spaces; color: rgb(3, 69, 63); text-transform: none;">خطوات التفصيل</span></p>
           </div>
         </div>
       </div>
@@ -233,7 +34,6 @@
       <div style="width: 393px; height: 692px; position: absolute; left: 0px; top: 160px;">
         <div style="width: 583px; height: 230.666672px; position: absolute; left: -95px; top: 0px;">
           <div style="width: 277px; height: 230.666672px; position: absolute; left: 161.382629px; top: -9.380333px; background: linear-gradient(245deg, rgb(141, 244, 236) 0%, rgb(24, 167, 155) 100%); border-radius: 15px; transform-origin: left top; filter: drop-shadow(rgba(0, 0, 0, 0.25) -5px 4px 4px);">
-            <!-- دائرة الرقم 1 (CSS) -->
             <div style="width: 60px; height: 60px; position: absolute; left: 108px; top: 15px; border-radius: 50%; border: 2px dashed rgb(3, 69, 63); background: transparent; display: flex; align-items: center; justify-content: center; z-index: 2;">
               <span style="font-size: 36px; font-weight: 700; font-family: 'inria serif'; color: rgb(3, 69, 63);">1</span>
             </div>
@@ -249,7 +49,6 @@
         </div>
         <div style="width: 583px; height: 230.666656px; position: absolute; left: -95px; top: 230.666672px;">
           <div style="width: 277px; height: 230.666656px; position: absolute; left: 143.475067px; top: 12.509946px; background: linear-gradient(245deg, rgb(141, 244, 236) 0%, rgb(24, 167, 155) 100%); border-radius: 15px; transform: rotate(-5deg); transform-origin: left top; filter: drop-shadow(rgba(0, 0, 0, 0.25) -5px 4px 4px);">
-            <!-- دائرة الرقم 2 (CSS) -->
             <div style="width: 60px; height: 60px; position: absolute; left: 108px; top: 15px; border-radius: 50%; border: 2px dashed rgb(3, 69, 63); background: transparent; display: flex; align-items: center; justify-content: center; z-index: 2;">
               <span style="font-size: 36px; font-weight: 700; font-family: 'inria serif'; color: rgb(3, 69, 63);">2</span>
             </div>
@@ -265,7 +64,6 @@
         </div>
         <div style="width: 583px; height: 230.666656px; position: absolute; left: -95px; top: 461.333313px;">
           <div style="width: 277px; height: 230.666656px; position: absolute; left: 153px; top: 0px; background: linear-gradient(245deg, rgb(141, 244, 236) 0%, rgb(24, 167, 155) 100%); border-radius: 15px; transform-origin: left top; filter: drop-shadow(rgba(0, 0, 0, 0.25) -5px 4px 4px);">
-            <!-- دائرة الرقم 3 (CSS) -->
             <div style="width: 60px; height: 60px; position: absolute; left: 108px; top: 15px; border-radius: 50%; border: 2px dashed rgb(3, 69, 63); background: transparent; display: flex; align-items: center; justify-content: center; z-index: 2;">
               <span style="font-size: 36px; font-weight: 700; font-family: 'inria serif'; color: rgb(3, 69, 63);">3</span>
             </div>
@@ -284,52 +82,46 @@
       <!-- المنيو العربي (للصفحات غير الرئيسية) -->
       <div id="menu" class="menu-overlay">
         <div style="width: 386px; height: 365px; position: absolute; left: 50%; transform: translateX(-50%); top: 90px;">
-          <!-- الخلفية الرئيسية للقائمة (زجاجية بيضاء) -->
           <div style="width: 309px; height: 365px; position: absolute; left: 0px; top: 0px;">
             <div style="width: 309px; height: 365px; position: absolute; left: 0px; top: 0px; background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(15px) brightness(1) contrast(1.05); -webkit-backdrop-filter: blur(15px) brightness(1) contrast(1.05); box-shadow: inset 0 0.6px 0.6px rgba(255,255,255,1), inset 0.6px 0 0.6px rgba(255,255,255,0.5), inset -0.6px 0 0.6px rgba(255,255,255,0.5), inset 0 -0.6px 0.6px rgba(255,255,255,0.3), inset 0 2px 2px rgba(0,0,0,0.1), inset 0 -2px 2px rgba(0,0,0,0.1), inset 2px 0 2px rgba(0,0,0,0.1), inset -2px 0 2px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) inset; border-radius: 24px; overflow: hidden; box-sizing: border-box;">
               
-              <!-- أيقونة "الرئيسية" في الأعلى -->
               <div style="width: 309px; height: 20px; position: absolute; left: 0px; top: 26px;">
                 <div style="position: absolute; left: 125.5px; top: 0px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
-                  <a href="/White-rose/ar/index.html" style="text-decoration: none; color: inherit;">
+                  <a href="index.html" style="text-decoration: none; color: inherit;">
                     <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">الرئيسية</span>
                   </a>
                 </div>
               </div>
               
-              <!-- روابط القائمة الرئيسية (عربية) -->
               <div style="width: 309px; height: 218px; position: absolute; left: 0px; top: 136px;">
                 <div style="position: absolute; left: 0px; top: 0px; width: 309px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
-                  <a href="/White-rose/ar/wedding-dress.html" style="text-decoration: none; color: inherit;">
+                  <a href="wedding-dress.html" style="text-decoration: none; color: inherit;">
                     <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">فستان الزفاف</span>
                   </a>
                 </div>
                 <div style="position: absolute; left: 0px; top: 62px; width: 309px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
-                  <a href="/White-rose/ar/evening-dress.html" style="text-decoration: none; color: inherit;">
+                  <a href="evening-dress.html" style="text-decoration: none; color: inherit;">
                     <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">فستان السهرة</span>
                   </a>
                 </div>
                 <div style="position: absolute; left: 0px; top: 124px; width: 309px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
-                  <a href="/White-rose/ar/kids-dress.html" style="text-decoration: none; color: inherit;">
+                  <a href="kids-dress.html" style="text-decoration: none; color: inherit;">
                     <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">فساتين الأطفال</span>
                   </a>
                 </div>
                 <div style="position: absolute; left: 0px; top: 186px; width: 309px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
-                  <a href="/White-rose/ar/process.html" style="text-decoration: none; color: inherit;">
-                    <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">خطوات العمل</span>
+                  <a href="process.html" style="text-decoration: none; color: inherit;">
+                    <span style="font-size: 20px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: 'inria serif'; white-space: break-spaces; color: rgb(240, 240, 240); text-transform: uppercase;">خطوات التفصيل</span>
                   </a>
                 </div>
               </div>
             </div>
           </div>
           
-          <!-- الأعمدة الجانبية مع الأيقونات الدائرية -->
           <div style="width: 50px; height: 362px; position: absolute; left: 336px; top: 1.5px;">
-            <!-- الجزء العلوي (أيقونة إضافية) -->
             <div style="width: 50px; height: 66px; position: absolute; left: 0px; top: 0px; background: rgba(255,255,255,0.3); backdrop-filter: blur(15px) brightness(1) contrast(1.05); -webkit-backdrop-filter: blur(15px) brightness(1) contrast(1.05); box-shadow: inset 0 0.6px 0.6px rgba(255,255,255,1), inset 0.6px 0 0.6px rgba(255,255,255,0.5), inset -0.6px 0 0.6px rgba(255,255,255,0.5), inset 0 -0.6px 0.6px rgba(255,255,255,0.3), inset 0 2px 2px rgba(0,0,0,0.1), inset 0 -2px 2px rgba(0,0,0,0.1), inset 2px 0 2px rgba(0,0,0,0.1), inset -2px 0 2px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) inset; border-radius: 24px; overflow: hidden; box-sizing: border-box;">
               <div class="circle-icon" style="position: absolute; left: 10px; top: 18px;"></div>
             </div>
-            <!-- الجزء السفلي (الأيقونات الأربعة) -->
             <div style="width: 50px; height: 249px; position: absolute; left: 0px; top: 113px; background: rgba(255,255,255,0.3); backdrop-filter: blur(15px) brightness(1) contrast(1.05); -webkit-backdrop-filter: blur(15px) brightness(1) contrast(1.05); box-shadow: inset 0 0.6px 0.6px rgba(255,255,255,1), inset 0.6px 0 0.6px rgba(255,255,255,0.5), inset -0.6px 0 0.6px rgba(255,255,255,0.5), inset 0 -0.6px 0.6px rgba(255,255,255,0.3), inset 0 2px 2px rgba(0,0,0,0.1), inset 0 -2px 2px rgba(0,0,0,0.1), inset 2px 0 2px rgba(0,0,0,0.1), inset -2px 0 2px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) inset; border-radius: 24px; overflow: hidden; box-sizing: border-box;">
               <div class="circle-icon" style="position: absolute; left: 10px; top: 18px;"></div>
               <div class="circle-icon" style="position: absolute; left: 10px; top: 79px;"></div>
@@ -346,58 +138,32 @@
     </div> <!-- نهاية الحاوية الرئيسية للصفحة -->
   </div> <!-- نهاية #container -->
 
-  <!-- سكربت التحكم في المنيو -->
-  <script>
-    const menuIcon = document.getElementById('menuIcon');
-    const menu = document.getElementById('menu');
-    const overlay = document.getElementById('overlay');
+  <!-- ========== نافذة التسجيل الإلزامية (عربية) ========== -->
+  <div id="popupOverlay" class="popup-overlay">
+    <div class="popup-container">
+      <div class="popup-field">
+        <label>الاسم</label>
+        <input type="text" id="popupName" placeholder="أدخل اسمك">
+      </div>
+      <div class="popup-field">
+        <label>رقم الجوال</label>
+        <input type="tel" id="popupPhone" placeholder="05xxxxxxxx">
+      </div>
+      <div class="checkbox-group">
+        <div class="checkbox-item">
+          <input type="checkbox" id="popupCheck1" checked disabled>
+          <label for="popupCheck1">(اختياري) أريد استلام عروض</label>
+        </div>
+        <div class="checkbox-item">
+          <input type="checkbox" id="popupCheck2" required>
+          <label for="popupCheck2">أوافق على السياسة والخصوصية</label>
+        </div>
+      </div>
+      <div id="popupMessage" class="popup-error"></div>
+      <button class="popup-button" onclick="submitPopup()">تسجيل</button>
+    </div>
+  </div>
 
-    menuIcon.addEventListener('click', function(event) {
-      event.stopPropagation();
-      menu.classList.toggle('show');
-      overlay.classList.toggle('show');
-    });
-
-    document.addEventListener('click', function(event) {
-      if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
-        menu.classList.remove('show');
-        overlay.classList.remove('show');
-      }
-    });
-  </script>
-
-  <script>
-    const page = {
-      width: 393,
-      height: 852
-    }
-    const resizePage = () => {
-      const viewWidth = window.innerWidth;
-      const container = document.getElementById('container');
-      const scale = viewWidth / page.width;
-      const displayHeight = page.height * scale || 0;
-      document.body.style.paddingTop = displayHeight + 'px';
-      container.style.transform = 'scale(' + scale + ')';
-      container.style.display = 'block';
-    };
-    resizePage();
-    (function () {
-      var throttle = function (type, name, obj) {
-        obj = obj || window;
-        var running = false;
-        var func = function () {
-          if (running) return;
-          running = true;
-          requestAnimationFrame(function () {
-            obj.dispatchEvent(new CustomEvent(name));
-            running = false;
-          });
-        };
-        obj.addEventListener(type, func);
-      };
-      throttle("resize", "optimizedResize");
-    })();
-    window.addEventListener("optimizedResize", resizePage);
-  </script>
+  <script src="../js/script-ar.js"></script>
 </body>
 </html>
