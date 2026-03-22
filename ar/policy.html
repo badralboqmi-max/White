@@ -158,31 +158,46 @@
   </div>
 
   <!-- ========== نافذة التسجيل الإلزامية (عربية) ========== -->
-  <div id="popupOverlay" class="popup-overlay">
-    <div class="popup-container">
-      <div class="popup-field">
-        <label>الاسم</label>
-        <input type="text" id="popupName" placeholder="أدخل اسمك">
-      </div>
-      <div class="popup-field">
-        <label>رقم الجوال</label>
-        <input type="tel" id="popupPhone" placeholder="05xxxxxxxx">
-      </div>
-      <div class="checkbox-group">
-        <div class="checkbox-item">
-          <input type="checkbox" id="popupCheck1" checked disabled>
-          <label for="popupCheck1">(اختياري) أريد استلام عروض</label>
-        </div>
-        <div class="checkbox-item">
-          <input type="checkbox" id="popupCheck2" required>
-          <label for="popupCheck2">أوافق على السياسة والخصوصية</label>
-        </div>
-      </div>
-      <div id="popupMessage" class="popup-error"></div>
-      <button class="popup-button" onclick="submitPopup()">تسجيل</button>
+<div id="popupOverlay" class="popup-overlay">
+  <div class="popup-container">
+    <!-- القسم العلوي (صورة + رسالة ترحيبية) -->
+    <div class="popup-header">
+      <img src="../images/big-logo.png" alt="مرحباً" class="popup-welcome-img">
+      <h3 class="popup-welcome-title">مرحباً بك في WHITE ROSE</h3>
+      <p class="popup-welcome-subtitle">سجل الآن لتحصل على عروض حصرية.</p>
     </div>
-  </div>
 
+    <!-- حقل الاسم -->
+    <div class="popup-field">
+      <label>الاسم</label>
+      <input type="text" id="popupName" placeholder="أدخل اسمك" required>
+    </div>
+
+    <!-- حقل رقم الجوال -->
+    <div class="popup-field">
+      <label>رقم الجوال</label>
+      <input type="tel" id="popupPhone" placeholder="05xxxxxxxx" required>
+    </div>
+
+    <!-- مربع الموافقة على سياسة الخصوصية (إلزامي) -->
+    <div class="checkbox-group">
+      <div class="checkbox-item">
+        <input type="checkbox" id="popupPrivacyCheck" required>
+        <label for="popupPrivacyCheck">
+          أقر بأني قرأت 
+          <a href="privacy.html" target="_blank" style="color: #2c2c2c; text-decoration: underline;">سياسة الخصوصية</a>
+          وأوافق عليها
+        </label>
+      </div>
+
+
+    <!-- رسالة الخطأ/النجاح -->
+    <div id="popupMessage" class="popup-error"></div>
+
+    <!-- زر التسجيل -->
+    <button class="popup-button" onclick="submitPopup()">تسجيل</button>
+  </div>
+</div>
   <script src="../js/script-ar.js"></script>
 </body>
 </html>
