@@ -1,7 +1,7 @@
 // ========== تعريف Supabase ==========
 const SUPABASE_URL = 'https://qyhpbdvcvxqhnptqzouw.supabase.co'; // استبدل بـ URL مشروعك
 const SUPABASE_ANON_KEY = 'sb_publishable_8aNuoaA4T8oWKs3ta0x6iw_o5jkQn_c'; // استبدل بالمفتاح العام
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ========== التحكم في المنيو ==========
 const menuIcon = document.getElementById('menuIcon');
@@ -110,10 +110,9 @@ window.submitPopup = async function() {
   btn.textContent = 'Sending...';
 
   try {
-    const { error } = await supabase
-      .from('customers')
-      .insert([{ name, phone, consent: agree }]);
-
+    const { error } = await supabaseClient
+  .from('customers')
+  .insert([{ name, phone, consent: agree }]);
     if (error) {
       if (error.code === '23505') { // انتهاك UNIQUE (رقم مكرر)
         messageDiv.textContent = 'This phone number is already registered.';
