@@ -1,3 +1,8 @@
+// ========== تعريف Supabase ==========
+const SUPABASE_URL = 'https://qyhpbdvcvxqhnptqzouw.supabase.co'; // استبدل بـ URL مشروعك
+const SUPABASE_ANON_KEY = 'sb_publishable_8aNuoaA4T8oWKs3ta0x6iw_o5jkQn_c'; // استبدل بالمفتاح العام
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 // ========== التحكم في المنيو ==========
 const menuIcon = document.getElementById('menuIcon');
 const menu = document.getElementById('menu');
@@ -32,10 +37,8 @@ const resizePage = () => {
   const displayHeight = getPageHeight() * scale || 0;
   document.body.style.paddingTop = displayHeight + 'px';
   
-  // التأكد من أن الحاوية تظهر ولا يتم قص محتواها
   container.style.display = 'block';
-  container.style.overflow = 'visible';   // <-- السطر المضافة
-  
+  container.style.overflow = 'visible';
   container.style.transform = 'scale(' + scale + ')';
 };
 resizePage();
@@ -76,6 +79,7 @@ window.closePopup = function() {
   document.body.style.overflow = 'auto';
 };
 
+// ========== دالة التسجيل مع Supabase ==========
 window.submitPopup = async function() {
   const name = document.getElementById('popupName').value.trim();
   const phone = document.getElementById('popupPhone').value.trim();
@@ -105,15 +109,33 @@ window.submitPopup = async function() {
   btn.disabled = true;
   btn.textContent = 'جاري التسجيل...';
 
-  setTimeout(() => {
-    localStorage.setItem('userRegistered', 'true');
-    messageDiv.textContent = 'تم التسجيل بنجاح! شكراً لك.';
-    messageDiv.className = 'popup-success';
-    document.getElementById('popupName').value = '';
-    document.getElementById('popupPhone').value = '';
-    document.getElementById('popupCheck2').checked = false;
-    setTimeout(closePopup, 2000);
+  try {
+    const { error } = await supabaseClient
+      .from('customers')
+      .insert([{ name, phone, consent: agree }]);
+
+    if (error) {
+      if (error.code === '23505') { // رقم مكرر
+        messageDiv.textContent = 'هذا الرقم مسجل مسبقاً';
+      } else {
+        throw error;
+      }
+      messageDiv.className = 'popup-error';
+    } else {
+      messageDiv.textContent = 'تم التسجيل بنجاح! شكراً لك.';
+      messageDiv.className = 'popup-success';
+      localStorage.setItem('userRegistered', 'true');
+      document.getElementById('popupName').value = '';
+      document.getElementById('popupPhone').value = '';
+      document.getElementById('popupCheck2').checked = false;
+      setTimeout(closePopup, 2000);
+    }
+  } catch (error) {
+    console.error(error);
+    messageDiv.textContent = 'حدث خطأ، حاول مرة أخرى';
+    messageDiv.className = 'popup-error';
+  } finally {
     btn.disabled = false;
     btn.textContent = 'تسجيل';
-  }, 1000);
+  }
 };
