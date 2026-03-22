@@ -1,3 +1,8 @@
+// ========== تعريف Supabase ==========
+const SUPABASE_URL = 'https://qyhpbdvcvxqhntpqzowupabase.co'; // استبدل بـ URL مشروعك
+const SUPABASE_ANON_KEY = 'sb_publishable_8aNuoaA4T8oWks3ta0x6iw_o5jkQ...'; // استبدل بالمفتاح العام
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 // ========== التحكم في المنيو ==========
 const menuIcon = document.getElementById('menuIcon');
 const menu = document.getElementById('menu');
@@ -18,7 +23,6 @@ document.addEventListener('click', function(event) {
 
 // ========== تحجيم الصفحة (resize) ==========
 function getPageHeight() {
-  // تحديد ارتفاع الحاوية حسب الصفحة
   if (document.body.classList.contains('home-page')) {
     return 1185;
   } else {
@@ -33,10 +37,8 @@ const resizePage = () => {
   const displayHeight = getPageHeight() * scale || 0;
   document.body.style.paddingTop = displayHeight + 'px';
   
-  // التأكد من أن الحاوية تظهر ولا يتم قص محتواها
   container.style.display = 'block';
-  container.style.overflow = 'visible';   // <-- السطر الجديد (يحل مشكلة اختفاء المحتوى)
-  
+  container.style.overflow = 'visible';
   container.style.transform = 'scale(' + scale + ')';
 };
 resizePage();
@@ -77,6 +79,7 @@ window.closePopup = function() {
   document.body.style.overflow = 'auto';
 };
 
+// ========== دالة التسجيل الجديدة مع Supabase ==========
 window.submitPopup = async function() {
   const name = document.getElementById('popupName').value.trim();
   const phone = document.getElementById('popupPhone').value.trim();
@@ -106,16 +109,33 @@ window.submitPopup = async function() {
   btn.disabled = true;
   btn.textContent = 'Sending...';
 
-  // محاكاة تسجيل ناجح
-  setTimeout(() => {
-    localStorage.setItem('userRegistered', 'true');
-    messageDiv.textContent = 'Registration successful! Thank you.';
-    messageDiv.className = 'popup-success';
-    document.getElementById('popupName').value = '';
-    document.getElementById('popupPhone').value = '';
-    document.getElementById('popupCheck2').checked = false;
-    setTimeout(closePopup, 2000);
+  try {
+    const { error } = await supabase
+      .from('customers')
+      .insert([{ name, phone, consent: agree }]);
+
+    if (error) {
+      if (error.code === '23505') { // انتهاك UNIQUE (رقم مكرر)
+        messageDiv.textContent = 'This phone number is already registered.';
+      } else {
+        throw error;
+      }
+      messageDiv.className = 'popup-error';
+    } else {
+      messageDiv.textContent = 'Registration successful! Thank you.';
+      messageDiv.className = 'popup-success';
+      localStorage.setItem('userRegistered', 'true');
+      document.getElementById('popupName').value = '';
+      document.getElementById('popupPhone').value = '';
+      document.getElementById('popupCheck2').checked = false;
+      setTimeout(closePopup, 2000);
+    }
+  } catch (error) {
+    console.error(error);
+    messageDiv.textContent = 'An error occurred. Please try again.';
+    messageDiv.className = 'popup-error';
+  } finally {
     btn.disabled = false;
     btn.textContent = 'Register';
-  }, 1000);
+  }
 };
