@@ -78,12 +78,11 @@ window.closePopup = function() {
   popupOverlay.classList.remove('show');
   document.body.style.overflow = 'auto';
 };
-
 // ========== دالة التسجيل مع Supabase ==========
 window.submitPopup = async function() {
   const name = document.getElementById('popupName').value.trim();
   const phone = document.getElementById('popupPhone').value.trim();
-  const agree = document.getElementById('popupCheck2').checked;
+  const agree = document.getElementById('popupPrivacyCheck').checked; // <-- تم التعديل
   const messageDiv = document.getElementById('popupMessage');
 
   if (!name || !phone) {
@@ -100,7 +99,7 @@ window.submitPopup = async function() {
   }
 
   if (!agree) {
-    messageDiv.textContent = 'يجب الموافقة على السياسة والخصوصية';
+    messageDiv.textContent = 'يجب الموافقة على سياسة الخصوصية';
     messageDiv.className = 'popup-error';
     return;
   }
@@ -127,7 +126,7 @@ window.submitPopup = async function() {
       localStorage.setItem('userRegistered', 'true');
       document.getElementById('popupName').value = '';
       document.getElementById('popupPhone').value = '';
-      document.getElementById('popupCheck2').checked = false;
+      document.getElementById('popupPrivacyCheck').checked = false; // <-- تم التعديل
       setTimeout(closePopup, 2000);
     }
   } catch (error) {
