@@ -83,7 +83,7 @@ window.closePopup = function() {
 window.submitPopup = async function() {
   const name = document.getElementById('popupName').value.trim();
   const phone = document.getElementById('popupPhone').value.trim();
-  const agree = document.getElementById('popupCheck2').checked;
+  const agree = document.getElementById('popupPrivacyCheck').checked; // <-- تم التعديل
   const messageDiv = document.getElementById('popupMessage');
 
   if (!name || !phone) {
@@ -100,7 +100,7 @@ window.submitPopup = async function() {
   }
 
   if (!agree) {
-    messageDiv.textContent = 'You must agree to the policy';
+    messageDiv.textContent = 'You must agree to the privacy policy';
     messageDiv.className = 'popup-error';
     return;
   }
@@ -111,10 +111,11 @@ window.submitPopup = async function() {
 
   try {
     const { error } = await supabaseClient
-  .from('customers')
-  .insert([{ name, phone, consent: agree }]);
+      .from('customers')
+      .insert([{ name, phone, consent: agree }]);
+
     if (error) {
-      if (error.code === '23505') { // انتهاك UNIQUE (رقم مكرر)
+      if (error.code === '23505') {
         messageDiv.textContent = 'This phone number is already registered.';
       } else {
         throw error;
@@ -126,7 +127,7 @@ window.submitPopup = async function() {
       localStorage.setItem('userRegistered', 'true');
       document.getElementById('popupName').value = '';
       document.getElementById('popupPhone').value = '';
-      document.getElementById('popupCheck2').checked = false;
+      document.getElementById('popupPrivacyCheck').checked = false; // <-- تم التعديل
       setTimeout(closePopup, 2000);
     }
   } catch (error) {
