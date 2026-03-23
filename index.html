@@ -6,9 +6,20 @@
   <title>Homepage - English</title>
   <link rel="stylesheet" href="/White/css/style-en.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    /* تأثيرات الظهور عند التمرير - أضفها إلى style-en.css أو هنا */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body class="home-page">
-  <!-- الصفحة الرئيسية الأصلية -->
   <div id="container">
     <div style="width: 393px; height: 1185px; position: absolute; overflow: hidden;">
       <div style="width: 393px; height: 866px; position: absolute; left: 0px; top: 0px; overflow: hidden;">
@@ -17,7 +28,6 @@
 
         <!-- الهيدر -->
         <div style="width: 393px; height: 86px; position: absolute; left: 0px; top: 0px; z-index: 2;">
-          <!-- أيقونة الترجمة -->
           <a href="ar/index.html" style="display: block; width: 70px; height: 80px; position: absolute; left: 0px; top: 0px; cursor: pointer;">
             <div style="width: 70px; height: 70px; position: absolute; left: 0px; top: 10px;">
               <div style="width: 50px; height: 50px; position: absolute; left: 10px; top: 10px; overflow: hidden;">
@@ -25,7 +35,6 @@
               </div>
             </div>
           </a>
-          <!-- أيقونة القائمة -->
           <div id="menuIcon" style="width: 77px; height: 86px; position: absolute; left: 316px; top: 0px; background: rgb(242, 253, 252); border-radius: 20px 0px 0px 20px; filter: drop-shadow(rgba(0, 0, 0, 0.25) 0px 4px 4px); cursor: pointer;">
             <div style="width: 50px; height: 50px; position: absolute; left: 7px; top: 18px;">
               <div style="width: 50px; height: 50px; position: absolute; left: 0px; top: 0px; overflow: hidden;">
@@ -35,8 +44,8 @@
           </div>
         </div>
 
-        <!-- نص White Rose -->
-        <div style="width: 393px; height: 256px; position: absolute; left: 0px; top: 100.5px; z-index: 2;">
+        <!-- نص White Rose (مع تأثير fade-up) -->
+        <div class="fade-up" style="width: 393px; height: 256px; position: absolute; left: 0px; top: 100.5px; z-index: 2;">
           <div style="width: 214px; height: 256px; position: absolute; left: 89.5px; top: 0px;">
             <div style="width: 214px; height: 106px; position: absolute; left: 0px; top: 75px;">
               <div style="position: absolute; left: 56px; top: 0px; text-align: right; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
@@ -51,8 +60,8 @@
 
         <!-- القسم السفلي (قبل الفوتر) -->
         <div style="width: 393px; height: 239px; position: absolute; left: 0px; top: 627px; z-index: 2;">
-          <!-- زر واتساب -->
-          <a href="https://wa.me/966500248878?text=مرحباً، أستفسر عن تفصيل فستان" target="_blank" style="display: block; width: 185px; height: 53px; position: absolute; left: 104px; top: 0px; background: linear-gradient(145deg, #2ae688, #1eb464); border-radius: 23px; text-decoration: none; color: inherit; box-shadow: 0 4px 10px rgba(0,0,0,0.7); transition: all 0.2s ease;">
+          <!-- زر واتساب (مع تأثير fade-up) -->
+          <a href="https://wa.me/966500248878?text=مرحباً، أستفسر عن تفصيل فستان" target="_blank" class="fade-up" style="display: block; width: 185px; height: 53px; position: absolute; left: 104px; top: 0px; background: linear-gradient(145deg, #2ae688, #1eb464); border-radius: 23px; text-decoration: none; color: inherit; box-shadow: 0 4px 10px rgba(0,0,0,0.7); transition: all 0.2s ease;">
             <div style="width: 30px; height: 30px; position: absolute; left: 38.5px; top: 11.5px;">
               <div style="width: 33px; height: 29.333332px; position: absolute; left: -11px; top: 0.333334px;">
                 <div style="width: 9.041666px; height: 7.104162px; position: absolute; left: 6px; top: 16.22917px;">
@@ -70,8 +79,8 @@
             </div>
           </a>
 
-          <!-- القسم الزجاجي -->
-          <div style="width: 393px; height: 180px; position: absolute; left: 50%; transform: translateX(-50%); top: 109px;background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px) brightness(0.9) contrast(1.05); -webkit-backdrop-filter: blur(15px) brightness(0.9) contrast(1.05); box-shadow: inset 0 0.6px 0.6px rgba(255,255,255,1), inset 0.6px 0 0.6px rgba(255,255,255,0.5), inset -0.6px 0 0.6px rgba(255,255,255,0.5), inset 0 -0.6px 0.6px rgba(255,255,255,0.3), inset 0 2px 2px rgba(0,0,0,0.1), inset 0 -2px 2px rgba(0,0,0,0.1),inset 2px 0 2px rgba(0,0,0,0.1), inset -2px 0 2px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) inset; border-radius: 24px; overflow: hidden; box-sizing: border-box;">
+          <!-- القسم الزجاجي (مع تأثير fade-up) -->
+          <div class="fade-up" style="width: 393px; height: 180px; position: absolute; left: 50%; transform: translateX(-50%); top: 109px;background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px) brightness(0.9) contrast(1.05); -webkit-backdrop-filter: blur(15px) brightness(0.9) contrast(1.05); box-shadow: inset 0 0.6px 0.6px rgba(255,255,255,1), inset 0.6px 0 0.6px rgba(255,255,255,0.5), inset -0.6px 0 0.6px rgba(255,255,255,0.5), inset 0 -0.6px 0.6px rgba(255,255,255,0.3), inset 0 2px 2px rgba(0,0,0,0.1), inset 0 -2px 2px rgba(0,0,0,0.1),inset 2px 0 2px rgba(0,0,0,0.1), inset -2px 0 2px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) inset; border-radius: 24px; overflow: hidden; box-sizing: border-box;">
             <div style="position: absolute; left: 0; width: 100%; top: 15px; text-align: center; padding: 0 10px; box-sizing: border-box;">
                 <p><span style="font-size: 20px; font-weight: 700; font-family: 'inria serif'; color: rgb(30,30,30);">STAND OUT</span></p>
             </div>
@@ -93,17 +102,15 @@
         </div>
       </div>
 
-      <!-- الفوتر -->
+      <!-- الفوتر (أضفنا fade-up لروابط السياسة) -->
       <div style="width: 393px; height: 319px; position: absolute; left: 0px; top: 866px; background: rgb(188, 177, 180); overflow: hidden;">
         <div style="width: 373px; height: 80px; position: absolute; left: 10px; top: 19px;">
           <div style="width: 64px; height: 24px; position: absolute; left: 297px; top: 28px;">
-            <!-- أيقونة إنستغرام -->
             <a href="https://www.instagram.com/wrose.shop?igsh=MW0xaHUwM3JuNTl6Zw%3D%3D&utm_source=qr" target="_blank" rel="noopener" style="display: block; width: 24px; height: 24px; position: absolute; left: 0px; top: 0px;">
               <div style="width: 24px; height: 24px; overflow: hidden;">
                 <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggaWQ9Ikljb24iIGQ9Ik0xMiAyLjE2M0MxNS4yMDQgMi4xNjMgMTUuNTg0IDIuMTc1IDE2Ljg1IDIuMjMzQzIwLjEwMiAyLjM4MSAyMS42MjEgMy45MjQgMjEuNzY5IDcuMTUyQzIxLjgyNyA4LjQxNyAyMS44MzggOC43OTcgMjEuODM4IDEyLjAwMUMyMS44MzggMTUuMjA2IDIxLjgyNiAxNS41ODUgMjEuNzY5IDE2Ljg1QzIxLjYyIDIwLjA3NSAyMC4xMDUgMjEuNjIxIDE2Ljg1IDIxLjc2OUMxNS41ODQgMjEuODI3IDE1LjIwNiAyMS44MzkgMTIgMjEuODM5QzguNzk2IDIxLjgzOSA4LjQxNiAyMS44MjcgNy4xNTEgMjEuNzY5QzMuODkxIDIxLjYyIDIuMzggMjAuMDcgMi4yMzIgMTYuODQ5QzIuMTc0IDE1LjU4NCAyLjE2MiAxNS4yMDUgMi4xNjIgMTJDMi4xNjIgOC43OTYgMi4xNzUgOC40MTcgMi4yMzIgNy4xNTFDMi4zODEgMy45MjQgMy44OTYgMi4zOCA3LjE1MSAyLjIzMkM4LjQxNyAyLjE3NSA4Ljc5NiAyLjE2MyAxMiAyLjE2M1pNMTIgMEM4Ljc0MSAwIDguMzMzIDAuMDE0IDcuMDUzIDAuMDcyQzIuNjk1IDAuMjcyIDAuMjczIDIuNjkgMC4wNzMgNy4wNTJDMC4wMTQgOC4zMzMgMCA4Ljc0MSAwIDEyQzAgMTUuMjU5IDAuMDE0IDE1LjY2OCAwLjA3MiAxNi45NDhDMC4yNzIgMjEuMzA2IDIuNjkgMjMuNzI4IDcuMDUyIDIzLjkyOEM4LjMzMyAyMy45ODYgOC43NDEgMjQgMTIgMjRDMTUuMjU5IDI0IDE1LjY2OCAyMy45ODYgMTYuOTQ4IDIzLjkyOEMyMS4zMDIgMjMuNzI4IDIzLjczIDIxLjMxIDIzLjkyNyAxNi45NDhDMjMuOTg2IDE1LjY2OCAyNCAxNS4yNTkgMjQgMTJDMjQgOC43NDEgMjMuOTg2IDguMzMzIDIzLjkyOCA3LjA1M0MyMy43MzIgMi42OTkgMjEuMzExIDAuMjczIDE2Ljk0OSAwLjA3M0MxNS42NjggMC4wMTQgMTUuMjU5IDAgMTIgMFpNMTIgNS44MzhDOC41OTcgNS44MzggNS44MzggOC41OTcgNS44MzggMTJDNS44MzggMTUuNDAzIDguNTk3IDE4LjE2MyAxMiAxOC4xNjNDMTUuNDAzIDE4LjE2MyAxOC4xNjIgMTUuNDA0IDE4LjE2MiAxMkMxOC4xNjIgOC41OTcgMTUuNDAzIDUuODM4IDEyIDUuODM4Wk0xMiAxNkM5Ljc5MSAxNiA4IDE0LjIxIDggMTJDOCA5Ljc5MSA5Ljc5MSA4IDEyIDhDMTQuMjA5IDggMTYgOS43OTEgMTYgMTJDMTYgMTQuMjEgMTQuMjA5IDE2IDEyIDE2Wk0xOC40MDYgNC4xNTVDMTcuNjEgNC4xNTUgMTYuOTY1IDQuOCAxNi45NjUgNS41OTVDMTYuOTY1IDYuMzkgMTcuNjEgNy4wMzUgMTguNDA2IDcuMDM1QzE5LjIwMSA3LjAzNSAxOS44NDUgNi4zOSAxOS44NDUgNS41OTVDMTkuODQ1IDQuOCAxOS4yMDEgNC4xNTUgMTguNDA2IDQuMTU1WiIgZmlsbD0iIzFFMUUxRSIvPgo8L3N2Zz4K" width="24" height="24" style="width: 24px; left: 0px; top: 0px; position: absolute;">
               </div>
             </a>
-            <!-- أيقونة تيك توك -->
             <a href="https://www.tiktok.com/@whiterose_2017" target="_blank" rel="noopener" style="display: block; width: 24px; height: 24px; position: absolute; left: 40px; top: 0px;">
               <div style="width: 24px; height: 24px; overflow: hidden;">
                 <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggaWQ9IlZlY3RvciIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNi45MjMxIDI0QzE4LjggMjQgMjAuNiAyMy4yNTQ0IDIxLjkyNzIgMjEuOTI3MkMyMy4yNTQ0IDIwLjYgMjQgMTguOCAyNCAxNi45MjMxVjcuMDc2OTJDMjQgNS4yMDAwMSAyMy4yNTQ0IDMuMzk5OTYgMjEuOTI3MiAyLjA3Mjc4QzIwLjYgMC43NDU2MDIgMTguOCAwIDE2LjkyMzEgMEg3LjA3NjkyQzUuMjAwMDEgMCAzLjM5OTk2IDAuNzQ1NjAyIDIuMDcyNzggMi4wNzI3OEMwLjc0NTYwMiAzLjM5OTk2IDAgNS4yMDAwMSAwIDcuMDc2OTJWMTYuOTIzMUMwIDE4LjggMC43NDU2MDIgMjAuNiAyLjA3Mjc4IDIxLjkyNzJDMy4zOTk5NiAyMy4yNTQ0IDUuMjAwMDEgMjQgNy4wNzY5MiAyNEgxNi45MjMxWk0xNC4xMDU4IDQuMzIzNjlDMTQuMDM2MiA0LjExNjI0IDEzLjg5NTEgMy45NDAyNyAxMy43MDc4IDMuODI3MTlDMTMuNTIwNCAzLjcxNDExIDEzLjI5OSAzLjY3MTI3IDEzLjA4MyAzLjcwNjMxQzEyLjg2NjkgMy43NDEzNSAxMi42NzA0IDMuODUxOTkgMTIuNTI4NCA0LjAxODVDMTIuMzg2NCA0LjE4NTAxIDEyLjMwODIgNC4zOTY1NSAxMi4zMDc3IDQuNjE1MzhWMTUuNjkyM0MxMi4zMDc3IDE2LjI0IDEyLjE0NTMgMTYuNzc1NCAxMS44NDEgMTcuMjMwOEMxMS41MzY3IDE3LjY4NjIgMTEuMTA0MiAxOC4wNDExIDEwLjU5ODIgMTguMjUwN0MxMC4wOTIyIDE4LjQ2MDMgOS41MzUzOSAxOC41MTUyIDguOTk4MjEgMTguNDA4M0M4LjQ2MTAzIDE4LjMwMTUgNy45Njc2IDE4LjAzNzcgNy41ODAzMiAxNy42NTA0QzcuMTkzMDQgMTcuMjYzMiA2LjkyOTI5IDE2Ljc2OTcgNi44MjI0NCAxNi4yMzI2QzYuNzE1NTkgMTUuNjk1NCA2Ljc3MDQzIDE1LjEzODYgNi45ODAwMyAxNC42MzI2QzcuMTg5NjIgMTQuMTI2NiA3LjU0NDU2IDEzLjY5NDEgNy45OTk5NiAxMy4zODk4QzguNDU1MzYgMTMuMDg1NSA4Ljk5MDc2IDEyLjkyMzEgOS41Mzg0NiAxMi45MjMxQzkuNzgzMjggMTIuOTIzMSAxMC4wMTgxIDEyLjgyNTggMTAuMTkxMiAxMi42NTI3QzEwLjM2NDMgMTIuNDc5NiAxMC40NjE1IDEyLjI0NDggMTAuNDYxNSAxMkMxMC40NjE1IDExLjc1NTIgMTAuMzY0MyAxMS41MjA0IDEwLjE5MTIgMTEuMzQ3M0MxMC4wMTgxIDExLjE3NDIgOS43ODMyOCAxMS4wNzY5IDkuNTM4NDYgMTEuMDc2OUM4LjYyNTYyIDExLjA3NjkgNy43MzMyOSAxMS4zNDc2IDYuOTc0MjkgMTEuODU0OEM2LjIxNTMgMTIuMzYxOSA1LjYyMzczIDEzLjA4MjcgNS4yNzQ0IDEzLjkyNjFDNC45MjUwOCAxNC43Njk0IDQuODMzNjcgMTUuNjk3NCA1LjAxMTc2IDE2LjU5MjdDNS4xODk4NSAxNy40ODggNS42Mjk0MiAxOC4zMTA0IDYuMjc0ODkgMTguOTU1OUM2LjkyMDM3IDE5LjYwMTQgNy43NDI3NSAyMC4wNDA5IDguNjM4MDUgMjAuMjE5QzkuNTMzMzQgMjAuMzk3MSAxMC40NjEzIDIwLjMwNTcgMTEuMzA0NyAxOS45NTY0QzEyLjE0OCAxOS42MDcgMTIuODY4OSAxOS4wMTU1IDEzLjM3NiAxOC4yNTY1QzEzLjg4MzIgMTcuNDk3NSAxNC4xNTM4IDE2LjYwNTEgMTQuMTUzOCAxNS42OTIzVjcuNjQwNjJDMTUuMDk3OCA4LjUxNjkyIDE2LjQyNzEgOS4yMzA3NyAxOC4xNTM4IDkuMjMwNzdDMTguMzk4NyA5LjIzMDc3IDE4LjYzMzUgOS4xMzM1MiAxOC44MDY2IDguOTYwNDFDMTguOTc5NyA4Ljc4NzMgMTkuMDc2OSA4LjU1MjUxIDE5LjA3NjkgOC4zMDc2OUMxOS4wNzY5IDguMDYyODggMTguOTc5NyA3LjgyODA5IDE4LjgwNjYgNy42NTQ5OEMxOC42MzM1IDcuNDgxODcgMTguMzk4NyA3LjM4NDYyIDE4LjE1MzggNy4zODQ2MkMxNi45NTc1IDcuMzg0NjIgMTYuMDQ4IDYuODkyMzEgMTUuMzczNSA2LjI1MzU0QzE0LjY4NDMgNS41OTg3NyAxNC4yNjgzIDQuODA5ODUgMTQuMTA1OCA0LjMyMzY5WiIgZmlsbD0iYmxhY2siLz4KPC9zdmc+Cg==" width="24" height="24" style="width: 24px; left: 0px; top: 0px; position: absolute;">
@@ -112,7 +119,6 @@
           </div>
         </div>
         <div style="width: 373px; height: 182px; position: absolute; left: 10px; top: 118px;">
-          <!-- باقي محتوى الفوتر -->
           <div style="width: 373px; height: 182px; position: absolute; left: 0px; top: 0px;">
             <div style="width: 373px; height: 86px; position: absolute; left: 0px; top: 0px;">
               <div style="width: 373px; height: 26px; position: absolute; left: 0px; top: 0px;">
@@ -123,17 +129,17 @@
                 </div>
               </div>
               <div style="width: 56px; height: 52px; position: absolute; left: 0px; top: 34px;">
-  <div style="width: 46px; height: 22px; position: absolute; left: 0px; top: 0px;">
-    <div style="position: absolute; left: 0px; top: 0px; text-align: left; display: flex; flex-direction: column; justify-content: center;">
-      <p><a href="en/policy.html" style="text-decoration: none; color: inherit;"><span style="font-size: 16px; text-decoration: none; line-height: 139.999998%; font-weight: 400; font-family: inter; white-space: break-spaces; color: rgb(30, 30, 30); text-transform: none;">Policy</span></a></p>
-    </div>
-  </div>
-  <div style="width: 56px; height: 22px; position: absolute; left: 0px; top: 30px;">
-    <div style="position: absolute; left: 0px; top: 0px; text-align: left; display: flex; flex-direction: column; justify-content: center;">
-      <p><a href="en/privacy.html" style="text-decoration: none; color: inherit;"><span style="font-size: 16px; text-decoration: none; line-height: 139.999998%; font-weight: 400; font-family: inter; white-space: break-spaces; color: rgb(30, 30, 30); text-transform: none;">Privacy</span></a></p>
-    </div>
-  </div>
-</div>
+                <div class="fade-up" style="width: 46px; height: 22px; position: absolute; left: 0px; top: 0px;">
+                  <div style="position: absolute; left: 0px; top: 0px; text-align: left; display: flex; flex-direction: column; justify-content: center;">
+                    <p><a href="en/policy.html" style="text-decoration: none; color: inherit;"><span style="font-size: 16px; text-decoration: none; line-height: 139.999998%; font-weight: 400; font-family: inter; white-space: break-spaces; color: rgb(30, 30, 30); text-transform: none;">Policy</span></a></p>
+                  </div>
+                </div>
+                <div class="fade-up" style="width: 56px; height: 22px; position: absolute; left: 0px; top: 30px;">
+                  <div style="position: absolute; left: 0px; top: 0px; text-align: left; display: flex; flex-direction: column; justify-content: center;">
+                    <p><a href="en/privacy.html" style="text-decoration: none; color: inherit;"><span style="font-size: 16px; text-decoration: none; line-height: 139.999998%; font-weight: 400; font-family: inter; white-space: break-spaces; color: rgb(30, 30, 30); text-transform: none;">Privacy</span></a></p>
+                  </div>
+                </div>
+              </div>
             </div>
             <div style="width: 373px; height: 72px; position: absolute; left: 0px; top: 110px;">
               <div style="width: 373px; height: 26px; position: absolute; left: 0px; top: 0px;">
@@ -160,7 +166,7 @@
         </div>
       </div>
 
-      <!-- المنيو المستورد من Figma (بعد تعديل الروابط) -->
+      <!-- المنيو (بدون تغيير) -->
       <div id="menu" class="menu-overlay">
         <div style="width: 386px; height: 249px; position: absolute; left: 50%; transform: translateX(-50%); top: 0px;">
           <div style="width: 309px; height: 242px; position: absolute; left: 0px; top: 3.5px;">
@@ -188,45 +194,56 @@
         </div>
       </div>
 
-      <!-- تراكب التعتيم الخاص بالمنيو -->
+      <!-- تراكب التعتيم -->
       <div id="overlay" class="overlay"></div>
-
-    </div> <!-- نهاية الحاوية الرئيسية للصفحة -->
-  </div> <!-- نهاية #container -->
-
- <!-- ========== نافذة التسجيل الإلزامية مع الصورة الترحيبية ========== -->
-<div id="popupOverlay" class="popup-overlay">
-  <div class="popup-container">
-    <!-- القسم العلوي (صورة + رسالة ترحيبية) -->
-    <div class="popup-header">
-      <img src="images/big-logo.png" alt="Welcome" class="popup-welcome-img">
-      <h3 class="popup-welcome-title">Welcome to White Rose!</h3>
-      <p class="popup-welcome-subtitle">Register and receive exclusive offers.</p>
     </div>
-
-    <!-- حقول التسجيل (كما هي) -->
-    <div class="popup-field">
-      <label>Name</label>
-      <input type="text" id="popupName" placeholder="Your name" required>
-    </div>
-    <div class="popup-field">
-      <label>Phone number</label>
-      <input type="tel" id="popupPhone" placeholder="Your phone number" required>
-    </div>
-    <div class="checkbox-group">
-  <div class="checkbox-item">
-    <input type="checkbox" id="popupPrivacyCheck" required>
-    <label for="popupPrivacyCheck">
-      I have read and agree to the 
-      <a href="en/privacy.html" target="_blank" style="color: #2c2c2c; text-decoration: underline;">Privacy</a>
-    </label>
   </div>
-  
-    <div id="popupMessage" class="popup-error"></div>
-    <button class="popup-button" onclick="submitPopup()">Register</button>
+
+  <!-- نافذة التسجيل (كما هي، بدون تعديل) -->
+  <div id="popupOverlay" class="popup-overlay">
+    <div class="popup-container">
+      <div class="popup-header">
+        <img src="images/big-logo.png" alt="Welcome" class="popup-welcome-img">
+        <h3 class="popup-welcome-title">Welcome to White Rose!</h3>
+        <p class="popup-welcome-subtitle">Register and receive exclusive offers.</p>
+      </div>
+      <div class="popup-field">
+        <label>Name</label>
+        <input type="text" id="popupName" placeholder="Your name" required>
+      </div>
+      <div class="popup-field">
+        <label>Phone number</label>
+        <input type="tel" id="popupPhone" placeholder="Your phone number" required>
+      </div>
+      <div class="checkbox-group">
+        <div class="checkbox-item">
+          <input type="checkbox" id="popupPrivacyCheck" required>
+          <label for="popupPrivacyCheck">
+            I have read and agree to the 
+            <a href="en/privacy.html" target="_blank" style="color: #2c2c2c; text-decoration: underline;">Privacy</a>
+          </label>
+        </div>
+      </div>
+      <div id="popupMessage" class="popup-error"></div>
+      <button class="popup-button" onclick="submitPopup()">Register</button>
+    </div>
   </div>
-</div>
 
   <script src="/White/js/script-en.js"></script>
+  <script>
+    // إضافة Intersection Observer لتطبيق الحركات
+    document.addEventListener('DOMContentLoaded', function() {
+      const animatedElements = document.querySelectorAll('.fade-up, .fade-in');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      animatedElements.forEach(el => observer.observe(el));
+    });
+  </script>
 </body>
 </html>
