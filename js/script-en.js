@@ -152,3 +152,22 @@ document.addEventListener('DOMContentLoaded', function() {
   }, { threshold: 0.2 });
   animatedElements.forEach(el => observer.observe(el));
 });
+// ========== إصلاح مشكلة الأطراف البيضاء عند التكبير/التصغير ==========
+if (window.ResizeObserver) {
+  const resizeObserver = new ResizeObserver(() => {
+    resizePage();
+  });
+  // مراقبة العنصر الجذر (<html>) للتغيرات في الأبعاد
+  resizeObserver.observe(document.documentElement);
+  // مراقبة عنصر الحاوية إذا أردت زيادة الدقة
+  // resizeObserver.observe(document.getElementById('container'));
+} else {
+  // حل بديل للمتصفحات القديمة: رصد أحداث التكبير عبر touchmove
+  let lastWidth = window.innerWidth;
+  window.addEventListener('touchmove', function() {
+    if (window.innerWidth !== lastWidth) {
+      lastWidth = window.innerWidth;
+      resizePage();
+    }
+  });
+}
