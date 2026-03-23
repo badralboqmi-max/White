@@ -41,9 +41,10 @@
       <!-- المنطقة الرئيسية التي تحتوي على الصورة والنص -->
       <div style="width: 393px; height: 760px; position: absolute; left: 0px; top: 93px;">
         
-        <!-- صورة الخلفية -->
-        <div class="fade-up" style="width: 393px; height: 732.517212px; position: absolute; left: 50%; transform: translateX(-50%); top: 70px; background: url(/White-rose/images/wedding-bg.png) no-repeat center center / cover; z-index: 1;"></div>
-        
+        <!-- صورة الخلفية (مع تأثير fade-up) -->
+<div class="fade-up" style="position: absolute; left: 0; top: 70px; width: 393px; height: 732.517212px; z-index: 1;">
+  <div style="width: 100%; height: 100%; background: url(/White-rose/images/wedding-bg.png) no-repeat center center / cover; position: absolute; left: 50%; transform: translateX(-50%);"></div>
+</div>
         <!-- النص الشفاف مع التأثير الزجاجي (ملفوف بـ fade-up) -->
         <div class="fade-in" style="position: absolute; left: 0; top: 480.758606px; width: 393px; height: 319px; z-index: 2;">
           <div style="width: 373px; height: 250px; position: absolute; left: 50%; transform: translateX(-50%); top: 30px; 
