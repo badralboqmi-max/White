@@ -355,3 +355,22 @@ body {
 .fade-in.visible {
   opacity: 1;
 }
+/* منع الهوامش البيضاء عند التكبير */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-width: 100%;
+  overflow-x: hidden; /* منع التمرير الأفقي */
+  background-color: rgb(210, 206, 200); /* لون الخلفية الأصلي للصفحة (يمكن تعديله) */
+}
+
+#container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+  width: 393px;
+  background-color: transparent; /* أو أي لون تريد */
+  /* باقي الخصائص موجودة بالفعل */
+}
