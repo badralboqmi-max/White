@@ -21,7 +21,7 @@ document.addEventListener('click', function(event) {
   }
 });
 
-// ========== تحجيم الصفحة (resize) – تم إصلاح مشكلة الأطراف البيضاء ==========
+// ========== تحجيم الصفحة (resize) – مع إصلاح الأطراف البيضاء ==========
 function getPageHeight() {
   if (document.body.classList.contains('home-page')) {
     return 1185;
@@ -32,9 +32,27 @@ function getPageHeight() {
 
 const page = { width: 393 };
 
+// دالة لاستخراج خلفية الصفحة الرئيسية وتطبيقها على <html>
+function applyPageBackground() {
+  const container = document.getElementById('container');
+  if (!container) return;
+  // أول عنصر فرعي مباشر داخل #container يحتوي على الخلفية
+  const bgElement = container.querySelector('div:first-child');
+  if (bgElement) {
+    const bgStyle = window.getComputedStyle(bgElement).background;
+    if (bgStyle && bgStyle !== 'none') {
+      document.documentElement.style.background = bgStyle;
+      return;
+    }
+  }
+  // إذا لم نجد خلفية، نستخدم لون افتراضي (يتناسب مع أغلب الصفحات)
+  document.documentElement.style.backgroundColor = '#d2cec8';
+}
+
 const resizePage = () => {
   const viewWidth = window.innerWidth;
   const container = document.getElementById('container');
+  if (!container) return;
   const scale = viewWidth / page.width;
   const displayHeight = getPageHeight() * scale || 0;
 
@@ -42,7 +60,7 @@ const resizePage = () => {
   document.body.style.paddingTop = displayHeight + 'px';
   document.body.style.width = '100%';
   document.body.style.minWidth = '100%';
-  document.body.style.backgroundColor = 'rgb(210, 206, 200)'; // يمكنك تعديل اللون
+  // لا نضبط backgroundColor هنا؛ نعتمد على الخلفية المطبقة على <html>
 
   // ضمان عرض وارتفاع ثابتين للحاوية قبل التحجيم
   container.style.width = page.width + 'px';
@@ -59,6 +77,7 @@ const resizePage = () => {
 
 // تنفيذ التحجيم أول مرة
 resizePage();
+applyPageBackground(); // تطبيق الخلفية على html
 
 // تحسين الأداء عند تغيير حجم النافذة
 (function () {
@@ -78,7 +97,10 @@ resizePage();
   throttle("resize", "optimizedResize");
 })();
 
-window.addEventListener("optimizedResize", resizePage);
+window.addEventListener("optimizedResize", function() {
+  resizePage();
+  applyPageBackground(); // تحديث الخلفية أيضاً (لاحتمال تغيرها)
+});
 
 // ========== نافذة التسجيل الإلزامية ==========
 const popupOverlay = document.getElementById('popupOverlay');
@@ -178,6 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
 if (window.ResizeObserver) {
   const resizeObserver = new ResizeObserver(() => {
     resizePage();
+    applyPageBackground();
   });
   resizeObserver.observe(document.documentElement);
 } else {
@@ -187,6 +210,7 @@ if (window.ResizeObserver) {
     if (window.innerWidth !== lastWidth) {
       lastWidth = window.innerWidth;
       resizePage();
+      applyPageBackground();
     }
   });
 }
