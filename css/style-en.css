@@ -133,6 +133,7 @@ body {
   position: relative;
   margin: 0;
   padding: 0;
+  background: transparent; /* لا خلفية */
 }
 .bg-clip-text {
   -webkit-background-clip: text !important;
@@ -148,6 +149,7 @@ body {
   display: none;
   overflow: hidden;
   background-color: transparent;
+  z-index: 1; /* يظهر فوق الخلفية المستقلة */
 }
 
 /* الدوائر الجانبية */
@@ -373,4 +375,18 @@ body {
   overflow-x: hidden;
   background: transparent;
   position: relative;
+}
+
+/* ===== عنصر الخلفية المستقل (يتم إنشاؤه بواسطة JavaScript) ===== */
+#background-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
