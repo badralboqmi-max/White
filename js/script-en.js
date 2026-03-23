@@ -32,11 +32,27 @@ function getPageHeight() {
 
 const page = { width: 393 };
 
-// دالة لاستخراج خلفية الصفحة وتطبيقها على <html> و <body> مع fixed attachment
-function applyPageBackground() {
+// دالة لاستخراج خلفية الصفحة وتطبيقها على عنصر خلفية ثابت (fixed)
+function applyFixedBackground() {
   const container = document.getElementById('container');
   if (!container) return;
   
+  // الحصول على عنصر الخلفية أو إنشاؤه
+  let bgLayer = document.getElementById('fullscreen-bg');
+  if (!bgLayer) {
+    bgLayer = document.createElement('div');
+    bgLayer.id = 'fullscreen-bg';
+    bgLayer.style.position = 'fixed';
+    bgLayer.style.top = '0';
+    bgLayer.style.left = '0';
+    bgLayer.style.width = '100%';
+    bgLayer.style.height = '100%';
+    bgLayer.style.zIndex = '-1';
+    bgLayer.style.pointerEvents = 'none';
+    document.body.insertBefore(bgLayer, document.body.firstChild);
+  }
+  
+  // استخراج الخلفية من أول div داخل container
   const bgElement = container.querySelector('div:first-child');
   if (bgElement) {
     const computedStyle = window.getComputedStyle(bgElement);
@@ -53,27 +69,16 @@ function applyPageBackground() {
     }
     
     if (bgStyle && bgStyle !== 'none') {
-      // تطبيق الخلفية على html و body
-      document.documentElement.style.background = bgStyle;
-      document.body.style.background = bgStyle;
-      // استخدام fixed لتغطية كامل الشاشة بغض النظر عن ارتفاع المحتوى
-      document.documentElement.style.backgroundAttachment = 'fixed';
-      document.body.style.backgroundAttachment = 'fixed';
-      document.documentElement.style.backgroundSize = 'cover';
-      document.body.style.backgroundSize = 'cover';
-      document.documentElement.style.backgroundRepeat = 'no-repeat';
-      document.body.style.backgroundRepeat = 'no-repeat';
-      document.documentElement.style.backgroundPosition = 'center center';
-      document.body.style.backgroundPosition = 'center center';
+      bgLayer.style.background = bgStyle;
+      bgLayer.style.backgroundSize = 'cover';
+      bgLayer.style.backgroundRepeat = 'no-repeat';
+      bgLayer.style.backgroundPosition = 'center center';
       return;
     }
   }
   // خلفية افتراضية
-  const defaultBg = '#d2cec8';
-  document.documentElement.style.background = defaultBg;
-  document.body.style.background = defaultBg;
-  document.documentElement.style.backgroundAttachment = 'fixed';
-  document.body.style.backgroundAttachment = 'fixed';
+  bgLayer.style.backgroundColor = '#d2cec8';
+  bgLayer.style.backgroundImage = 'none';
 }
 
 // دالة لضبط ارتفاع body (ضروري للمحتوى الطويل)
@@ -107,7 +112,7 @@ const resizePage = () => {
   container.style.overflow = 'visible';
 
   adjustBodyHeight();
-  applyPageBackground();
+  applyFixedBackground();
 };
 
 // تنفيذ أول مرة
