@@ -23,8 +23,8 @@
             </div>
           </div>
         </div>
-        <!-- عنوان الصفحة Wedding Dresses -->
-        <div style="width: 393px; height: 24px; position: absolute; left: 0px; top: 150px;">
+        <!-- عنوان الصفحة Wedding Dresses (مع تأثير fade-up) -->
+        <div class="fade-up" style="width: 393px; height: 24px; position: absolute; left: 0px; top: 150px;">
           <div style="position: absolute; left: 101.5px; top: 0px; text-align: left; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
             <p>
               <span style="font-size: 24px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: &quot;inria serif&quot;; white-space: break-spaces; color: rgb(10, 10, 10, 0.8); text-transform: none;">Wedding Dresses</span>
@@ -39,9 +39,9 @@
         <!-- صورة الخلفية -->
         <div style="width: 393px; height: 732.517212px; position: absolute; left: 0px; top: 70px; background: url(/White-rose/images/wedding-bg.png) no-repeat center center / cover; z-index: 1;"></div>
         
-        <!-- النص الشفاف مع التأثير الزجاجي -->
+        <!-- النص الشفاف مع التأثير الزجاجي (مع تأثير fade-up) -->
         <div style="width: 393px; height: 200px; position: absolute; left: 0px; top: 480.758606px; z-index: 2;">
-          <div style="width: 373px; height: 250px; position: absolute; left: 50%; transform: translateX(-50%); top: 30px; 
+          <div class="fade-up" style="width: 373px; height: 250px; position: absolute; left: 50%; transform: translateX(-50%); top: 30px; 
                background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px) brightness(0.9) contrast(1.05); -webkit-backdrop-filter: blur(15px) brightness(0.9) contrast(1.05); box-shadow: inset 0 0.6px 0.6px rgba(255,255,255,1), inset 0.6px 0 0.6px rgba(255,255,255,0.5), inset -0.6px 0 0.6px rgba(255,255,255,0.5), inset 0 -0.6px 0.6px rgba(255,255,255,0.3), inset 0 2px 2px rgba(0,0,0,0.1), inset 0 -2px 2px rgba(0,0,0,0.1), inset 2px 0 2px rgba(0,0,0,0.1), inset -2px 0 2px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1) inset; border-radius: 24px; overflow: hidden; box-sizing: border-box;">
             <div style="position: absolute; left: 15px; top: 20px; width: 363px; text-align: left; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
               <p style="margin: 0 0 4px 0; line-height: 1.3; text-shadow: 0 2px 5px rgba(0,0,0,0.2);"><span style="font-size: 15px; font-weight: 700; font-family: 'inria serif'; color: rgb(10, 10, 10, 0.8);">Your wedding dress is a once-in-a-lifetime decision,</span></p>
@@ -114,38 +114,36 @@
     </div> <!-- نهاية الحاوية الرئيسية للصفحة -->
   </div> <!-- نهاية #container -->
 
- <!-- ========== نافذة التسجيل الإلزامية مع الصورة الترحيبية ========== -->
-<div id="popupOverlay" class="popup-overlay">
-  <div class="popup-container">
-    <!-- القسم العلوي (صورة + رسالة ترحيبية) -->
-    <div class="popup-header">
-      <img src="../images/big-logo.png" alt="Welcome" class="popup-welcome-img">
-      <h3 class="popup-welcome-title">Welcome to White Rose!</h3>
-      <p class="popup-welcome-subtitle">Register and receive exclusive offers.</p>
+  <!-- ========== نافذة التسجيل الإلزامية ========== -->
+  <div id="popupOverlay" class="popup-overlay">
+    <div class="popup-container">
+      <div class="popup-header">
+        <img src="../images/big-logo.png" alt="Welcome" class="popup-welcome-img">
+        <h3 class="popup-welcome-title">Welcome to White Rose!</h3>
+        <p class="popup-welcome-subtitle">Register and receive exclusive offers.</p>
+      </div>
+      <div class="popup-field">
+        <label>Name</label>
+        <input type="text" id="popupName" placeholder="Your name" required>
+      </div>
+      <div class="popup-field">
+        <label>Phone number</label>
+        <input type="tel" id="popupPhone" placeholder="Your phone number" required>
+      </div>
+      <div class="checkbox-group">
+        <div class="checkbox-item">
+          <input type="checkbox" id="popupPrivacyCheck" required>
+          <label for="popupPrivacyCheck">
+            I have read and agree to the 
+            <a href="en/privacy.html" target="_blank" style="color: #2c2c2c; text-decoration: underline;">Privacy</a>
+          </label>
+        </div>
+      </div>
+      <div id="popupMessage" class="popup-error"></div>
+      <button class="popup-button" onclick="submitPopup()">Register</button>
     </div>
+  </div>
 
-    <!-- حقول التسجيل (كما هي) -->
-    <div class="popup-field">
-      <label>Name</label>
-      <input type="text" id="popupName" placeholder="Your name" required>
-    </div>
-    <div class="popup-field">
-      <label>Phone number</label>
-      <input type="tel" id="popupPhone" placeholder="Your phone number" required>
-    </div>
-    <div class="checkbox-group">
-  <div class="checkbox-item">
-    <input type="checkbox" id="popupPrivacyCheck" required>
-    <label for="popupPrivacyCheck">
-      I have read and agree to the 
-      <a href="en/privacy.html" target="_blank" style="color: #2c2c2c; text-decoration: underline;">Privacy</a>
-    </label>
-  </div>
-  
-    <div id="popupMessage" class="popup-error"></div>
-    <button class="popup-button" onclick="submitPopup()">Register</button>
-  </div>
-</div>
   <script src="../js/script-en.js"></script>
 </body>
 </html>
