@@ -147,6 +147,7 @@ body {
   transform: scale(1);
   display: none;
   overflow: hidden;
+  background-color: transparent; /* إضافة خلفية شفافة لتظهر خلفية html */
 }
 /* ارتفاع الحاوية سيتم تحديده حسب الصفحة عبر كلاس body */
 
@@ -204,7 +205,8 @@ body {
   font-size: 14px;
   color: #555;
   margin-bottom: 15px;
-}/* تخصيص المنيو حسب نوع الصفحة */
+}
+/* تخصيص المنيو حسب نوع الصفحة */
 .home-page .menu-overlay {
   top: 310px;
   height: 249px;
@@ -355,22 +357,25 @@ body {
 .fade-in.visible {
   opacity: 1;
 }
-/* منع الهوامش البيضاء عند التكبير */
-html, body {
+
+/* ===== إصلاح الأطراف البيضاء عند التكبير ===== */
+html {
   margin: 0;
   padding: 0;
   width: 100%;
-  min-width: 100%;
-  overflow-x: hidden; /* منع التمرير الأفقي */
-  background-color: rgb(210, 206, 200); /* لون الخلفية الأصلي للصفحة (يمكن تعديله) */
+  min-height: 100%;
+  overflow-x: hidden;
+  /* الخلفية ستُضاف عبر JavaScript */
 }
 
-#container {
-  position: absolute;
-  left: 0;
-  top: 0;
-  transform-origin: 0 0;
-  width: 393px;
-  background-color: transparent; /* أو أي لون تريد */
-  /* باقي الخصائص موجودة بالفعل */
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh; /* تغطية كامل ارتفاع الشاشة */
+  overflow-x: hidden;
+  background: transparent; /* نجعل الخلفية شفافة لتظهر خلفية html */
+  position: relative;
 }
+
+/* ملاحظة: #container تم تعديله بالفعل أعلاه مع إضافة background-color: transparent، لا نكرره هنا */
