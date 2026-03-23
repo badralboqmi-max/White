@@ -21,7 +21,7 @@ document.addEventListener('click', function(event) {
   }
 });
 
-// ========== تحجيم الصفحة وإدارة الخلفية ==========
+// ========== تحجيم الصفحة (resize) – إصلاح الأطراف البيضاء ==========
 function getPageHeight() {
   if (document.body.classList.contains('home-page')) {
     return 1185;
@@ -32,52 +32,60 @@ function getPageHeight() {
 
 const page = { width: 393 };
 
-// دالة لإنشاء/تحديث عنصر الخلفية المستقل
-function initBackgroundLayer() {
-  let bgLayer = document.getElementById('background-layer');
-  if (!bgLayer) {
-    bgLayer = document.createElement('div');
-    bgLayer.id = 'background-layer';
-    bgLayer.style.position = 'fixed';
-    bgLayer.style.top = '0';
-    bgLayer.style.left = '0';
-    bgLayer.style.width = '100%';
-    bgLayer.style.height = '100%';
-    bgLayer.style.zIndex = '-1';
-    bgLayer.style.pointerEvents = 'none';
-    document.body.insertBefore(bgLayer, document.body.firstChild);
-  }
-  return bgLayer;
-}
-
-// دالة لاستخراج الخلفية من العنصر الرئيسي داخل #container وتطبيقها
-function applyBackground() {
+// دالة لاستخراج خلفية الصفحة وتطبيقها على <html> و <body>
+function applyPageBackground() {
   const container = document.getElementById('container');
   if (!container) return;
-
-  // العنصر الأول داخل #container هو الذي يحمل الخلفية
-  const bgSource = container.querySelector('div:first-child');
-  if (!bgSource) return;
-
-  const bgLayer = initBackgroundLayer();
-  const computedStyle = window.getComputedStyle(bgSource);
-  let bgImage = computedStyle.backgroundImage;
-  let bgColor = computedStyle.backgroundColor;
-
-  // إعطاء الأولوية للصورة/التدرج إذا وجدت
-  if (bgImage && bgImage !== 'none') {
-    bgLayer.style.backgroundImage = bgImage;
-    bgLayer.style.backgroundColor = 'transparent';
-    bgLayer.style.backgroundSize = 'cover';
-    bgLayer.style.backgroundRepeat = 'no-repeat';
-    bgLayer.style.backgroundPosition = 'center center';
-  } else if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)') {
-    bgLayer.style.backgroundColor = bgColor;
-    bgLayer.style.backgroundImage = 'none';
-  } else {
-    bgLayer.style.backgroundColor = '#d2cec8';
-    bgLayer.style.backgroundImage = 'none';
+  const bgElement = container.querySelector('div:first-child');
+  if (bgElement) {
+    const computedStyle = window.getComputedStyle(bgElement);
+    let bgStyle = computedStyle.background;
+    
+    // إذا لم تكن الخلفية موجودة، حاول الحصول على صورة الخلفية أو اللون بشكل منفصل
+    if (!bgStyle || bgStyle === 'none' || bgStyle === 'rgba(0, 0, 0, 0)') {
+      const bgImage = computedStyle.backgroundImage;
+      const bgColor = computedStyle.backgroundColor;
+      if (bgImage && bgImage !== 'none') {
+        bgStyle = bgImage;
+      } else if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)') {
+        bgStyle = bgColor;
+      }
+    }
+    
+    if (bgStyle && bgStyle !== 'none') {
+      // تطبيق الخلفية على <html> و <body> معاً لضمان تغطية كاملة
+      document.documentElement.style.background = bgStyle;
+      document.body.style.background = bgStyle;
+      // ضبط الخلفية لتغطية كامل العنصر دون قص
+      document.documentElement.style.backgroundSize = 'cover';
+      document.body.style.backgroundSize = 'cover';
+      document.documentElement.style.backgroundRepeat = 'no-repeat';
+      document.body.style.backgroundRepeat = 'no-repeat';
+      document.documentElement.style.backgroundAttachment = 'scroll';
+      document.body.style.backgroundAttachment = 'scroll';
+      document.documentElement.style.backgroundPosition = 'center center';
+      document.body.style.backgroundPosition = 'center center';
+      return;
+    }
   }
+  // إذا لم نجد خلفية، نستخدم لون افتراضي
+  const defaultBg = '#d2cec8';
+  document.documentElement.style.background = defaultBg;
+  document.body.style.background = defaultBg;
+  document.body.style.backgroundImage = 'none';
+  document.documentElement.style.backgroundImage = 'none';
+}
+
+// دالة لضبط ارتفاع body ليلائم المحتوى المحجَّم
+function adjustBodyHeight() {
+  const container = document.getElementById('container');
+  if (!container) return;
+  const viewWidth = window.innerWidth;
+  const scale = viewWidth / page.width;
+  const containerHeight = getPageHeight() * scale;
+  const minBodyHeight = Math.max(containerHeight, window.innerHeight);
+  document.body.style.minHeight = minBodyHeight + 'px';
+  document.documentElement.style.minHeight = minBodyHeight + 'px';
 }
 
 const resizePage = () => {
@@ -98,16 +106,11 @@ const resizePage = () => {
   container.style.display = 'block';
   container.style.overflow = 'visible';
 
-  const containerHeight = getPageHeight() * scale;
-  const minBodyHeight = Math.max(containerHeight, window.innerHeight);
-  document.body.style.minHeight = minBodyHeight + 'px';
-  document.documentElement.style.minHeight = minBodyHeight + 'px';
-
-  // تحديث الخلفية بعد أي تغيير في الحجم (لضمان تغطيتها)
-  applyBackground();
+  adjustBodyHeight();
+  applyPageBackground();
 };
 
-// تنفيذ أول مرة
+// تنفيذ التحجيم أول مرة
 resizePage();
 
 // تحسين الأداء عند تغيير حجم النافذة
@@ -128,7 +131,9 @@ resizePage();
   throttle("resize", "optimizedResize");
 })();
 
-window.addEventListener("optimizedResize", resizePage);
+window.addEventListener("optimizedResize", function() {
+  resizePage();
+});
 
 // ========== نافذة التسجيل الإلزامية ==========
 const popupOverlay = document.getElementById('popupOverlay');
@@ -149,6 +154,7 @@ window.closePopup = function() {
   document.body.style.overflow = 'auto';
 };
 
+// ========== دالة التسجيل الجديدة مع Supabase ==========
 window.submitPopup = async function() {
   const name = document.getElementById('popupName').value.trim();
   const phone = document.getElementById('popupPhone').value.trim();
