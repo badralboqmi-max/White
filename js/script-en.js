@@ -32,67 +32,6 @@ function getPageHeight() {
 
 const page = { width: 393 };
 
-// دالة لاستخراج خلفية الصفحة وتطبيقها على عنصر خلفية ثابت (fixed)
-function applyFixedBackground() {
-  const container = document.getElementById('container');
-  if (!container) return;
-  
-  // الحصول على عنصر الخلفية أو إنشاؤه
-  let bgLayer = document.getElementById('fullscreen-bg');
-  if (!bgLayer) {
-    bgLayer = document.createElement('div');
-    bgLayer.id = 'fullscreen-bg';
-    bgLayer.style.position = 'fixed';
-    bgLayer.style.top = '0';
-    bgLayer.style.left = '0';
-    bgLayer.style.width = '100%';
-    bgLayer.style.height = '100%';
-    bgLayer.style.zIndex = '-1';
-    bgLayer.style.pointerEvents = 'none';
-    document.body.insertBefore(bgLayer, document.body.firstChild);
-  }
-  
-  // استخراج الخلفية من أول div داخل container
-  const bgElement = container.querySelector('div:first-child');
-  if (bgElement) {
-    const computedStyle = window.getComputedStyle(bgElement);
-    let bgStyle = computedStyle.background;
-    
-    if (!bgStyle || bgStyle === 'none' || bgStyle === 'rgba(0, 0, 0, 0)') {
-      const bgImage = computedStyle.backgroundImage;
-      const bgColor = computedStyle.backgroundColor;
-      if (bgImage && bgImage !== 'none') {
-        bgStyle = bgImage;
-      } else if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)') {
-        bgStyle = bgColor;
-      }
-    }
-    
-    if (bgStyle && bgStyle !== 'none') {
-      bgLayer.style.background = bgStyle;
-      bgLayer.style.backgroundSize = 'cover';
-      bgLayer.style.backgroundRepeat = 'no-repeat';
-      bgLayer.style.backgroundPosition = 'center center';
-      return;
-    }
-  }
-  // خلفية افتراضية
-  bgLayer.style.backgroundColor = '#d2cec8';
-  bgLayer.style.backgroundImage = 'none';
-}
-
-// دالة لضبط ارتفاع body (ضروري للمحتوى الطويل)
-function adjustBodyHeight() {
-  const container = document.getElementById('container');
-  if (!container) return;
-  const viewWidth = window.innerWidth;
-  const scale = viewWidth / page.width;
-  const containerHeight = getPageHeight() * scale;
-  const minBodyHeight = Math.max(containerHeight, window.innerHeight);
-  document.body.style.minHeight = minBodyHeight + 'px';
-  document.documentElement.style.minHeight = minBodyHeight + 'px';
-}
-
 const resizePage = () => {
   const viewWidth = window.innerWidth;
   const container = document.getElementById('container');
@@ -100,10 +39,12 @@ const resizePage = () => {
   const scale = viewWidth / page.width;
   const displayHeight = getPageHeight() * scale || 0;
 
+  // ضبط التباعد العلوي
   document.body.style.paddingTop = displayHeight + 'px';
   document.body.style.width = '100%';
   document.body.style.minWidth = '100%';
 
+  // ضبط حجم الحاوية الرئيسية
   container.style.width = page.width + 'px';
   container.style.height = getPageHeight() + 'px';
   container.style.transformOrigin = '0 0';
@@ -111,8 +52,11 @@ const resizePage = () => {
   container.style.display = 'block';
   container.style.overflow = 'visible';
 
-  adjustBodyHeight();
-  applyFixedBackground();
+  // ضبط ارتفاع body ليلائم المحتوى
+  const containerHeight = getPageHeight() * scale;
+  const minBodyHeight = Math.max(containerHeight, window.innerHeight);
+  document.body.style.minHeight = minBodyHeight + 'px';
+  document.documentElement.style.minHeight = minBodyHeight + 'px';
 };
 
 // تنفيذ أول مرة
@@ -140,7 +84,7 @@ window.addEventListener("optimizedResize", function() {
   resizePage();
 });
 
-// ========== نافذة التسجيل ==========
+// ========== نافذة التسجيل الإلزامية ==========
 const popupOverlay = document.getElementById('popupOverlay');
 
 window.addEventListener('load', function() {
