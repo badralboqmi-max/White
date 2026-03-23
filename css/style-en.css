@@ -147,9 +147,8 @@ body {
   transform: scale(1);
   display: none;
   overflow: hidden;
-  background-color: transparent; /* إضافة خلفية شفافة لتظهر خلفية html */
+  background-color: transparent;
 }
-/* ارتفاع الحاوية سيتم تحديده حسب الصفحة عبر كلاس body */
 
 /* الدوائر الجانبية */
 .circle-icon {
@@ -186,21 +185,18 @@ body {
   text-align: center;
   margin-bottom: 20px;
 }
-
 .popup-welcome-img {
   width: 150px;
   height: auto;
   margin-bottom: 10px;
   display: inline-block;
 }
-
 .popup-welcome-title {
   font-size: 20px;
   font-weight: 700;
   margin: 5px 0;
   color: #2c2c2c;
 }
-
 .popup-welcome-subtitle {
   font-size: 14px;
   color: #555;
@@ -238,7 +234,7 @@ body {
   height: 853px;
 }
 
-/* ===== نافذة التسجيل (إنجليزية) ===== */
+/* ===== نافذة التسجيل ===== */
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -340,6 +336,7 @@ body {
   font-size: 14px;
   margin-top: 5px;
 }
+
 /* تأثيرات الظهور عند التمرير */
 .fade-up {
   opacity: 0;
@@ -363,19 +360,16 @@ html {
   margin: 0;
   padding: 0;
   width: 100%;
-  min-height: 100%;
   overflow-x: hidden;
-  /* الخلفية ستُضاف عبر JavaScript */
+  height: auto;
 }
 
 body {
   margin: 0;
   padding: 0;
   width: 100%;
-  min-height: 100vh; /* تغطية كامل ارتفاع الشاشة */
+  min-height: 100vh;
   overflow-x: hidden;
-  background: transparent; /* نجعل الخلفية شفافة لتظهر خلفية html */
+  background: transparent;
   position: relative;
 }
-
-/* ملاحظة: #container تم تعديله بالفعل أعلاه مع إضافة background-color: transparent، لا نكرره هنا */
