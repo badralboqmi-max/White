@@ -235,8 +235,16 @@ body {
 .inner-page .overlay {
   height: 853px;
 }
-
-/* ===== نافذة التسجيل (إنجليزية) ===== */
+/* تأثيرات الظهور عند التمرير - أضفها إلى style-en.css أو هنا */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }/* ===== نافذة التسجيل (إنجليزية) ===== */
 .popup-overlay {
   position: fixed;
   top: 0;
