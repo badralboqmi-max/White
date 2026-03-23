@@ -235,16 +235,8 @@ body {
 .inner-page .overlay {
   height: 853px;
 }
-/* تأثيرات الظهور عند التمرير - أضفها إلى style-en.css أو هنا */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }/* ===== نافذة التسجيل (إنجليزية) ===== */
+
+/* ===== نافذة التسجيل (إنجليزية) ===== */
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -345,4 +337,21 @@ body {
   color: #2e7d32;
   font-size: 14px;
   margin-top: 5px;
+}
+/* تأثيرات الظهور عند التمرير */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.fade-in.visible {
+  opacity: 1;
 }
