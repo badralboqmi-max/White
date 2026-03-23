@@ -1,6 +1,6 @@
 // ========== تعريف Supabase ==========
-const SUPABASE_URL = 'https://qyhpbdvcvxqhnptqzouw.supabase.co'; // استبدل بـ URL مشروعك
-const SUPABASE_ANON_KEY = 'sb_publishable_8aNuoaA4T8oWKs3ta0x6iw_o5jkQn_c'; // استبدل بالمفتاح العام
+const SUPABASE_URL = 'https://qyhpbdvcvxqhnptqzouw.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_8aNuoaA4T8oWKs3ta0x6iw_o5jkQn_c';
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ========== التحكم في المنيو ==========
@@ -21,7 +21,7 @@ document.addEventListener('click', function(event) {
   }
 });
 
-// ========== تحجيم الصفحة (resize) ==========
+// ========== تحجيم الصفحة (resize) – تم إصلاح مشكلة الأطراف البيضاء ==========
 function getPageHeight() {
   if (document.body.classList.contains('home-page')) {
     return 1185;
@@ -29,19 +29,35 @@ function getPageHeight() {
     return 853;
   }
 }
+
 const page = { width: 393 };
+
 const resizePage = () => {
   const viewWidth = window.innerWidth;
   const container = document.getElementById('container');
   const scale = viewWidth / page.width;
   const displayHeight = getPageHeight() * scale || 0;
+
+  // ضبط التباعد العلوي
   document.body.style.paddingTop = displayHeight + 'px';
-  
+
+  // ضمان عرض وارتفاع ثابتين للحاوية قبل التحجيم
+  container.style.width = page.width + 'px';
+  container.style.height = getPageHeight() + 'px';
+
+  // نقطة الارتكاز أعلى اليسار لمنع الانزلاق
+  container.style.transformOrigin = '0 0';
+
+  // تطبيق التحجيم وإظهار الحاوية
+  container.style.transform = 'scale(' + scale + ')';
   container.style.display = 'block';
   container.style.overflow = 'visible';
-  container.style.transform = 'scale(' + scale + ')';
 };
+
+// تنفيذ التحجيم أول مرة
 resizePage();
+
+// تحسين الأداء عند تغيير حجم النافذة
 (function () {
   var throttle = function (type, name, obj) {
     obj = obj || window;
@@ -58,6 +74,7 @@ resizePage();
   };
   throttle("resize", "optimizedResize");
 })();
+
 window.addEventListener("optimizedResize", resizePage);
 
 // ========== نافذة التسجيل الإلزامية ==========
@@ -83,7 +100,7 @@ window.closePopup = function() {
 window.submitPopup = async function() {
   const name = document.getElementById('popupName').value.trim();
   const phone = document.getElementById('popupPhone').value.trim();
-  const agree = document.getElementById('popupPrivacyCheck').checked; // <-- تم التعديل
+  const agree = document.getElementById('popupPrivacyCheck').checked;
   const messageDiv = document.getElementById('popupMessage');
 
   if (!name || !phone) {
@@ -127,7 +144,7 @@ window.submitPopup = async function() {
       localStorage.setItem('userRegistered', 'true');
       document.getElementById('popupName').value = '';
       document.getElementById('popupPhone').value = '';
-      document.getElementById('popupPrivacyCheck').checked = false; // <-- تم التعديل
+      document.getElementById('popupPrivacyCheck').checked = false;
       setTimeout(closePopup, 2000);
     }
   } catch (error) {
@@ -139,7 +156,8 @@ window.submitPopup = async function() {
     btn.textContent = 'Register';
   }
 };
-// تأثيرات الظهور عند التمرير
+
+// ========== تأثيرات الظهور عند التمرير ==========
 document.addEventListener('DOMContentLoaded', function() {
   const animatedElements = document.querySelectorAll('.fade-up, .fade-in');
   const observer = new IntersectionObserver((entries) => {
@@ -152,17 +170,15 @@ document.addEventListener('DOMContentLoaded', function() {
   }, { threshold: 0.2 });
   animatedElements.forEach(el => observer.observe(el));
 });
-// ========== إصلاح مشكلة الأطراف البيضاء عند التكبير/التصغير ==========
+
+// ========== إصلاح مشكلة الأطراف البيضاء عند التكبير/التصغير (مراقبة إضافية) ==========
 if (window.ResizeObserver) {
   const resizeObserver = new ResizeObserver(() => {
     resizePage();
   });
-  // مراقبة العنصر الجذر (<html>) للتغيرات في الأبعاد
   resizeObserver.observe(document.documentElement);
-  // مراقبة عنصر الحاوية إذا أردت زيادة الدقة
-  // resizeObserver.observe(document.getElementById('container'));
 } else {
-  // حل بديل للمتصفحات القديمة: رصد أحداث التكبير عبر touchmove
+  // حل بديل للمتصفحات القديمة
   let lastWidth = window.innerWidth;
   window.addEventListener('touchmove', function() {
     if (window.innerWidth !== lastWidth) {
