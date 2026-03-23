@@ -362,6 +362,7 @@ html {
   width: 100%;
   overflow-x: hidden;
   height: auto;
+  background: transparent; /* منع أي خلفية بيضاء افتراضية */
 }
 
 body {
