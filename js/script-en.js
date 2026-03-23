@@ -40,6 +40,9 @@ const resizePage = () => {
 
   // ضبط التباعد العلوي
   document.body.style.paddingTop = displayHeight + 'px';
+  document.body.style.width = '100%';
+  document.body.style.minWidth = '100%';
+  document.body.style.backgroundColor = 'rgb(210, 206, 200)'; // يمكنك تعديل اللون
 
   // ضمان عرض وارتفاع ثابتين للحاوية قبل التحجيم
   container.style.width = page.width + 'px';
