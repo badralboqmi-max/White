@@ -26,12 +26,14 @@
             </div>
           </div>
         </div>
-        <!-- عنوان الصفحة "فستان السهره" -->
-        <div style="width: 393px; height: 24px; position: absolute; left: 50%; transform: translateX(-50%); top: 150px;">
-          <div style="position: absolute; left: 105.5px; top: 0px; width: 182px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
-            <p>
-              <span style="font-size: 30px; text-decoration: none; line-height: 100%; font-weight: 400; font-family: 'Playpen Sans Arabic', cursive; white-space: break-spaces; color: rgb(10, 10, 10); text-transform: uppercase;">فستان السهره</span>
-            </p>
+        <!-- عنوان الصفحة "فستان السهره" (ملفوف بـ fade-up) -->
+        <div class="fade-up" style="position: absolute; left: 0; top: 150px; width: 393px;">
+          <div style="width: 393px; height: 24px; position: absolute; left: 50%; transform: translateX(-50%); top: 0px;">
+            <div style="position: absolute; left: 105.5px; top: 0px; width: 182px; text-align: center; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
+              <p>
+                <span style="font-size: 30px; text-decoration: none; line-height: 100%; font-weight: 400; font-family: 'Playpen Sans Arabic', cursive; white-space: break-spaces; color: rgb(10, 10, 10); text-transform: uppercase;">فستان السهره</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -39,11 +41,13 @@
       <!-- المنطقة الرئيسية التي تحتوي على الصورة والنص -->
       <div style="width: 393px; height: 718.574341px; position: absolute; left: 0px; top: 115.425659px;">
         
-        <!-- صورة الخلفية -->
-        <div style="width: 393px; height: 625.574341px; position: absolute; left: 50%; transform: translateX(-50%); top: 70px; background: url(../images/Evening-bg.png) no-repeat center center / cover; z-index: 1;"></div>
+        <!-- صورة الخلفية (ملفوفة بـ fade-up) -->
+        <div class="fade-up" style="position: absolute; left: 0; top: 70px; width: 393px; height: 625.574341px; z-index: 1;">
+          <div style="width: 100%; height: 100%; background: url(../images/Evening-bg.png) no-repeat center center / cover; position: absolute; left: 50%; transform: translateX(-50%);"></div>
+        </div>
         
-        <!-- النص الشفاف مع التأثير الزجاجي -->
-        <div style="width: 393px; height: 319px; position: absolute; left: 0; top: 427.574341px; z-index: 2;">
+        <!-- النص الشفاف مع التأثير الزجاجي (ملفوف بـ fade-up) -->
+        <div class="fade-up" style="position: absolute; left: 0; top: 427.574341px; width: 393px; height: 319px; z-index: 2;">
           <div style="width: 373px; height: 250px; position: absolute; left: 50%; transform: translateX(-50%); top: 30px; 
                background: rgba(255, 255, 255, 0.1); 
                backdrop-filter: blur(15px) brightness(0.9) contrast(1.05); 
@@ -129,46 +133,40 @@
   </div> <!-- نهاية #container -->
 
   <!-- ========== نافذة التسجيل الإلزامية (عربية) ========== -->
-<div id="popupOverlay" class="popup-overlay">
-  <div class="popup-container">
-    <!-- القسم العلوي (صورة + رسالة ترحيبية) -->
-    <div class="popup-header">
-      <img src="../images/big-logo.png" alt="مرحباً" class="popup-welcome-img">
-      <h3 class="popup-welcome-title">مرحباً بك في WHITE ROSE</h3>
-      <p class="popup-welcome-subtitle">سجل الآن لتحصل على عروض حصرية.</p>
-    </div>
-
-    <!-- حقل الاسم -->
-    <div class="popup-field">
-      <label>الاسم</label>
-      <input type="text" id="popupName" placeholder="أدخل اسمك" required>
-    </div>
-
-    <!-- حقل رقم الجوال -->
-    <div class="popup-field">
-      <label>رقم الجوال</label>
-      <input type="tel" id="popupPhone" placeholder="05xxxxxxxx" required>
-    </div>
-
-    <!-- مربع الموافقة على سياسة الخصوصية (إلزامي) -->
-    <div class="checkbox-group">
-      <div class="checkbox-item">
-        <input type="checkbox" id="popupPrivacyCheck" required>
-        <label for="popupPrivacyCheck">
-          أقر بأني قرأت 
-          <a href="privacy.html" target="_blank" style="color: #2c2c2c; text-decoration: underline;">سياسة الخصوصية</a>
-          وأوافق عليها
-        </label>
+  <div id="popupOverlay" class="popup-overlay">
+    <div class="popup-container">
+      <div class="popup-header">
+        <img src="../images/big-logo.png" alt="مرحباً" class="popup-welcome-img">
+        <h3 class="popup-welcome-title">مرحباً بك في WHITE ROSE</h3>
+        <p class="popup-welcome-subtitle">سجل الآن لتحصل على عروض حصرية.</p>
       </div>
 
+      <div class="popup-field">
+        <label>الاسم</label>
+        <input type="text" id="popupName" placeholder="أدخل اسمك" required>
+      </div>
 
-    <!-- رسالة الخطأ/النجاح -->
-    <div id="popupMessage" class="popup-error"></div>
+      <div class="popup-field">
+        <label>رقم الجوال</label>
+        <input type="tel" id="popupPhone" placeholder="05xxxxxxxx" required>
+      </div>
 
-    <!-- زر التسجيل -->
-    <button class="popup-button" onclick="submitPopup()">تسجيل</button>
+      <div class="checkbox-group">
+        <div class="checkbox-item">
+          <input type="checkbox" id="popupPrivacyCheck" required>
+          <label for="popupPrivacyCheck">
+            أقر بأني قرأت 
+            <a href="privacy.html" target="_blank" style="color: #2c2c2c; text-decoration: underline;">سياسة الخصوصية</a>
+            وأوافق عليها
+          </label>
+        </div>
+      </div>
+
+      <div id="popupMessage" class="popup-error"></div>
+      <button class="popup-button" onclick="submitPopup()">تسجيل</button>
+    </div>
   </div>
-</div>
+
   <script src="../js/script-ar.js"></script>
 </body>
 </html>
