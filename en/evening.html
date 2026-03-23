@@ -23,8 +23,8 @@
             </div>
           </div>
         </div>
-        <!-- عنوان الصفحة Evening Dresses -->
-        <div style="width: 393px; height: 24px; position: absolute; left: 50%; transform: translateX(-50%); top: 150px;">
+        <!-- عنوان الصفحة Evening Dresses (مع fade-up) -->
+        <div class="fade-up" style="width: 393px; height: 24px; position: absolute; left: 50%; transform: translateX(-50%); top: 150px;">
           <div style="position: absolute; left: 105.5px; top: 0px; text-align: left; vertical-align: top; display: flex; flex-direction: column; justify-content: flex-start;">
             <p>
               <span style="font-size: 24px; text-decoration: none; line-height: 100%; font-weight: 700; font-family: &quot;inria serif&quot;; white-space: break-spaces; color: rgb(0, 0, 0); text-transform: none;">Evening Dresses</span>
@@ -39,9 +39,9 @@
         <!-- صورة الخلفية -->
         <div style="width: 393px; height: 625.574341px; position: absolute; left: 50%; transform: translateX(-50%); top: 70px; background: url(../images/Evening-bg.png) no-repeat center center / cover; z-index: 1;"></div>
         
-        <!-- النص الشفاف مع التأثير الزجاجي -->
+        <!-- النص الشفاف مع التأثير الزجاجي (مع fade-up) -->
         <div style="width: 393px; height: 319px; position: absolute; left: 0; top: 427.574341px; z-index: 2;">
-          <div style="width: 373px; height: 250px; position: absolute; left: 50%; transform: translateX(-50%); top: 30px; 
+          <div class="fade-up" style="width: 373px; height: 250px; position: absolute; left: 50%; transform: translateX(-50%); top: 30px; 
                background: rgba(255, 255, 255, 0.1); 
                backdrop-filter: blur(15px) brightness(0.9) contrast(1.05); 
                -webkit-backdrop-filter: blur(15px) brightness(0.9) contrast(1.05); 
@@ -125,38 +125,35 @@
     </div> <!-- نهاية الحاوية الرئيسية للصفحة -->
   </div> <!-- نهاية #container -->
 
- <!-- ========== نافذة التسجيل الإلزامية مع الصورة الترحيبية ========== -->
-<div id="popupOverlay" class="popup-overlay">
-  <div class="popup-container">
-    <!-- القسم العلوي (صورة + رسالة ترحيبية) -->
-    <div class="popup-header">
-      <img src="../images/big-logo.png" alt="Welcome" class="popup-welcome-img">
-      <h3 class="popup-welcome-title">Welcome to White Rose!</h3>
-      <p class="popup-welcome-subtitle">Register and receive exclusive offers.</p>
+  <!-- ========== نافذة التسجيل الإلزامية ========== -->
+  <div id="popupOverlay" class="popup-overlay">
+    <div class="popup-container">
+      <div class="popup-header">
+        <img src="../images/big-logo.png" alt="Welcome" class="popup-welcome-img">
+        <h3 class="popup-welcome-title">Welcome to White Rose!</h3>
+        <p class="popup-welcome-subtitle">Register and receive exclusive offers.</p>
+      </div>
+      <div class="popup-field">
+        <label>Name</label>
+        <input type="text" id="popupName" placeholder="Your name" required>
+      </div>
+      <div class="popup-field">
+        <label>Phone number</label>
+        <input type="tel" id="popupPhone" placeholder="Your phone number" required>
+      </div>
+      <div class="checkbox-group">
+        <div class="checkbox-item">
+          <input type="checkbox" id="popupPrivacyCheck" required>
+          <label for="popupPrivacyCheck">
+            I have read and agree to the 
+            <a href="en/privacy.html" target="_blank" style="color: #2c2c2c; text-decoration: underline;">Privacy</a>
+          </label>
+        </div>
+      </div>
+      <div id="popupMessage" class="popup-error"></div>
+      <button class="popup-button" onclick="submitPopup()">Register</button>
     </div>
-
-    <!-- حقول التسجيل (كما هي) -->
-    <div class="popup-field">
-      <label>Name</label>
-      <input type="text" id="popupName" placeholder="Your name" required>
-    </div>
-    <div class="popup-field">
-      <label>Phone number</label>
-      <input type="tel" id="popupPhone" placeholder="Your phone number" required>
-    </div>
-    <div class="checkbox-group">
-  <div class="checkbox-item">
-    <input type="checkbox" id="popupPrivacyCheck" required>
-    <label for="popupPrivacyCheck">
-      I have read and agree to the 
-      <a href="en/privacy.html" target="_blank" style="color: #2c2c2c; text-decoration: underline;">Privacy</a>
-    </label>
   </div>
-  
-    <div id="popupMessage" class="popup-error"></div>
-    <button class="popup-button" onclick="submitPopup()">Register</button>
-  </div>
-</div>
 
   <script src="../js/script-en.js"></script>
 </body>
