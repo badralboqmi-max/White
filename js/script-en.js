@@ -39,12 +39,10 @@ const resizePage = () => {
   const scale = viewWidth / page.width;
   const displayHeight = getPageHeight() * scale || 0;
 
-  // ضبط التباعد العلوي
   document.body.style.paddingTop = displayHeight + 'px';
   document.body.style.width = '100%';
   document.body.style.minWidth = '100%';
 
-  // ضبط حجم الحاوية الرئيسية
   container.style.width = page.width + 'px';
   container.style.height = getPageHeight() + 'px';
   container.style.transformOrigin = '0 0';
@@ -52,17 +50,14 @@ const resizePage = () => {
   container.style.display = 'block';
   container.style.overflow = 'visible';
 
-  // ضبط ارتفاع body ليلائم المحتوى
   const containerHeight = getPageHeight() * scale;
   const minBodyHeight = Math.max(containerHeight, window.innerHeight);
   document.body.style.minHeight = minBodyHeight + 'px';
   document.documentElement.style.minHeight = minBodyHeight + 'px';
 };
 
-// تنفيذ أول مرة
 resizePage();
 
-// تحسين الأداء عند تغيير حجم النافذة
 (function () {
   var throttle = function (type, name, obj) {
     obj = obj || window;
@@ -80,11 +75,9 @@ resizePage();
   throttle("resize", "optimizedResize");
 })();
 
-window.addEventListener("optimizedResize", function() {
-  resizePage();
-});
+window.addEventListener("optimizedResize", resizePage);
 
-// ========== نافذة التسجيل الإلزامية ==========
+// ========== نافذة التسجيل ==========
 const popupOverlay = document.getElementById('popupOverlay');
 
 window.addEventListener('load', function() {
