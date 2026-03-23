@@ -21,7 +21,7 @@ document.addEventListener('click', function(event) {
   }
 });
 
-// ========== تحجيم الصفحة (resize) – مع إصلاح الأطراف البيضاء ==========
+// ========== تحجيم الصفحة (resize) – إصلاح الأطراف البيضاء ==========
 function getPageHeight() {
   if (document.body.classList.contains('home-page')) {
     return 1185;
@@ -32,14 +32,12 @@ function getPageHeight() {
 
 const page = { width: 393 };
 
-// دالة لاستخراج خلفية الصفحة وتطبيقها على <body>
+// دالة لاستخراج خلفية الصفحة وتطبيقها على <html> و <body>
 function applyPageBackground() {
   const container = document.getElementById('container');
   if (!container) return;
-  // أول عنصر فرعي مباشر داخل #container يحتوي على الخلفية
   const bgElement = container.querySelector('div:first-child');
   if (bgElement) {
-    // الحصول على الخلفية المحسوبة (computed style)
     const computedStyle = window.getComputedStyle(bgElement);
     let bgStyle = computedStyle.background;
     
@@ -55,18 +53,27 @@ function applyPageBackground() {
     }
     
     if (bgStyle && bgStyle !== 'none') {
-      // تطبيق الخلفية على body
+      // تطبيق الخلفية على <html> و <body> معاً لضمان تغطية كاملة
+      document.documentElement.style.background = bgStyle;
       document.body.style.background = bgStyle;
+      // ضبط الخلفية لتغطية كامل العنصر دون قص
+      document.documentElement.style.backgroundSize = 'cover';
       document.body.style.backgroundSize = 'cover';
+      document.documentElement.style.backgroundRepeat = 'no-repeat';
       document.body.style.backgroundRepeat = 'no-repeat';
+      document.documentElement.style.backgroundAttachment = 'scroll';
       document.body.style.backgroundAttachment = 'scroll';
+      document.documentElement.style.backgroundPosition = 'center center';
       document.body.style.backgroundPosition = 'center center';
       return;
     }
   }
   // إذا لم نجد خلفية، نستخدم لون افتراضي
-  document.body.style.backgroundColor = '#d2cec8';
+  const defaultBg = '#d2cec8';
+  document.documentElement.style.background = defaultBg;
+  document.body.style.background = defaultBg;
   document.body.style.backgroundImage = 'none';
+  document.documentElement.style.backgroundImage = 'none';
 }
 
 // دالة لضبط ارتفاع body ليلائم المحتوى المحجَّم
@@ -78,6 +85,7 @@ function adjustBodyHeight() {
   const containerHeight = getPageHeight() * scale;
   const minBodyHeight = Math.max(containerHeight, window.innerHeight);
   document.body.style.minHeight = minBodyHeight + 'px';
+  document.documentElement.style.minHeight = minBodyHeight + 'px';
 }
 
 const resizePage = () => {
@@ -98,7 +106,6 @@ const resizePage = () => {
   container.style.display = 'block';
   container.style.overflow = 'visible';
 
-  // ضبط ارتفاع body وتحديث الخلفية
   adjustBodyHeight();
   applyPageBackground();
 };
@@ -222,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
   animatedElements.forEach(el => observer.observe(el));
 });
 
-// ========== إصلاح مشكلة الأطراف البيضاء عند التكبير/التصغير (مراقبة إضافية) ==========
+// ========== مراقبة إضافية للتصغير/التكبير ==========
 if (window.ResizeObserver) {
   const resizeObserver = new ResizeObserver(() => {
     resizePage();
