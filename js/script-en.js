@@ -21,7 +21,7 @@ document.addEventListener('click', function(event) {
   }
 });
 
-// ========== تحجيم الصفحة – إصلاح الأطراف البيضاء ==========
+// ========== تحجيم الصفحة ==========
 function getPageHeight() {
   if (document.body.classList.contains('home-page')) {
     return 1185;
@@ -32,25 +32,11 @@ function getPageHeight() {
 
 const page = { width: 393 };
 
-// دالة لاستخراج خلفية الصفحة وتطبيقها على عنصر الخلفية المخصص
+// دالة لاستخراج خلفية الصفحة وتطبيقها على <html> و <body> مع fixed attachment
 function applyPageBackground() {
   const container = document.getElementById('container');
   if (!container) return;
   
-  let bgLayer = document.getElementById('background-layer');
-  if (!bgLayer) {
-    bgLayer = document.createElement('div');
-    bgLayer.id = 'background-layer';
-    bgLayer.style.position = 'absolute';
-    bgLayer.style.top = '0';
-    bgLayer.style.left = '0';
-    bgLayer.style.width = '100%';
-    bgLayer.style.height = '100%';
-    bgLayer.style.zIndex = '-1';
-    bgLayer.style.pointerEvents = 'none';
-    document.body.insertBefore(bgLayer, document.body.firstChild);
-  }
-
   const bgElement = container.querySelector('div:first-child');
   if (bgElement) {
     const computedStyle = window.getComputedStyle(bgElement);
@@ -67,18 +53,30 @@ function applyPageBackground() {
     }
     
     if (bgStyle && bgStyle !== 'none') {
-      bgLayer.style.background = bgStyle;
-      bgLayer.style.backgroundSize = 'cover';
-      bgLayer.style.backgroundRepeat = 'no-repeat';
-      bgLayer.style.backgroundPosition = 'center center';
+      // تطبيق الخلفية على html و body
+      document.documentElement.style.background = bgStyle;
+      document.body.style.background = bgStyle;
+      // استخدام fixed لتغطية كامل الشاشة بغض النظر عن ارتفاع المحتوى
+      document.documentElement.style.backgroundAttachment = 'fixed';
+      document.body.style.backgroundAttachment = 'fixed';
+      document.documentElement.style.backgroundSize = 'cover';
+      document.body.style.backgroundSize = 'cover';
+      document.documentElement.style.backgroundRepeat = 'no-repeat';
+      document.body.style.backgroundRepeat = 'no-repeat';
+      document.documentElement.style.backgroundPosition = 'center center';
+      document.body.style.backgroundPosition = 'center center';
       return;
     }
   }
-  bgLayer.style.backgroundColor = '#d2cec8';
-  bgLayer.style.backgroundImage = 'none';
+  // خلفية افتراضية
+  const defaultBg = '#d2cec8';
+  document.documentElement.style.background = defaultBg;
+  document.body.style.background = defaultBg;
+  document.documentElement.style.backgroundAttachment = 'fixed';
+  document.body.style.backgroundAttachment = 'fixed';
 }
 
-// دالة لضبط ارتفاع العناصر
+// دالة لضبط ارتفاع body (ضروري للمحتوى الطويل)
 function adjustBodyHeight() {
   const container = document.getElementById('container');
   if (!container) return;
@@ -88,11 +86,6 @@ function adjustBodyHeight() {
   const minBodyHeight = Math.max(containerHeight, window.innerHeight);
   document.body.style.minHeight = minBodyHeight + 'px';
   document.documentElement.style.minHeight = minBodyHeight + 'px';
-  
-  const bgLayer = document.getElementById('background-layer');
-  if (bgLayer) {
-    bgLayer.style.height = minBodyHeight + 'px';
-  }
 }
 
 const resizePage = () => {
