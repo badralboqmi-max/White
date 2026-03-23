@@ -21,7 +21,7 @@ document.addEventListener('click', function(event) {
   }
 });
 
-// ========== تحجيم الصفحة ==========
+// ========== تحجيم الصفحة وإدارة الخلفية ==========
 function getPageHeight() {
   if (document.body.classList.contains('home-page')) {
     return 1185;
@@ -31,6 +31,54 @@ function getPageHeight() {
 }
 
 const page = { width: 393 };
+
+// دالة لإنشاء/تحديث عنصر الخلفية المستقل
+function initBackgroundLayer() {
+  let bgLayer = document.getElementById('background-layer');
+  if (!bgLayer) {
+    bgLayer = document.createElement('div');
+    bgLayer.id = 'background-layer';
+    bgLayer.style.position = 'fixed';
+    bgLayer.style.top = '0';
+    bgLayer.style.left = '0';
+    bgLayer.style.width = '100%';
+    bgLayer.style.height = '100%';
+    bgLayer.style.zIndex = '-1';
+    bgLayer.style.pointerEvents = 'none';
+    document.body.insertBefore(bgLayer, document.body.firstChild);
+  }
+  return bgLayer;
+}
+
+// دالة لاستخراج الخلفية من العنصر الرئيسي داخل #container وتطبيقها
+function applyBackground() {
+  const container = document.getElementById('container');
+  if (!container) return;
+
+  // العنصر الأول داخل #container هو الذي يحمل الخلفية
+  const bgSource = container.querySelector('div:first-child');
+  if (!bgSource) return;
+
+  const bgLayer = initBackgroundLayer();
+  const computedStyle = window.getComputedStyle(bgSource);
+  let bgImage = computedStyle.backgroundImage;
+  let bgColor = computedStyle.backgroundColor;
+
+  // إعطاء الأولوية للصورة/التدرج إذا وجدت
+  if (bgImage && bgImage !== 'none') {
+    bgLayer.style.backgroundImage = bgImage;
+    bgLayer.style.backgroundColor = 'transparent';
+    bgLayer.style.backgroundSize = 'cover';
+    bgLayer.style.backgroundRepeat = 'no-repeat';
+    bgLayer.style.backgroundPosition = 'center center';
+  } else if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)') {
+    bgLayer.style.backgroundColor = bgColor;
+    bgLayer.style.backgroundImage = 'none';
+  } else {
+    bgLayer.style.backgroundColor = '#d2cec8';
+    bgLayer.style.backgroundImage = 'none';
+  }
+}
 
 const resizePage = () => {
   const viewWidth = window.innerWidth;
@@ -54,10 +102,15 @@ const resizePage = () => {
   const minBodyHeight = Math.max(containerHeight, window.innerHeight);
   document.body.style.minHeight = minBodyHeight + 'px';
   document.documentElement.style.minHeight = minBodyHeight + 'px';
+
+  // تحديث الخلفية بعد أي تغيير في الحجم (لضمان تغطيتها)
+  applyBackground();
 };
 
+// تنفيذ أول مرة
 resizePage();
 
+// تحسين الأداء عند تغيير حجم النافذة
 (function () {
   var throttle = function (type, name, obj) {
     obj = obj || window;
@@ -77,7 +130,7 @@ resizePage();
 
 window.addEventListener("optimizedResize", resizePage);
 
-// ========== نافذة التسجيل ==========
+// ========== نافذة التسجيل الإلزامية ==========
 const popupOverlay = document.getElementById('popupOverlay');
 
 window.addEventListener('load', function() {
