@@ -230,9 +230,13 @@
   </div>
 <!-- طبقة الانتقال -->
 <div id="page-transition" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #ffffff; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
-  <img src="images/big-logo.png" alt="Logo" style="width: 250px; margin-bottom: 5px;">
-  <div id="transition-animation" style="width: 150px; height: 150px;"></div>
-  <div class="transition-text" style="margin-top: 5px; font-size: 14px; color: #999;">LODING...</div>
+  <!-- اللوقو في الخلفية (مطلق) -->
+  <img src="images/big-logo.png" alt="Logo" style="position: absolute; width: 250px; opacity: 0.6; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; pointer-events: none;">
+  <!-- الأنيميشن في المقدمة (مرن داخل العمود) -->
+  <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <div id="transition-animation" style="width: 150px; height: 150px;"></div>
+    <div class="transition-text" style="margin-top: 10px; font-size: 14px; color: #999;">جاري التحميل...</div>
+  </div>
 </div>
   <script src="/White/js/script-en.js"></script>
   <script>
