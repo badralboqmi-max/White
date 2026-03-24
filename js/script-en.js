@@ -255,7 +255,7 @@ if (animationContainer) {
     renderer: 'svg',
     loop: false,
     autoplay: false,
-    path: '/White/assets/Sample-Animation.json' // تأكد من المسار الصحيح
+    path: '/White/assets/Sample-Animation.json'
   });
 }
 
@@ -269,7 +269,6 @@ if (transitionDiv) {
 document.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
-    // تجاهل الروابط التي تبدأ بـ # أو javascript: أو الروابط الخارجية
     if (!href || href.startsWith('#') || href.startsWith('javascript:') || (href.startsWith('http') && !href.includes(window.location.hostname))) {
       return;
     }
@@ -279,11 +278,17 @@ document.querySelectorAll('a').forEach(link => {
     transitionDiv.style.opacity = '1';
 
     if (transitionAnimation) {
+      // انتظار انتهاء الأنيميشن قبل الانتقال
+      transitionAnimation.addEventListener('complete', function onComplete() {
+        transitionAnimation.removeEventListener('complete', onComplete);
+        window.location.href = href;
+      });
       transitionAnimation.goToAndPlay(0);
+    } else {
+      // في حالة فشل تحميل الأنيميشن، انتظر 700 مللي ثانية
+      setTimeout(() => {
+        window.location.href = href;
+      }, 700);
     }
-
-    setTimeout(() => {
-      window.location.href = href;
-    }, 700);
   });
 });
