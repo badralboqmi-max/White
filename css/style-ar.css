@@ -147,6 +147,7 @@ body {
   transform: scale(1);
   display: none;
   overflow: hidden;
+  background-color: transparent; /* تم الإضافة */
 }
 
 /* الدوائر الجانبية */
@@ -202,7 +203,8 @@ body {
   font-size: 14px;
   color: #555;
   margin-bottom: 15px;
-}/* تخصيص المنيو حسب نوع الصفحة */
+}
+/* تخصيص المنيو حسب نوع الصفحة */
 .home-page .menu-overlay {
   top: 310px;
   height: 249px;
@@ -332,6 +334,7 @@ body {
   font-size: 14px;
   margin-top: 5px;
 }
+
 /* تأثيرات الظهور عند التمرير */
 .fade-up {
   opacity: 0;
@@ -348,4 +351,23 @@ body {
 }
 .fade-in.visible {
   opacity: 1;
+}
+
+/* ===== إصلاح الأطراف البيضاء عند التكبير ===== */
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  height: auto;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: transparent;
+  position: relative;
 }
