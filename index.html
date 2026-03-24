@@ -236,16 +236,16 @@
   <!-- Loader and text row -->
   <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
     <div class="transition-loader"></div>
-    <div class="transition-text" style="font-size: 14px; color: #999;">LODING...</div>
+    <div class="transition-text" style="font-size: 14px; color: #555;">LODING</div>
   </div>
 </div>
 
 <style>
-/* CSS for the loader (dots) */
+/* CSS for the loader (dots only) */
 .transition-loader {
   height: 20px;
   aspect-ratio: 2;
-  border: 2px solid #999;
+  /* border: 2px solid #999;  <-- تم إزالة الإطار */
   box-sizing: border-box;
   background: 
     radial-gradient(farthest-side, #555 98%, #0000) left / 8px 8px,
