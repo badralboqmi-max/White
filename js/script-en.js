@@ -244,3 +244,46 @@ if (window.ResizeObserver) {
     }
   });
 }
+// ========== صفحة الانتقال (Page Transition) ==========
+let transitionAnimation = null;
+const transitionDiv = document.getElementById('page-transition');
+const animationContainer = document.getElementById('transition-animation');
+
+if (animationContainer) {
+  transitionAnimation = lottie.loadAnimation({
+    container: animationContainer,
+    renderer: 'svg',
+    loop: false,
+    autoplay: false,
+    path: '/White/assets/Sample-Animation.json' // تأكد من المسار الصحيح
+  });
+}
+
+// إخفاء الطبقة بعد تحميل الصفحة
+if (transitionDiv) {
+  transitionDiv.style.opacity = '0';
+  transitionDiv.style.visibility = 'hidden';
+}
+
+// اعتراض الروابط الداخلية
+document.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    // تجاهل الروابط التي تبدأ بـ # أو javascript: أو الروابط الخارجية
+    if (!href || href.startsWith('#') || href.startsWith('javascript:') || (href.startsWith('http') && !href.includes(window.location.hostname))) {
+      return;
+    }
+    e.preventDefault();
+
+    transitionDiv.style.visibility = 'visible';
+    transitionDiv.style.opacity = '1';
+
+    if (transitionAnimation) {
+      transitionAnimation.goToAndPlay(0);
+    }
+
+    setTimeout(() => {
+      window.location.href = href;
+    }, 700);
+  });
+});
