@@ -246,20 +246,17 @@
 .transition-loader {
   height: 20px;
   aspect-ratio: 2;
-  /* border: 2px solid #999;  <-- تم إزالة الإطار */
   box-sizing: border-box;
   background: 
     radial-gradient(farthest-side, #555 98%, #0000) left / 8px 8px,
-    radial-gradient(farthest-side, #555 98%, #0000) left / 8px 8px,
     radial-gradient(farthest-side, #555 98%, #0000) center / 8px 8px,
-    radial-gradient(farthest-side, #555 98%, #0000) right / 8px 8px,
-    #fff;
+    radial-gradient(farthest-side, #555 98%, #0000) right / 8px 8px;
   background-repeat: no-repeat;
   filter: blur(1px) contrast(10);
   animation: loaderAnim 1s infinite;
 }
 @keyframes loaderAnim {
-  100% { background-position: right, left, center, right; }
+  100% { background-position: right, left, center; }
 }
 </style>
   <script src="/White/js/script-en.js"></script>
