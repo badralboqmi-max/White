@@ -244,9 +244,9 @@
 <style>
 /* CSS for the loader (new design) */
 .transition-loader {
-  width: 80px;
+  width: 40px;            /* تم التصغير من 80px إلى 40px */
   aspect-ratio: 1;
-  padding: 10px;
+  padding: 5px;           /* نصف 10px */
   box-sizing: border-box;
   background: #fff;
   display: grid;
@@ -258,12 +258,12 @@
 .transition-loader:after {
   content: "";
   grid-area: 1/1;
-  margin: 5px;
+  margin: 2.5px;         /* نصف 5px */
   background: #ff00ff;
 }
 
 .transition-loader:after {
-  margin: 17px;
+  margin: 8.5px;         /* نصف 17px تقريباً */
   animation: loaderAnim 2s infinite;
 }
 
