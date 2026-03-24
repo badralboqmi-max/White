@@ -284,6 +284,6 @@ document.querySelectorAll('a').forEach(link => {
 
     setTimeout(() => {
       window.location.href = href;
-    }, 700);
+    }, 2000);
   });
 });
