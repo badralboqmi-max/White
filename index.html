@@ -244,22 +244,36 @@
 <style>
 /* CSS for the loader (new design) */
 .transition-loader {
-  height: 50px;
-  aspect-ratio: 2;
-  border: 10px solid #000;
+  width: 40px;
+  aspect-ratio: 1;
+  padding: 5px;
   box-sizing: border-box;
-  background: 
-    radial-gradient(farthest-side, #fff 98%, #0000) left / 20px 20px,
-    radial-gradient(farthest-side, #fff 98%, #0000) left / 20px 20px,
-    radial-gradient(farthest-side, #fff 98%, #0000) center / 20px 20px,
-    radial-gradient(farthest-side, #fff 98%, #0000) right / 20px 20px,
-    #000;
-  background-repeat: no-repeat;
-  filter: blur(4px) contrast(10);
-  animation: loaderAnim 1s infinite;
+  background: #fff;
+  display: grid;
+  filter: blur(5px) contrast(15) hue-rotate(120deg);
+  mix-blend-mode: darken;
 }
+
+.transition-loader:before,
+.transition-loader:after {
+  content: "";
+  grid-area: 1/1;
+  margin: 5px;
+  background: #ff00ff;
+}
+
+.transition-loader:after {
+  margin: 17px;
+  animation: loaderAnim 2s infinite;
+}
+
 @keyframes loaderAnim {
-  100% { background-position: right, left, center, right; }
+  12.5% { transform: translate(-60%, 60%); }
+  25%   { transform: translate(65%, -65%); }
+  37.5% { transform: translate(0, 0); }
+  50%   { transform: translate(60%, 60%); }
+  67.5% { transform: translate(-65%, -70%); }
+  75%   { transform: translate(60%, -60%); }
 }
 </style>
   <script src="/White/js/script-en.js"></script>
