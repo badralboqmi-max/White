@@ -240,3 +240,51 @@ if (window.ResizeObserver) {
     }
   });
 }
+// ========== صفحة الانتقال (Page Transition) ==========
+let transitionAnimation = null;
+const transitionDiv = document.getElementById('page-transition');
+const animationContainer = document.getElementById('transition-animation');
+
+if (animationContainer) {
+  transitionAnimation = lottie.loadAnimation({
+    container: animationContainer,
+    renderer: 'svg',
+    loop: false,
+    autoplay: false,
+    path: '/White/assets/Sample-Animation.json'
+  });
+}
+
+// إخفاء الطبقة بعد تحميل الصفحة
+if (transitionDiv) {
+  transitionDiv.style.opacity = '0';
+  transitionDiv.style.visibility = 'hidden';
+}
+
+// اعتراض الروابط الداخلية
+document.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('javascript:') || (href.startsWith('http') && !href.includes(window.location.hostname))) {
+      return;
+    }
+    e.preventDefault();
+
+    transitionDiv.style.visibility = 'visible';
+    transitionDiv.style.opacity = '1';
+
+    if (transitionAnimation) {
+      // انتظار انتهاء الأنيميشن قبل الانتقال
+      transitionAnimation.addEventListener('complete', function onComplete() {
+        transitionAnimation.removeEventListener('complete', onComplete);
+        window.location.href = href;
+      });
+      transitionAnimation.goToAndPlay(0);
+    } else {
+      // في حالة فشل تحميل الأنيميشن، انتظر 700 مللي ثانية
+      setTimeout(() => {
+        window.location.href = href;
+      }, 700);
+    }
+  });
+});
