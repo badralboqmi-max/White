@@ -244,7 +244,7 @@ if (animationContainer) {
     renderer: 'svg',
     loop: false,
     autoplay: false,
-    path: 'assets/Sample-Animation.json'
+    path: '../assets/Sample-Animation.json'
   });
 }
 
