@@ -21,7 +21,7 @@ document.addEventListener('click', function(event) {
   }
 });
 
-// ========== تحجيم الصفحة (resize) – إصلاح الأطراف البيضاء ==========
+// ========== تحجيم الصفحة ==========
 function getPageHeight() {
   if (document.body.classList.contains('home-page')) {
     return 1185;
@@ -32,7 +32,6 @@ function getPageHeight() {
 
 const page = { width: 393 };
 
-// دالة لاستخراج خلفية الصفحة وتطبيقها على <html> و <body>
 function applyPageBackground() {
   const container = document.getElementById('container');
   if (!container) return;
@@ -41,7 +40,6 @@ function applyPageBackground() {
     const computedStyle = window.getComputedStyle(bgElement);
     let bgStyle = computedStyle.background;
     
-    // إذا لم تكن الخلفية موجودة، حاول الحصول على صورة الخلفية أو اللون بشكل منفصل
     if (!bgStyle || bgStyle === 'none' || bgStyle === 'rgba(0, 0, 0, 0)') {
       const bgImage = computedStyle.backgroundImage;
       const bgColor = computedStyle.backgroundColor;
@@ -53,10 +51,8 @@ function applyPageBackground() {
     }
     
     if (bgStyle && bgStyle !== 'none') {
-      // تطبيق الخلفية على <html> و <body> معاً لضمان تغطية كاملة
       document.documentElement.style.background = bgStyle;
       document.body.style.background = bgStyle;
-      // ضبط الخلفية لتغطية كامل العنصر دون قص
       document.documentElement.style.backgroundSize = 'cover';
       document.body.style.backgroundSize = 'cover';
       document.documentElement.style.backgroundRepeat = 'no-repeat';
@@ -68,7 +64,6 @@ function applyPageBackground() {
       return;
     }
   }
-  // إذا لم نجد خلفية، نستخدم لون افتراضي
   const defaultBg = '#d2cec8';
   document.documentElement.style.background = defaultBg;
   document.body.style.background = defaultBg;
@@ -76,7 +71,6 @@ function applyPageBackground() {
   document.documentElement.style.backgroundImage = 'none';
 }
 
-// دالة لضبط ارتفاع body ليلائم المحتوى المحجَّم
 function adjustBodyHeight() {
   const container = document.getElementById('container');
   if (!container) return;
@@ -110,10 +104,8 @@ const resizePage = () => {
   applyPageBackground();
 };
 
-// تنفيذ التحجيم أول مرة
 resizePage();
 
-// تحسين الأداء عند تغيير حجم النافذة
 (function () {
   var throttle = function (type, name, obj) {
     obj = obj || window;
@@ -131,11 +123,9 @@ resizePage();
   throttle("resize", "optimizedResize");
 })();
 
-window.addEventListener("optimizedResize", function() {
-  resizePage();
-});
+window.addEventListener("optimizedResize", resizePage);
 
-// ========== نافذة التسجيل الإلزامية ==========
+// ========== نافذة التسجيل ==========
 const popupOverlay = document.getElementById('popupOverlay');
 
 window.addEventListener('load', function() {
@@ -154,7 +144,6 @@ window.closePopup = function() {
   document.body.style.overflow = 'auto';
 };
 
-// ========== دالة التسجيل الجديدة مع Supabase ==========
 window.submitPopup = async function() {
   const name = document.getElementById('popupName').value.trim();
   const phone = document.getElementById('popupPhone').value.trim();
@@ -229,21 +218,6 @@ document.addEventListener('DOMContentLoaded', function() {
   animatedElements.forEach(el => observer.observe(el));
 });
 
-// ========== مراقبة إضافية للتصغير/التكبير ==========
-if (window.ResizeObserver) {
-  const resizeObserver = new ResizeObserver(() => {
-    resizePage();
-  });
-  resizeObserver.observe(document.documentElement);
-} else {
-  let lastWidth = window.innerWidth;
-  window.addEventListener('touchmove', function() {
-    if (window.innerWidth !== lastWidth) {
-      lastWidth = window.innerWidth;
-      resizePage();
-    }
-  });
-}
 // ========== صفحة الانتقال (Page Transition) ==========
 let transitionAnimation = null;
 const transitionDiv = document.getElementById('page-transition');
@@ -259,36 +233,54 @@ if (animationContainer) {
   });
 }
 
-// إخفاء الطبقة بعد تحميل الصفحة
 if (transitionDiv) {
   transitionDiv.style.opacity = '0';
   transitionDiv.style.visibility = 'hidden';
 }
 
-// اعتراض الروابط الداخلية
+// اعتراض الروابط الداخلية فقط (ليست خارجية ولا # ولا javascript)
 document.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
-    if (!href || href.startsWith('#') || href.startsWith('javascript:') || (href.startsWith('http') && !href.includes(window.location.hostname))) {
-      return;
-    }
+    // تجاهل الروابط غير الصالحة
+    if (!href) return;
+    // تجاهل الروابط التي تبدأ بـ # أو javascript:
+    if (href.startsWith('#') || href.startsWith('javascript:')) return;
+    // تجاهل الروابط الخارجية (http:// أو https:// وليست على نفس النطاق)
+    if (href.startsWith('http') && !href.includes(window.location.hostname)) return;
+    // تجاهل الروابط التي تفتح في نافذة جديدة (target="_blank")
+    if (this.getAttribute('target') === '_blank') return;
+
     e.preventDefault();
 
+    // إظهار طبقة الانتقال
     transitionDiv.style.visibility = 'visible';
     transitionDiv.style.opacity = '1';
 
     if (transitionAnimation) {
-      // انتظار انتهاء الأنيميشن قبل الانتقال
+      transitionAnimation.goToAndPlay(0);
       transitionAnimation.addEventListener('complete', function onComplete() {
         transitionAnimation.removeEventListener('complete', onComplete);
         window.location.href = href;
       });
-      transitionAnimation.goToAndPlay(0);
     } else {
-      // في حالة فشل تحميل الأنيميشن، انتظر 700 مللي ثانية
-      setTimeout(() => {
-        window.location.href = href;
-      }, 700);
+      setTimeout(() => window.location.href = href, 700);
     }
   });
 });
+
+// ========== مراقبة إضافية للتصغير/التكبير ==========
+if (window.ResizeObserver) {
+  const resizeObserver = new ResizeObserver(() => {
+    resizePage();
+  });
+  resizeObserver.observe(document.documentElement);
+} else {
+  let lastWidth = window.innerWidth;
+  window.addEventListener('touchmove', function() {
+    if (window.innerWidth !== lastWidth) {
+      lastWidth = window.innerWidth;
+      resizePage();
+    }
+  });
+}
