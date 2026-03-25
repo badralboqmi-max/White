@@ -255,36 +255,41 @@ if (animationContainer) {
   });
 }
 
-// إخفاء الطبقة بعد تحميل الصفحة
 if (transitionDiv) {
   transitionDiv.style.opacity = '0';
   transitionDiv.style.visibility = 'hidden';
 }
 
-// اعتراض الروابط الداخلية
+// اعتراض الروابط الداخلية فقط (ليست خارجية ولا # ولا javascript)
 document.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
-    if (!href || href.startsWith('#') || href.startsWith('javascript:') || (href.startsWith('http') && !href.includes(window.location.hostname))) {
-      return;
-    }
+    if (!href) return;
+    if (href.startsWith('#') || href.startsWith('javascript:')) return;
+    if (href.startsWith('http') && !href.includes(window.location.hostname)) return;
+    if (this.getAttribute('target') === '_blank') return;
+
     e.preventDefault();
 
     transitionDiv.style.visibility = 'visible';
     transitionDiv.style.opacity = '1';
 
     if (transitionAnimation) {
-      // انتظار انتهاء الأنيميشن قبل الانتقال
+      transitionAnimation.goToAndPlay(0);
       transitionAnimation.addEventListener('complete', function onComplete() {
         transitionAnimation.removeEventListener('complete', onComplete);
         window.location.href = href;
       });
-      transitionAnimation.goToAndPlay(0);
     } else {
-      // في حالة فشل تحميل الأنيميشن، انتظر 700 مللي ثانية
-      setTimeout(() => {
-        window.location.href = href;
-      }, 700);
+      setTimeout(() => window.location.href = href, 700);
     }
   });
+});
+
+// إخفاء الطبقة عند العودة للصفحة عبر زر الرجوع أو التقدم
+window.addEventListener('pageshow', function() {
+  if (transitionDiv) {
+    transitionDiv.style.visibility = 'hidden';
+    transitionDiv.style.opacity = '0';
+  }
 });
