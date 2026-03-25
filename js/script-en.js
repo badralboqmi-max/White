@@ -8,16 +8,31 @@ const menuIcon = document.getElementById('menuIcon');
 const menu = document.getElementById('menu');
 const overlay = document.getElementById('overlay');
 
+// دالة لإغلاق المنيو وتراكب التعتيم
+function closeMenu() {
+  menu.classList.remove('show');
+  overlay.classList.remove('show');
+}
+
+// إغلاق المنيو عند تحميل الصفحة لأول مرة
+closeMenu();
+
+// إغلاق المنيو عند العودة عبر زر الرجوع/التقدم
+window.addEventListener('pageshow', function() {
+  closeMenu();
+});
+
+// فتح/إغلاق المنيو عند النقر على الأيقونة
 menuIcon.addEventListener('click', function(event) {
   event.stopPropagation();
   menu.classList.toggle('show');
   overlay.classList.toggle('show');
 });
 
+// إغلاق المنيو عند النقر في أي مكان آخر خارج المنيو والأيقونة
 document.addEventListener('click', function(event) {
   if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
-    menu.classList.remove('show');
-    overlay.classList.remove('show');
+    closeMenu();
   }
 });
 
