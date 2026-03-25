@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
   animatedElements.forEach(el => observer.observe(el));
 });
 
-// ========== صفحة الانتقال (Page Transition) ==========
+// ========== صفحة الانتقال (Page Transition) - مع إصلاح زر العودة ==========
 let transitionAnimation = null;
 const transitionDiv = document.getElementById('page-transition');
 const animationContainer = document.getElementById('transition-animation');
@@ -238,34 +238,40 @@ if (transitionDiv) {
   transitionDiv.style.visibility = 'hidden';
 }
 
+// وظيفة للانتقال إلى رابط مع صفحة الانتقال وتحديث السجل
+function navigateWithTransition(href) {
+  // إظهار طبقة الانتقال
+  transitionDiv.style.visibility = 'visible';
+  transitionDiv.style.opacity = '1';
+
+  // تحديث عنوان URL في شريط المتصفح دون إضافة صفحة وهمية إلى السجل
+  // باستخدام replaceState لتجنب تسجيل صفحة الانتقال
+  history.replaceState(null, '', href);
+
+  if (transitionAnimation) {
+    transitionAnimation.goToAndPlay(0);
+    transitionAnimation.addEventListener('complete', function onComplete() {
+      transitionAnimation.removeEventListener('complete', onComplete);
+      window.location.href = href;
+    });
+  } else {
+    setTimeout(() => {
+      window.location.href = href;
+    }, 700);
+  }
+}
+
 // اعتراض الروابط الداخلية فقط (ليست خارجية ولا # ولا javascript)
 document.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
-    // تجاهل الروابط غير الصالحة
     if (!href) return;
-    // تجاهل الروابط التي تبدأ بـ # أو javascript:
     if (href.startsWith('#') || href.startsWith('javascript:')) return;
-    // تجاهل الروابط الخارجية (http:// أو https:// وليست على نفس النطاق)
     if (href.startsWith('http') && !href.includes(window.location.hostname)) return;
-    // تجاهل الروابط التي تفتح في نافذة جديدة (target="_blank")
     if (this.getAttribute('target') === '_blank') return;
 
     e.preventDefault();
-
-    // إظهار طبقة الانتقال
-    transitionDiv.style.visibility = 'visible';
-    transitionDiv.style.opacity = '1';
-
-    if (transitionAnimation) {
-      transitionAnimation.goToAndPlay(0);
-      transitionAnimation.addEventListener('complete', function onComplete() {
-        transitionAnimation.removeEventListener('complete', onComplete);
-        window.location.href = href;
-      });
-    } else {
-      setTimeout(() => window.location.href = href, 700);
-    }
+    navigateWithTransition(href);
   });
 });
 
