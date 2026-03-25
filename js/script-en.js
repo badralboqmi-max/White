@@ -218,12 +218,11 @@
 ‏  animatedElements.forEach(el => observer.observe(el));
 });
 
-// ========== صفحة الانتقال (Page Transition) ==========
+// ========== صفحة الانتقال (Page Transition) - نسخة آمنة ==========
 let transitionAnimation = null;
 const transitionDiv = document.getElementById('page-transition');
 const animationContainer = document.getElementById('transition-animation');
 
-// تهيئة الأنيميشن
 if (animationContainer) {
   transitionAnimation = lottie.loadAnimation({
     container: animationContainer,
@@ -234,17 +233,15 @@ if (animationContainer) {
   });
 }
 
-// إخفاء الطبقة عند تحميل الصفحة (سواء لأول مرة أو بالرجوع)
 if (transitionDiv) {
   transitionDiv.style.opacity = '0';
   transitionDiv.style.visibility = 'hidden';
 }
 
-// اعتراض الروابط الداخلية فقط (بدون تعديل history)
+// اعتراض الروابط الداخلية
 document.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
-    // تجاهل الروابط غير الصالحة أو الخارجية
     if (!href) return;
     if (href.startsWith('#') || href.startsWith('javascript:')) return;
     if (href.startsWith('http') && !href.includes(window.location.hostname)) return;
@@ -252,7 +249,7 @@ document.querySelectorAll('a').forEach(link => {
 
     e.preventDefault();
 
-    // إظهار طبقة الانتقال
+    // إظهار الطبقة
     transitionDiv.style.visibility = 'visible';
     transitionDiv.style.opacity = '1';
 
@@ -261,17 +258,19 @@ document.querySelectorAll('a').forEach(link => {
       transitionAnimation.goToAndPlay(0);
       transitionAnimation.addEventListener('complete', function onComplete() {
         transitionAnimation.removeEventListener('complete', onComplete);
+        // الانتقال إلى الرابط الأصلي (نفس الـ href) بعد الأنيميشن
         window.location.href = href;
       });
     } else {
-      setTimeout(() => window.location.href = href, 700);
+      setTimeout(() => {
+        window.location.href = href;
+      }, 700);
     }
   });
 });
 
-// **تحسين لزر العودة:** عند العودة إلى الصفحة (عن طريق back/forward)، نضمن إخفاء طبقة الانتقال.
-window.addEventListener('pageshow', function(event) {
-  // pageshow يتم تشغيله عند تحميل الصفحة، بما في ذلك عند العودة إليها من السجل
+// عند العودة للصفحة عبر زر الرجوع، تأكد من إخفاء الطبقة
+window.addEventListener('pageshow', function() {
   if (transitionDiv) {
     transitionDiv.style.opacity = '0';
     transitionDiv.style.visibility = 'hidden';
