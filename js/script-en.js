@@ -218,64 +218,7 @@
 ‏  animatedElements.forEach(el => observer.observe(el));
 });
 
-// ========== صفحة الانتقال (Page Transition) - نسخة آمنة ==========
-let transitionAnimation = null;
-const transitionDiv = document.getElementById('page-transition');
-const animationContainer = document.getElementById('transition-animation');
 
-if (animationContainer) {
-  transitionAnimation = lottie.loadAnimation({
-    container: animationContainer,
-    renderer: 'svg',
-    loop: false,
-    autoplay: false,
-    path: '/White/assets/Sample-Animation.json'
-  });
-}
-
-if (transitionDiv) {
-  transitionDiv.style.opacity = '0';
-  transitionDiv.style.visibility = 'hidden';
-}
-
-// اعتراض الروابط الداخلية
-document.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', function(e) {
-    const href = this.getAttribute('href');
-    if (!href) return;
-    if (href.startsWith('#') || href.startsWith('javascript:')) return;
-    if (href.startsWith('http') && !href.includes(window.location.hostname)) return;
-    if (this.getAttribute('target') === '_blank') return;
-
-    e.preventDefault();
-
-    // إظهار الطبقة
-    transitionDiv.style.visibility = 'visible';
-    transitionDiv.style.opacity = '1';
-
-    // تشغيل الأنيميشن
-    if (transitionAnimation) {
-      transitionAnimation.goToAndPlay(0);
-      transitionAnimation.addEventListener('complete', function onComplete() {
-        transitionAnimation.removeEventListener('complete', onComplete);
-        // الانتقال إلى الرابط الأصلي (نفس الـ href) بعد الأنيميشن
-        window.location.href = href;
-      });
-    } else {
-      setTimeout(() => {
-        window.location.href = href;
-      }, 700);
-    }
-  });
-});
-
-// عند العودة للصفحة عبر زر الرجوع، تأكد من إخفاء الطبقة
-window.addEventListener('pageshow', function() {
-  if (transitionDiv) {
-    transitionDiv.style.opacity = '0';
-    transitionDiv.style.visibility = 'hidden';
-  }
-});
 // ========== مراقبة إضافية للتصغير/التكبير ==========
 ‏if (window.ResizeObserver) {
 ‏  const resizeObserver = new ResizeObserver(() => {
