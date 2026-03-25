@@ -242,18 +242,13 @@ if (transitionDiv) {
 document.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
-    // تجاهل الروابط غير الصالحة
     if (!href) return;
-    // تجاهل الروابط التي تبدأ بـ # أو javascript:
     if (href.startsWith('#') || href.startsWith('javascript:')) return;
-    // تجاهل الروابط الخارجية (http:// أو https:// وليست على نفس النطاق)
     if (href.startsWith('http') && !href.includes(window.location.hostname)) return;
-    // تجاهل الروابط التي تفتح في نافذة جديدة (target="_blank")
     if (this.getAttribute('target') === '_blank') return;
 
     e.preventDefault();
 
-    // إظهار طبقة الانتقال
     transitionDiv.style.visibility = 'visible';
     transitionDiv.style.opacity = '1';
 
@@ -267,6 +262,14 @@ document.querySelectorAll('a').forEach(link => {
       setTimeout(() => window.location.href = href, 700);
     }
   });
+});
+
+// إخفاء الطبقة عند العودة للصفحة عبر زر الرجوع أو التقدم
+window.addEventListener('pageshow', function() {
+  if (transitionDiv) {
+    transitionDiv.style.visibility = 'hidden';
+    transitionDiv.style.opacity = '0';
+  }
 });
 
 // ========== مراقبة إضافية للتصغير/التكبير ==========
