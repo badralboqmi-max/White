@@ -157,7 +157,7 @@ window.addEventListener('load', function() {
   setTimeout(function() {
     popupOverlay.classList.add('show');
     document.body.style.overflow = 'hidden';
-  }, 2000);
+  }, 4000);
 });
 
 window.closePopup = function() {
