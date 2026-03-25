@@ -1,228 +1,229 @@
 // ========== تعريف Supabase ==========
-const SUPABASE_URL = 'https://qyhpbdvcvxqhnptqzouw.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_8aNuoaA4T8oWKs3ta0x6iw_o5jkQn_c';
-const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+‏const SUPABASE_URL = 'https://qyhpbdvcvxqhnptqzouw.supabase.co';
+‏const SUPABASE_ANON_KEY = 'sb_publishable_8aNuoaA4T8oWKs3ta0x6iw_o5jkQn_c';
+‏const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ========== التحكم في المنيو ==========
-const menuIcon = document.getElementById('menuIcon');
-const menu = document.getElementById('menu');
-const overlay = document.getElementById('overlay');
+‏const menuIcon = document.getElementById('menuIcon');
+‏const menu = document.getElementById('menu');
+‏const overlay = document.getElementById('overlay');
 
-menuIcon.addEventListener('click', function(event) {
-  event.stopPropagation();
-  menu.classList.toggle('show');
-  overlay.classList.toggle('show');
+‏menuIcon.addEventListener('click', function(event) {
+‏  event.stopPropagation();
+‏  menu.classList.toggle('show');
+‏  overlay.classList.toggle('show');
 });
 
-document.addEventListener('click', function(event) {
-  if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
-    menu.classList.remove('show');
-    overlay.classList.remove('show');
+‏document.addEventListener('click', function(event) {
+‏  if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+‏    menu.classList.remove('show');
+‏    overlay.classList.remove('show');
   }
 });
 
 // ========== تحجيم الصفحة ==========
-function getPageHeight() {
-  if (document.body.classList.contains('home-page')) {
-    return 1185;
-  } else {
-    return 853;
+‏function getPageHeight() {
+‏  if (document.body.classList.contains('home-page')) {
+‏    return 1185;
+‏  } else {
+‏    return 853;
   }
 }
 
-const page = { width: 393 };
+‏const page = { width: 393 };
 
-function applyPageBackground() {
-  const container = document.getElementById('container');
-  if (!container) return;
-  const bgElement = container.querySelector('div:first-child');
-  if (bgElement) {
-    const computedStyle = window.getComputedStyle(bgElement);
-    let bgStyle = computedStyle.background;
+‏function applyPageBackground() {
+‏  const container = document.getElementById('container');
+‏  if (!container) return;
+‏  const bgElement = container.querySelector('div:first-child');
+‏  if (bgElement) {
+‏    const computedStyle = window.getComputedStyle(bgElement);
+‏    let bgStyle = computedStyle.background;
     
-    if (!bgStyle || bgStyle === 'none' || bgStyle === 'rgba(0, 0, 0, 0)') {
-      const bgImage = computedStyle.backgroundImage;
-      const bgColor = computedStyle.backgroundColor;
-      if (bgImage && bgImage !== 'none') {
-        bgStyle = bgImage;
-      } else if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)') {
-        bgStyle = bgColor;
+‏    if (!bgStyle || bgStyle === 'none' || bgStyle === 'rgba(0, 0, 0, 0)') {
+‏      const bgImage = computedStyle.backgroundImage;
+‏      const bgColor = computedStyle.backgroundColor;
+‏      if (bgImage && bgImage !== 'none') {
+‏        bgStyle = bgImage;
+‏      } else if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)') {
+‏        bgStyle = bgColor;
       }
     }
     
-    if (bgStyle && bgStyle !== 'none') {
-      document.documentElement.style.background = bgStyle;
-      document.body.style.background = bgStyle;
-      document.documentElement.style.backgroundSize = 'cover';
-      document.body.style.backgroundSize = 'cover';
-      document.documentElement.style.backgroundRepeat = 'no-repeat';
-      document.body.style.backgroundRepeat = 'no-repeat';
-      document.documentElement.style.backgroundAttachment = 'scroll';
-      document.body.style.backgroundAttachment = 'scroll';
-      document.documentElement.style.backgroundPosition = 'center center';
-      document.body.style.backgroundPosition = 'center center';
-      return;
+‏    if (bgStyle && bgStyle !== 'none') {
+‏      document.documentElement.style.background = bgStyle;
+‏      document.body.style.background = bgStyle;
+‏      document.documentElement.style.backgroundSize = 'cover';
+‏      document.body.style.backgroundSize = 'cover';
+‏      document.documentElement.style.backgroundRepeat = 'no-repeat';
+‏      document.body.style.backgroundRepeat = 'no-repeat';
+‏      document.documentElement.style.backgroundAttachment = 'scroll';
+‏      document.body.style.backgroundAttachment = 'scroll';
+‏      document.documentElement.style.backgroundPosition = 'center center';
+‏      document.body.style.backgroundPosition = 'center center';
+‏      return;
     }
   }
-  const defaultBg = '#d2cec8';
-  document.documentElement.style.background = defaultBg;
-  document.body.style.background = defaultBg;
-  document.body.style.backgroundImage = 'none';
-  document.documentElement.style.backgroundImage = 'none';
+‏  const defaultBg = '#d2cec8';
+‏  document.documentElement.style.background = defaultBg;
+‏  document.body.style.background = defaultBg;
+‏  document.body.style.backgroundImage = 'none';
+‏  document.documentElement.style.backgroundImage = 'none';
 }
 
-function adjustBodyHeight() {
-  const container = document.getElementById('container');
-  if (!container) return;
-  const viewWidth = window.innerWidth;
-  const scale = viewWidth / page.width;
-  const containerHeight = getPageHeight() * scale;
-  const minBodyHeight = Math.max(containerHeight, window.innerHeight);
-  document.body.style.minHeight = minBodyHeight + 'px';
-  document.documentElement.style.minHeight = minBodyHeight + 'px';
+‏function adjustBodyHeight() {
+‏  const container = document.getElementById('container');
+‏  if (!container) return;
+‏  const viewWidth = window.innerWidth;
+‏  const scale = viewWidth / page.width;
+‏  const containerHeight = getPageHeight() * scale;
+‏  const minBodyHeight = Math.max(containerHeight, window.innerHeight);
+‏  document.body.style.minHeight = minBodyHeight + 'px';
+‏  document.documentElement.style.minHeight = minBodyHeight + 'px';
 }
 
-const resizePage = () => {
-  const viewWidth = window.innerWidth;
-  const container = document.getElementById('container');
-  if (!container) return;
-  const scale = viewWidth / page.width;
-  const displayHeight = getPageHeight() * scale || 0;
+‏const resizePage = () => {
+‏  const viewWidth = window.innerWidth;
+‏  const container = document.getElementById('container');
+‏  if (!container) return;
+‏  const scale = viewWidth / page.width;
+‏  const displayHeight = getPageHeight() * scale || 0;
 
-  document.body.style.paddingTop = displayHeight + 'px';
-  document.body.style.width = '100%';
-  document.body.style.minWidth = '100%';
+‏  document.body.style.paddingTop = displayHeight + 'px';
+‏  document.body.style.width = '100%';
+‏  document.body.style.minWidth = '100%';
 
-  container.style.width = page.width + 'px';
-  container.style.height = getPageHeight() + 'px';
-  container.style.transformOrigin = '0 0';
-  container.style.transform = 'scale(' + scale + ')';
-  container.style.display = 'block';
-  container.style.overflow = 'visible';
+‏  container.style.width = page.width + 'px';
+‏  container.style.height = getPageHeight() + 'px';
+‏  container.style.transformOrigin = '0 0';
+‏  container.style.transform = 'scale(' + scale + ')';
+‏  container.style.display = 'block';
+‏  container.style.overflow = 'visible';
 
-  adjustBodyHeight();
-  applyPageBackground();
+‏  adjustBodyHeight();
+‏  applyPageBackground();
 };
 
-resizePage();
+‏resizePage();
 
-(function () {
-  var throttle = function (type, name, obj) {
-    obj = obj || window;
-    var running = false;
-    var func = function () {
-      if (running) return;
-      running = true;
-      requestAnimationFrame(function () {
-        obj.dispatchEvent(new CustomEvent(name));
-        running = false;
+‏(function () {
+‏  var throttle = function (type, name, obj) {
+‏    obj = obj || window;
+‏    var running = false;
+‏    var func = function () {
+‏      if (running) return;
+‏      running = true;
+‏      requestAnimationFrame(function () {
+‏        obj.dispatchEvent(new CustomEvent(name));
+‏        running = false;
       });
     };
-    obj.addEventListener(type, func);
+‏    obj.addEventListener(type, func);
   };
-  throttle("resize", "optimizedResize");
+‏  throttle("resize", "optimizedResize");
 })();
 
-window.addEventListener("optimizedResize", resizePage);
+‏window.addEventListener("optimizedResize", resizePage);
 
 // ========== نافذة التسجيل ==========
-const popupOverlay = document.getElementById('popupOverlay');
+‏const popupOverlay = document.getElementById('popupOverlay');
 
-window.addEventListener('load', function() {
-  if (localStorage.getItem('userRegistered')) {
-    console.log('User already registered, popup hidden');
-    return;
+‏window.addEventListener('load', function() {
+‏  if (localStorage.getItem('userRegistered')) {
+‏    console.log('User already registered, popup hidden');
+‏    return;
   }
-  setTimeout(function() {
-    popupOverlay.classList.add('show');
-    document.body.style.overflow = 'hidden';
+‏  setTimeout(function() {
+‏    popupOverlay.classList.add('show');
+‏    document.body.style.overflow = 'hidden';
   }, 2000);
 });
 
-window.closePopup = function() {
-  popupOverlay.classList.remove('show');
-  document.body.style.overflow = 'auto';
+‏window.closePopup = function() {
+‏  popupOverlay.classList.remove('show');
+‏  document.body.style.overflow = 'auto';
 };
 
-window.submitPopup = async function() {
-  const name = document.getElementById('popupName').value.trim();
-  const phone = document.getElementById('popupPhone').value.trim();
-  const agree = document.getElementById('popupPrivacyCheck').checked;
-  const messageDiv = document.getElementById('popupMessage');
+‏window.submitPopup = async function() {
+‏  const name = document.getElementById('popupName').value.trim();
+‏  const phone = document.getElementById('popupPhone').value.trim();
+‏  const agree = document.getElementById('popupPrivacyCheck').checked;
+‏  const messageDiv = document.getElementById('popupMessage');
 
-  if (!name || !phone) {
-    messageDiv.textContent = 'Please fill in all fields';
-    messageDiv.className = 'popup-error';
-    return;
+‏  if (!name || !phone) {
+‏    messageDiv.textContent = 'Please fill in all fields';
+‏    messageDiv.className = 'popup-error';
+‏    return;
   }
 
-  const phoneRegex = /^05\d{8}$/;
-  if (!phoneRegex.test(phone)) {
-    messageDiv.textContent = 'Phone number must be 10 digits and start with 05';
-    messageDiv.className = 'popup-error';
-    return;
+‏  const phoneRegex = /^05\d{8}$/;
+‏  if (!phoneRegex.test(phone)) {
+‏    messageDiv.textContent = 'Phone number must be 10 digits and start with 05';
+‏    messageDiv.className = 'popup-error';
+‏    return;
   }
 
-  if (!agree) {
-    messageDiv.textContent = 'You must agree to the privacy policy';
-    messageDiv.className = 'popup-error';
-    return;
+‏  if (!agree) {
+‏    messageDiv.textContent = 'You must agree to the privacy policy';
+‏    messageDiv.className = 'popup-error';
+‏    return;
   }
 
-  const btn = document.querySelector('.popup-button');
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
+‏  const btn = document.querySelector('.popup-button');
+‏  btn.disabled = true;
+‏  btn.textContent = 'Sending...';
 
-  try {
-    const { error } = await supabaseClient
-      .from('customers')
-      .insert([{ name, phone, consent: agree }]);
+‏  try {
+‏    const { error } = await supabaseClient
+‏      .from('customers')
+‏      .insert([{ name, phone, consent: agree }]);
 
-    if (error) {
-      if (error.code === '23505') {
-        messageDiv.textContent = 'This phone number is already registered.';
-      } else {
-        throw error;
+‏    if (error) {
+‏      if (error.code === '23505') {
+‏        messageDiv.textContent = 'This phone number is already registered.';
+‏      } else {
+‏        throw error;
       }
-      messageDiv.className = 'popup-error';
-    } else {
-      messageDiv.textContent = 'Registration successful! Thank you.';
-      messageDiv.className = 'popup-success';
-      localStorage.setItem('userRegistered', 'true');
-      document.getElementById('popupName').value = '';
-      document.getElementById('popupPhone').value = '';
-      document.getElementById('popupPrivacyCheck').checked = false;
-      setTimeout(closePopup, 2000);
+‏      messageDiv.className = 'popup-error';
+‏    } else {
+‏      messageDiv.textContent = 'Registration successful! Thank you.';
+‏      messageDiv.className = 'popup-success';
+‏      localStorage.setItem('userRegistered', 'true');
+‏      document.getElementById('popupName').value = '';
+‏      document.getElementById('popupPhone').value = '';
+‏      document.getElementById('popupPrivacyCheck').checked = false;
+‏      setTimeout(closePopup, 2000);
     }
-  } catch (error) {
-    console.error(error);
-    messageDiv.textContent = 'An error occurred. Please try again.';
-    messageDiv.className = 'popup-error';
-  } finally {
-    btn.disabled = false;
-    btn.textContent = 'Register';
+‏  } catch (error) {
+‏    console.error(error);
+‏    messageDiv.textContent = 'An error occurred. Please try again.';
+‏    messageDiv.className = 'popup-error';
+‏  } finally {
+‏    btn.disabled = false;
+‏    btn.textContent = 'Register';
   }
 };
 
 // ========== تأثيرات الظهور عند التمرير ==========
-document.addEventListener('DOMContentLoaded', function() {
-  const animatedElements = document.querySelectorAll('.fade-up, .fade-in');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+‏document.addEventListener('DOMContentLoaded', function() {
+‏  const animatedElements = document.querySelectorAll('.fade-up, .fade-in');
+‏  const observer = new IntersectionObserver((entries) => {
+‏    entries.forEach(entry => {
+‏      if (entry.isIntersecting) {
+‏        entry.target.classList.add('visible');
+‏        observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.2 });
-  animatedElements.forEach(el => observer.observe(el));
+‏  }, { threshold: 0.2 });
+‏  animatedElements.forEach(el => observer.observe(el));
 });
 
-// ========== صفحة الانتقال (Page Transition) - مع إصلاح زر العودة ==========
+// ========== صفحة الانتقال (Page Transition) ==========
 let transitionAnimation = null;
 const transitionDiv = document.getElementById('page-transition');
 const animationContainer = document.getElementById('transition-animation');
 
+// تهيئة الأنيميشن
 if (animationContainer) {
   transitionAnimation = lottie.loadAnimation({
     container: animationContainer,
@@ -233,60 +234,61 @@ if (animationContainer) {
   });
 }
 
+// إخفاء الطبقة عند تحميل الصفحة (سواء لأول مرة أو بالرجوع)
 if (transitionDiv) {
   transitionDiv.style.opacity = '0';
   transitionDiv.style.visibility = 'hidden';
 }
 
-// وظيفة للانتقال إلى رابط مع صفحة الانتقال وتحديث السجل
-function navigateWithTransition(href) {
-  // إظهار طبقة الانتقال
-  transitionDiv.style.visibility = 'visible';
-  transitionDiv.style.opacity = '1';
-
-  // تحديث عنوان URL في شريط المتصفح دون إضافة صفحة وهمية إلى السجل
-  // باستخدام replaceState لتجنب تسجيل صفحة الانتقال
-  history.replaceState(null, '', href);
-
-  if (transitionAnimation) {
-    transitionAnimation.goToAndPlay(0);
-    transitionAnimation.addEventListener('complete', function onComplete() {
-      transitionAnimation.removeEventListener('complete', onComplete);
-      window.location.href = href;
-    });
-  } else {
-    setTimeout(() => {
-      window.location.href = href;
-    }, 700);
-  }
-}
-
-// اعتراض الروابط الداخلية فقط (ليست خارجية ولا # ولا javascript)
+// اعتراض الروابط الداخلية فقط (بدون تعديل history)
 document.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
+    // تجاهل الروابط غير الصالحة أو الخارجية
     if (!href) return;
     if (href.startsWith('#') || href.startsWith('javascript:')) return;
     if (href.startsWith('http') && !href.includes(window.location.hostname)) return;
     if (this.getAttribute('target') === '_blank') return;
 
     e.preventDefault();
-    navigateWithTransition(href);
+
+    // إظهار طبقة الانتقال
+    transitionDiv.style.visibility = 'visible';
+    transitionDiv.style.opacity = '1';
+
+    // تشغيل الأنيميشن
+    if (transitionAnimation) {
+      transitionAnimation.goToAndPlay(0);
+      transitionAnimation.addEventListener('complete', function onComplete() {
+        transitionAnimation.removeEventListener('complete', onComplete);
+        window.location.href = href;
+      });
+    } else {
+      setTimeout(() => window.location.href = href, 700);
+    }
   });
 });
 
+// **تحسين لزر العودة:** عند العودة إلى الصفحة (عن طريق back/forward)، نضمن إخفاء طبقة الانتقال.
+window.addEventListener('pageshow', function(event) {
+  // pageshow يتم تشغيله عند تحميل الصفحة، بما في ذلك عند العودة إليها من السجل
+  if (transitionDiv) {
+    transitionDiv.style.opacity = '0';
+    transitionDiv.style.visibility = 'hidden';
+  }
+});
 // ========== مراقبة إضافية للتصغير/التكبير ==========
-if (window.ResizeObserver) {
-  const resizeObserver = new ResizeObserver(() => {
-    resizePage();
+‏if (window.ResizeObserver) {
+‏  const resizeObserver = new ResizeObserver(() => {
+‏    resizePage();
   });
-  resizeObserver.observe(document.documentElement);
-} else {
-  let lastWidth = window.innerWidth;
-  window.addEventListener('touchmove', function() {
-    if (window.innerWidth !== lastWidth) {
-      lastWidth = window.innerWidth;
-      resizePage();
+‏  resizeObserver.observe(document.documentElement);
+‏} else {
+‏  let lastWidth = window.innerWidth;
+‏  window.addEventListener('touchmove', function() {
+‏    if (window.innerWidth !== lastWidth) {
+‏      lastWidth = window.innerWidth;
+‏      resizePage();
     }
   });
 }
