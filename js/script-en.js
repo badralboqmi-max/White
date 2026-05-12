@@ -1,37 +1,44 @@
-// ========== رابط Google Apps Script (غيّره إلى رابطك الشخصي) ==========
-const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbypiBQ3fzMlh5rWkSgSAIc34ZzVjfLMjf8nfY8SKN8mf43cAAkRxQGV8cqQ21FdM8Zkaw/exec';
 
-// ========== التحكم في القائمة الجانبية ==========
+// ========== التحكم في المنيو ==========
 const menuIcon = document.getElementById('menuIcon');
 const menu = document.getElementById('menu');
 const overlay = document.getElementById('overlay');
 
+// دالة لإغلاق المنيو وتراكب التعتيم
 function closeMenu() {
   menu.classList.remove('show');
   overlay.classList.remove('show');
 }
 
+// إغلاق المنيو عند تحميل الصفحة لأول مرة
 closeMenu();
 
+// إغلاق المنيو عند العودة عبر زر الرجوع/التقدم
 window.addEventListener('pageshow', function() {
   closeMenu();
 });
 
+// فتح/إغلاق المنيو عند النقر على الأيقونة
 menuIcon.addEventListener('click', function(event) {
   event.stopPropagation();
   menu.classList.toggle('show');
   overlay.classList.toggle('show');
 });
 
+// إغلاق المنيو عند النقر في أي مكان آخر خارج المنيو والأيقونة
 document.addEventListener('click', function(event) {
   if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
     closeMenu();
   }
 });
 
-// ========== تحجيم الصفحة وتكيفها ==========
+// ========== تحجيم الصفحة ==========
 function getPageHeight() {
-  return document.body.classList.contains('home-page') ? 1185 : 853;
+  if (document.body.classList.contains('home-page')) {
+    return 1185;
+  } else {
+    return 853;
+  }
 }
 
 const page = { width: 393 };
@@ -43,19 +50,28 @@ function applyPageBackground() {
   if (bgElement) {
     const computedStyle = window.getComputedStyle(bgElement);
     let bgStyle = computedStyle.background;
+    
     if (!bgStyle || bgStyle === 'none' || bgStyle === 'rgba(0, 0, 0, 0)') {
       const bgImage = computedStyle.backgroundImage;
       const bgColor = computedStyle.backgroundColor;
-      if (bgImage && bgImage !== 'none') bgStyle = bgImage;
-      else if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)') bgStyle = bgColor;
+      if (bgImage && bgImage !== 'none') {
+        bgStyle = bgImage;
+      } else if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)') {
+        bgStyle = bgColor;
+      }
     }
+    
     if (bgStyle && bgStyle !== 'none') {
       document.documentElement.style.background = bgStyle;
       document.body.style.background = bgStyle;
-      ['backgroundSize', 'backgroundRepeat', 'backgroundAttachment', 'backgroundPosition'].forEach(prop => {
-        document.documentElement.style[prop] = document.body.style[prop] = 
-          prop === 'backgroundSize' ? 'cover' : (prop === 'backgroundRepeat' ? 'no-repeat' : (prop === 'backgroundAttachment' ? 'scroll' : 'center center'));
-      });
+      document.documentElement.style.backgroundSize = 'cover';
+      document.body.style.backgroundSize = 'cover';
+      document.documentElement.style.backgroundRepeat = 'no-repeat';
+      document.body.style.backgroundRepeat = 'no-repeat';
+      document.documentElement.style.backgroundAttachment = 'scroll';
+      document.body.style.backgroundAttachment = 'scroll';
+      document.documentElement.style.backgroundPosition = 'center center';
+      document.body.style.backgroundPosition = 'center center';
       return;
     }
   }
@@ -63,114 +79,67 @@ function applyPageBackground() {
   document.documentElement.style.background = defaultBg;
   document.body.style.background = defaultBg;
   document.body.style.backgroundImage = 'none';
+  document.documentElement.style.backgroundImage = 'none';
 }
 
 function adjustBodyHeight() {
   const container = document.getElementById('container');
   if (!container) return;
-  const scale = window.innerWidth / page.width;
+  const viewWidth = window.innerWidth;
+  const scale = viewWidth / page.width;
   const containerHeight = getPageHeight() * scale;
   const minBodyHeight = Math.max(containerHeight, window.innerHeight);
-  document.body.style.minHeight = document.documentElement.style.minHeight = minBodyHeight + 'px';
+  document.body.style.minHeight = minBodyHeight + 'px';
+  document.documentElement.style.minHeight = minBodyHeight + 'px';
 }
 
 const resizePage = () => {
+  const viewWidth = window.innerWidth;
   const container = document.getElementById('container');
   if (!container) return;
-  const scale = window.innerWidth / page.width;
-  document.body.style.paddingTop = (getPageHeight() * scale) + 'px';
+  const scale = viewWidth / page.width;
+  const displayHeight = getPageHeight() * scale || 0;
+
+  document.body.style.paddingTop = displayHeight + 'px';
+  document.body.style.width = '100%';
+  document.body.style.minWidth = '100%';
+
   container.style.width = page.width + 'px';
   container.style.height = getPageHeight() + 'px';
-  container.style.transform = `scale(${scale})`;
   container.style.transformOrigin = '0 0';
+  container.style.transform = 'scale(' + scale + ')';
+  container.style.display = 'block';
+  container.style.overflow = 'visible';
+
   adjustBodyHeight();
   applyPageBackground();
 };
 
 resizePage();
 
-window.addEventListener('resize', () => {
-  requestAnimationFrame(resizePage);
-});
+(function () {
+  var throttle = function (type, name, obj) {
+    obj = obj || window;
+    var running = false;
+    var func = function () {
+      if (running) return;
+      running = true;
+      requestAnimationFrame(function () {
+        obj.dispatchEvent(new CustomEvent(name));
+        running = false;
+      });
+    };
+    obj.addEventListener(type, func);
+  };
+  throttle("resize", "optimizedResize");
+})();
 
-// ========== نافذة التسجيل المنبثقة ==========
-const popupOverlay = document.getElementById('popupOverlay');
+window.addEventListener("optimizedResize", resizePage);
 
-window.addEventListener('load', () => {
-  if (!localStorage.getItem('userRegistered')) {
-    setTimeout(() => {
-      popupOverlay.classList.add('show');
-      document.body.style.overflow = 'hidden';
-    }, 4000);
-  }
-});
 
-window.closePopup = function() {
-  popupOverlay.classList.remove('show');
-  document.body.style.overflow = 'auto';
-};
-
-// دالة التسجيل الرئيسية (ترسل إلى Google Sheets)
-window.submitPopup = async function() {
-  const name = document.getElementById('popupName').value.trim();
-  const phone = document.getElementById('popupPhone').value.trim();
-  const agree = document.getElementById('popupPrivacyCheck').checked;
-  const messageDiv = document.getElementById('popupMessage');
-
-  messageDiv.textContent = '';
-  
-  if (!name || !phone) {
-    messageDiv.textContent = 'Please fill in all fields';
-    messageDiv.className = 'popup-error';
-    return;
-  }
-  if (!/^05\d{8}$/.test(phone)) {
-    messageDiv.textContent = 'Phone number must be 10 digits and start with 05';
-    messageDiv.className = 'popup-error';
-    return;
-  }
-  if (!agree) {
-    messageDiv.textContent = 'You must agree to the privacy policy';
-    messageDiv.className = 'popup-error';
-    return;
-  }
-
-  const btn = document.querySelector('.popup-button');
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
-
-  try {
-    const response = await fetch(WEB_APP_URL, {
-      method: 'POST',
-      mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, phone, consent: agree })
-    });
-    const result = await response.json();
-    if (result.success) {
-      messageDiv.textContent = 'Registration successful! Thank you.';
-      messageDiv.className = 'popup-success';
-      localStorage.setItem('userRegistered', 'true');
-      document.getElementById('popupName').value = '';
-      document.getElementById('popupPhone').value = '';
-      document.getElementById('popupPrivacyCheck').checked = false;
-      setTimeout(() => closePopup(), 2000);
-    } else {
-      messageDiv.textContent = result.error || 'Server error.';
-      messageDiv.className = 'popup-error';
-    }
-  } catch (error) {
-    console.error('Fetch error details:', error);
-    messageDiv.textContent = 'Connection failed. Check console for details.';
-    messageDiv.className = 'popup-error';
-  } finally {
-    btn.disabled = false;
-    btn.textContent = 'Register';
-  }
-};
-
-// ========== تأثيرات الحركة عند التمرير ==========
-document.addEventListener('DOMContentLoaded', () => {
+// ========== تأثيرات الظهور عند التمرير ==========
+document.addEventListener('DOMContentLoaded', function() {
+  const animatedElements = document.querySelectorAll('.fade-up, .fade-in');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -179,13 +148,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, { threshold: 0.2 });
-  document.querySelectorAll('.fade-up, .fade-in').forEach(el => observer.observe(el));
+  animatedElements.forEach(el => observer.observe(el));
 });
 
-// ========== انتقال الصفحات (Page Transition) ==========
+// ========== صفحة الانتقال (Page Transition) ==========
 let transitionAnimation = null;
 const transitionDiv = document.getElementById('page-transition');
 const animationContainer = document.getElementById('transition-animation');
+
 if (animationContainer) {
   transitionAnimation = lottie.loadAnimation({
     container: animationContainer,
@@ -195,34 +165,58 @@ if (animationContainer) {
     path: '../assets/Sample-Animation.json'
   });
 }
+
 if (transitionDiv) {
   transitionDiv.style.opacity = '0';
   transitionDiv.style.visibility = 'hidden';
 }
+
+// اعتراض الروابط الداخلية فقط (ليست خارجية ولا # ولا javascript)
 document.querySelectorAll('a').forEach(link => {
-  const href = link.getAttribute('href');
-  if (!href || href.startsWith('#') || href.startsWith('javascript:')) return;
-  if (href.startsWith('http') && !href.includes(window.location.hostname)) return;
-  if (link.getAttribute('target') === '_blank') return;
-  link.addEventListener('click', (e) => {
+  link.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (!href) return;
+    if (href.startsWith('#') || href.startsWith('javascript:')) return;
+    if (href.startsWith('http') && !href.includes(window.location.hostname)) return;
+    if (this.getAttribute('target') === '_blank') return;
+
     e.preventDefault();
-    if (transitionDiv) {
-      transitionDiv.style.visibility = 'visible';
-      transitionDiv.style.opacity = '1';
-    }
+
+    transitionDiv.style.visibility = 'visible';
+    transitionDiv.style.opacity = '1';
+
     if (transitionAnimation) {
       transitionAnimation.goToAndPlay(0);
-      transitionAnimation.addEventListener('complete', () => {
+      transitionAnimation.addEventListener('complete', function onComplete() {
+        transitionAnimation.removeEventListener('complete', onComplete);
         window.location.href = href;
-      }, { once: true });
+      });
     } else {
       setTimeout(() => window.location.href = href, 700);
     }
   });
 });
-window.addEventListener('pageshow', () => {
+
+// إخفاء الطبقة عند العودة للصفحة عبر زر الرجوع أو التقدم
+window.addEventListener('pageshow', function() {
   if (transitionDiv) {
     transitionDiv.style.visibility = 'hidden';
     transitionDiv.style.opacity = '0';
   }
 });
+
+// ========== مراقبة إضافية للتصغير/التكبير ==========
+if (window.ResizeObserver) {
+  const resizeObserver = new ResizeObserver(() => {
+    resizePage();
+  });
+  resizeObserver.observe(document.documentElement);
+} else {
+  let lastWidth = window.innerWidth;
+  window.addEventListener('touchmove', function() {
+    if (window.innerWidth !== lastWidth) {
+      lastWidth = window.innerWidth;
+      resizePage();
+    }
+  });
+}
