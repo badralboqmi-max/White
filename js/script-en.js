@@ -200,7 +200,7 @@ window.submitPopup = async function () {
   try {
 
     const response = await fetch(
-      'https://script.google.com/macros/s/AKfycbxlCIz_6ig_WtryJAnsUj6dDwEX-u3NEM6IaKLzs7ekltJW3_7aBWheDj0GGLVFIVk8OA/exec',
+      'https://script.google.com/macros/s/AKfycbzRoOxSVNsjsFU4qCGVtwEO4SFNnw_8Z6-9e5EAqe28/dev',
       {
         method: 'POST',
         headers: {
