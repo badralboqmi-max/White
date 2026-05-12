@@ -214,7 +214,8 @@ window.submitPopup = async function () {
       }
     );
 
-    const result = await response.json();
+    const text = await response.text();
+const result = JSON.parse(text);
 
     if (result.success) {
 
@@ -232,7 +233,7 @@ window.submitPopup = async function () {
       document.getElementById('popupPrivacyCheck').checked = false;
 
       // إغلاق النافذة
-      setTimeout(closePopup, 2000);
+      btn.style.pointerEvents = 'none';
 
     } else {
 
