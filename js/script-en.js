@@ -1,31 +1,28 @@
+// ========== رابط Google Apps Script ==========
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxlCIz_6ig_WtryJAnsUj6dDwEX-u3NEM6IaKLzs7ekltJW3_7aBWheDj0GGLVFIVk8OA/exec';
 
 // ========== التحكم في المنيو ==========
 const menuIcon = document.getElementById('menuIcon');
 const menu = document.getElementById('menu');
 const overlay = document.getElementById('overlay');
 
-// دالة لإغلاق المنيو وتراكب التعتيم
 function closeMenu() {
   menu.classList.remove('show');
   overlay.classList.remove('show');
 }
 
-// إغلاق المنيو عند تحميل الصفحة لأول مرة
 closeMenu();
 
-// إغلاق المنيو عند العودة عبر زر الرجوع/التقدم
 window.addEventListener('pageshow', function() {
   closeMenu();
 });
 
-// فتح/إغلاق المنيو عند النقر على الأيقونة
 menuIcon.addEventListener('click', function(event) {
   event.stopPropagation();
   menu.classList.toggle('show');
   overlay.classList.toggle('show');
 });
 
-// إغلاق المنيو عند النقر في أي مكان آخر خارج المنيو والأيقونة
 document.addEventListener('click', function(event) {
   if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
     closeMenu();
@@ -155,111 +152,71 @@ window.closePopup = function() {
   document.body.style.overflow = 'auto';
 };
 
+// ========== دالة التسجيل المعدلة والمصححة ==========
 window.submitPopup = async function () {
-
   const name = document.getElementById('popupName').value.trim();
   const phone = document.getElementById('popupPhone').value.trim();
   const agree = document.getElementById('popupPrivacyCheck').checked;
   const messageDiv = document.getElementById('popupMessage');
 
-  // تنظيف الرسائل
   messageDiv.textContent = '';
 
-  // التحقق من الحقول
   if (!name || !phone) {
     messageDiv.textContent = 'Please fill in all fields';
     messageDiv.className = 'popup-error';
     return;
   }
 
-  // التحقق من رقم الجوال
   const phoneRegex = /^05\d{8}$/;
-
   if (!phoneRegex.test(phone)) {
-    messageDiv.textContent =
-      'Phone number must be 10 digits and start with 05';
-
+    messageDiv.textContent = 'Phone number must be 10 digits and start with 05';
     messageDiv.className = 'popup-error';
     return;
   }
 
-  // التحقق من الموافقة
   if (!agree) {
-    messageDiv.textContent =
-      'You must agree to the privacy policy';
-
+    messageDiv.textContent = 'You must agree to the privacy policy';
     messageDiv.className = 'popup-error';
     return;
   }
 
   const btn = document.querySelector('.popup-button');
-
   btn.disabled = true;
   btn.textContent = 'Sending...';
 
   try {
+    const response = await fetch(WEB_APP_URL, {
+      method: 'POST',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, phone, consent: agree })
+    });
 
-    const response = await fetch(
-      'https://script.google.com/macros/s/AKfycbxlCIz_6ig_WtryJAnsUj6dDwEX-u3NEM6IaKLzs7ekltJW3_7aBWheDj0GGLVFIVk8OA/exec',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: name,
-          phone: phone,
-          consent: agree
-        })
-      }
-    );
-
-    const text = await response.text();
-const result = JSON.parse(text);
+    const result = await response.json();
 
     if (result.success) {
-
-      messageDiv.textContent =
-        'Registration successful! Thank you.';
-
+      messageDiv.textContent = 'Registration successful! Thank you.';
       messageDiv.className = 'popup-success';
-
-      // حفظ حالة التسجيل
       localStorage.setItem('userRegistered', 'true');
-
-      // تفريغ الحقول
       document.getElementById('popupName').value = '';
       document.getElementById('popupPhone').value = '';
       document.getElementById('popupPrivacyCheck').checked = false;
-
-      // إغلاق النافذة
       btn.style.pointerEvents = 'none';
-
+      setTimeout(() => closePopup(), 2000);
     } else {
-
-      messageDiv.textContent =
-        'Server error.';
-
+      messageDiv.textContent = result.error || 'Server error.';
       messageDiv.className = 'popup-error';
-
     }
-
   } catch (error) {
-
-    console.error(error);
-
-    messageDiv.textContent =
-      'Connection failed.';
-
+    console.error('Fetch error details:', error);
+    messageDiv.textContent = 'Connection failed. Check console for details.';
     messageDiv.className = 'popup-error';
-
   } finally {
-
     btn.disabled = false;
     btn.textContent = 'Register';
-
   }
 };
+
 // ========== تأثيرات الظهور عند التمرير ==========
 document.addEventListener('DOMContentLoaded', function() {
   const animatedElements = document.querySelectorAll('.fade-up, .fade-in');
@@ -294,7 +251,6 @@ if (transitionDiv) {
   transitionDiv.style.visibility = 'hidden';
 }
 
-// اعتراض الروابط الداخلية فقط (ليست خارجية ولا # ولا javascript)
 document.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
@@ -320,7 +276,6 @@ document.querySelectorAll('a').forEach(link => {
   });
 });
 
-// إخفاء الطبقة عند العودة للصفحة عبر زر الرجوع أو التقدم
 window.addEventListener('pageshow', function() {
   if (transitionDiv) {
     transitionDiv.style.visibility = 'hidden';
@@ -328,7 +283,6 @@ window.addEventListener('pageshow', function() {
   }
 });
 
-// ========== مراقبة إضافية للتصغير/التكبير ==========
 if (window.ResizeObserver) {
   const resizeObserver = new ResizeObserver(() => {
     resizePage();
