@@ -1,5 +1,5 @@
 // ========== رابط Google Apps Script ==========
-const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxlCIz_6ig_WtryJAnsUj6dDwEX-u3NEM6IaKLzs7ekltJW3_7aBWheDj0GGLVFIVk8OA/exec';
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyFYVg9fjQphSym_NUn7JlJ_YVDdMiHoK9tL0OWZAIGNvWvx3K4CPDafZJtzfjKf4lg/exec';
 
 // ========== التحكم في المنيو ==========
 const menuIcon = document.getElementById('menuIcon');
