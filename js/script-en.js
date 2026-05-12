@@ -1,7 +1,3 @@
-// ========== تعريف Supabase ==========
-const SUPABASE_URL = 'https://qyhpbdvcvxqhnptqzouw.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_8aNuoaA4T8oWKs3ta0x6iw_o5jkQn_c';
-const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ========== التحكم في المنيو ==========
 const menuIcon = document.getElementById('menuIcon');
@@ -159,66 +155,110 @@ window.closePopup = function() {
   document.body.style.overflow = 'auto';
 };
 
-window.submitPopup = async function() {
+window.submitPopup = async function () {
+
   const name = document.getElementById('popupName').value.trim();
   const phone = document.getElementById('popupPhone').value.trim();
   const agree = document.getElementById('popupPrivacyCheck').checked;
   const messageDiv = document.getElementById('popupMessage');
 
+  // تنظيف الرسائل
+  messageDiv.textContent = '';
+
+  // التحقق من الحقول
   if (!name || !phone) {
     messageDiv.textContent = 'Please fill in all fields';
     messageDiv.className = 'popup-error';
     return;
   }
 
+  // التحقق من رقم الجوال
   const phoneRegex = /^05\d{8}$/;
+
   if (!phoneRegex.test(phone)) {
-    messageDiv.textContent = 'Phone number must be 10 digits and start with 05';
+    messageDiv.textContent =
+      'Phone number must be 10 digits and start with 05';
+
     messageDiv.className = 'popup-error';
     return;
   }
 
+  // التحقق من الموافقة
   if (!agree) {
-    messageDiv.textContent = 'You must agree to the privacy policy';
+    messageDiv.textContent =
+      'You must agree to the privacy policy';
+
     messageDiv.className = 'popup-error';
     return;
   }
 
   const btn = document.querySelector('.popup-button');
+
   btn.disabled = true;
   btn.textContent = 'Sending...';
 
   try {
-    const { error } = await supabaseClient
-      .from('customers')
-      .insert([{ name, phone, consent: agree }]);
 
-    if (error) {
-      if (error.code === '23505') {
-        messageDiv.textContent = 'This phone number is already registered.';
-      } else {
-        throw error;
+    const response = await fetch(
+      'https://script.google.com/macros/s/AKfycbwzvErM845NFKrf-Pom144-HLgeiVnwb05mflByVYbAC55mGeMg6TDC7JK2WwSKznif7w/exec',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          phone: phone,
+          consent: agree
+        })
       }
-      messageDiv.className = 'popup-error';
-    } else {
-      messageDiv.textContent = 'Registration successful! Thank you.';
+    );
+
+    const result = await response.json();
+
+    if (result.success) {
+
+      messageDiv.textContent =
+        'Registration successful! Thank you.';
+
       messageDiv.className = 'popup-success';
+
+      // حفظ حالة التسجيل
       localStorage.setItem('userRegistered', 'true');
+
+      // تفريغ الحقول
       document.getElementById('popupName').value = '';
       document.getElementById('popupPhone').value = '';
       document.getElementById('popupPrivacyCheck').checked = false;
+
+      // إغلاق النافذة
       setTimeout(closePopup, 2000);
+
+    } else {
+
+      messageDiv.textContent =
+        'Server error.';
+
+      messageDiv.className = 'popup-error';
+
     }
+
   } catch (error) {
+
     console.error(error);
-    messageDiv.textContent = 'An error occurred. Please try again.';
+
+    messageDiv.textContent =
+      'Connection failed.';
+
     messageDiv.className = 'popup-error';
+
   } finally {
+
     btn.disabled = false;
     btn.textContent = 'Register';
+
   }
 };
-
 // ========== تأثيرات الظهور عند التمرير ==========
 document.addEventListener('DOMContentLoaded', function() {
   const animatedElements = document.querySelectorAll('.fade-up, .fade-in');
